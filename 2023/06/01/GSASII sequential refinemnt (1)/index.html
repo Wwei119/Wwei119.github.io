@@ -98,7 +98,7 @@
         <div class="avatar"><a href="/"><img src="/images/avatar_2.jpg" alt="ww"></a></div>
         <span>2023-06-01</span>
         <h2>GSASII seque...</h2>
-        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/GSAS-ii/" rel="tag">GSAS ii</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/study/" rel="tag">study</a></div>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/GSAS-ii/" rel="tag">GSAS ii</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/study/" rel="tag">study</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%9C%AA%E5%AE%8C%E6%88%90/" rel="tag">未完成</a></div>
         
       </div>
     </div>
@@ -108,10 +108,65 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><h2 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h2><h3 id="1-导入全部原位XRD数据和cif晶体结构"><a href="#1-导入全部原位XRD数据和cif晶体结构" class="headerlink" title="1. 导入全部原位XRD数据和cif晶体结构"></a>1. 导入全部原位XRD数据和cif晶体结构</h3><img src="1.png">
-将cif晶体结构和首个原位数据关联
+        <h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程示范了用GSAS ii 做连续拟合的步骤，旨在快速地处理原位XRD的数据及减少重复操作。该方法能较快得到晶胞参数的变化，但会损失一些精度，对精度要求高者建议还是每个数据单独修。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a target="_blank" rel="noopener" href="https://www.qiliugroup.com/members">YTT</a>，对于材料为LiNiO<sub>2</sub>, 空间群 ‘R -3 m’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a target="_blank" rel="noopener" href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/SeqRefine/SequentialTutorial.htm">Sequential refinement of multiple datasets – CuCr2O4 from 7K to 300K</a></p>
+<blockquote>
+<p>文稿：<a target="_blank" rel="noopener" href="https://www.qiliugroup.com/members">YTT</a><br>校稿：<a target="_blank" rel="noopener" href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>双击打开GSAS ii, 点击 ‘import-PD-你的数据类型’ 导入全部原位XRD数据：</p>
+<img src="1.png" height="70%" width="70%">
 
-<h2 id="2-拟合第一个data"><a href="#2-拟合第一个data" class="headerlink" title="2. 拟合第一个data"></a>2. 拟合第一个data</h2>
+<p>点击 ‘import-Phase-from CIF file’ 导入cif晶体结构:</p>
+<img src="4.png" height="70%" width="70%">
+
+<p>将cif晶体结构和首个原位数据关联:</p>
+<img src="2.png" height="50%" width="50%">
+
+<h2 id="二，-拟合第一个XRD数据"><a href="#二，-拟合第一个XRD数据" class="headerlink" title="二， 拟合第一个XRD数据"></a>二， 拟合第一个XRD数据</h2><p>该步骤请参考之前的文章：<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1uT4y1P7CX/?spm_id_from=333.337.search-card.all.click&vd_source=b885abc26580c6e8545555a88d2c2c4c">GSAS ii 单相拟合</a></p>
+<h2 id="三，-连续拟合前的准备"><a href="#三，-连续拟合前的准备" class="headerlink" title="三， 连续拟合前的准备"></a>三， 连续拟合前的准备</h2><h3 id="1-refine框设置"><a href="#1-refine框设置" class="headerlink" title="1. refine框设置"></a>1. refine框设置</h3><p>取消 ‘SP-H scale’ 以外所有refine框的勾选<br><img src="image001.png" height="50%" width="50%"></p>
+<blockquote>
+<p>zoom in.</p>
+</blockquote>
+<img src="image002.png" height="40%" width="40%">
+
+<p>新增勾选 ‘Phase-Data-Hydrostatic&#x2F;elastic strain-D11&amp; D33’ </p>
+<img src="image003.png" height="40%" width="40%">
+
+<h3 id="2-扩大应用相的XRD数据范围"><a href="#2-扩大应用相的XRD数据范围" class="headerlink" title="2. 扩大应用相的XRD数据范围"></a>2. 扩大应用相的XRD数据范围</h3><p>Phase1——Edit phases——Add powder histograms——set all——OK</p>
+<img src="image004.png" height="40%" width="40%">
+
+<h3 id="3-参数复制"><a href="#3-参数复制" class="headerlink" title="3. 参数复制"></a>3. 参数复制</h3><p>将首个数据拟合的参数赋予全部数据：进入首个数据——Commands——Copy params——OK——set all——OK<br><img src="image005.png" height="50%" width="50%"></p>
+<p><img src="image006.png" height="30%" width="30%"> <img src="image007.png" height="40%" width="40%"></p>
+<p>将待拟合相赋予全部数据：进入Phase1——Edit phase——Copy data——set all——OK<br><img src="image008.png" height="30%" width="30%"><br><img src="image009.png" height="40%" width="40%"></p>
+<h3 id="4-连续拟合的条件设置"><a href="#4-连续拟合的条件设置" class="headerlink" title="4. 连续拟合的条件设置"></a>4. 连续拟合的条件设置</h3><p>选择应用的XRD数据范围：Controls——Select datasets——set all——OK</p>
+<img src="image010.png" height="50%" width="50%">
+
+<img src="image011.png" height="50%" width="50%">
+
+<p>勾选 ‘Copy results to next histogram?’ 这样在修新的一个XRD数据的时候会沿用上一个的结果</p>
+<img src="image012.png" height="50%" width="50%">
+
+<h2 id="四，开始连续拟合及结果分析"><a href="#四，开始连续拟合及结果分析" class="headerlink" title="四，开始连续拟合及结果分析"></a>四，开始连续拟合及结果分析</h2><p>点击：Calculate——Sequential Refine</p>
+<img src="image015.png" height="30%" width="30%">
+
+<p>自动连续拟合开始：</p>
+<img src="3.png" height="50%" width="50%">
+
+<p>结果在左侧列表最下面的‘Sequential results’ </p>
+<img src="image016.png" height="20%" width="20%">
+
+<p>点击可见：</p>
+<img src="image017.png" height="50%" width="50%">
+
+<p>点击数据的任意列，会有对应的参数变化曲线生成（带有误差棒）：</p>
+<img src="image018.png" height="50%" width="50%">
+
+<p>导出结果为excel：</p>
+<img src="image019.png" height="50%" width="50%">
+
+<p>之后可在其他软件进行绘图。<br><br/><br><font face="Times Newroman" font size=7> <p align="center">单相连续拟合finished！</font> </p>    </p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>
       </div>
     </div>
   </div>
