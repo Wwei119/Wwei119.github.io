@@ -29,7 +29,9 @@
   <entry>
     <title>GSASII sequential refinemnt (1)</title>
     <url>/2023/06/01/GSASII%20sequential%20refinemnt%20(1)/</url>
-    <content><![CDATA[<h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程示范了用GSAS ii 做连续拟合的步骤，旨在快速地处理原位XRD的数据及减少重复操作。该方法能较快得到晶胞参数的变化，但会损失一些精度，对精度要求高者建议还是每个数据单独修。</p>
+    <content><![CDATA[<h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><img src="OIP.jfif" height="10%" width="10%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程示范了用GSAS ii 做连续拟合的步骤，旨在快速地处理原位XRD的数据及减少重复操作。该方法能较快得到晶胞参数的变化，但会损失一些精度，对精度要求高者建议还是每个数据单独修。</p>
 <span id="more"></span>
 <p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">YTT</a>，对于材料为LiNiO<sub>2</sub>, 空间群 ‘R -3 m’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/SeqRefine/SequentialTutorial.htm">Sequential refinement of multiple datasets – CuCr2O4 from 7K to 300K</a></p>
 <blockquote>
