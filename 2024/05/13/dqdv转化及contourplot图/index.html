@@ -116,18 +116,21 @@
 <blockquote>
 <p>文稿：<a target="_blank" rel="noopener" href="https://www.qiliugroup.com/members">WW</a><br>程序编写：<a target="_blank" rel="noopener" href="https://www.qiliugroup.com/members">WW</a></p>
 </blockquote>
-<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。<br>注一：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量<br>注二：建议记录层中仅勾选“电压”和“比容量”</p>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。</p>
+<p><strong>注一</strong>：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量<br><strong>注二</strong>：建议记录层中仅勾选“电压”和“比容量”</p>
 <img src="fig1.png" height="100%" width="100%">
 
 <p>最后选好路径，名字，进行保存。确认保存的文件后缀是“.xls”，否则手动修改后缀名。<br>打开保存好的文件检查，名字带”record“的”sheet“是否满足：E列为电压，F列为比容量。<br>如果不满足，请调整excel里的位置，或修改程序里“数据参数预设”部分中的V&#x2F;C赋值语句。</p>
 <h2 id="二，-转化为dqdv"><a href="#二，-转化为dqdv" class="headerlink" title="二， 转化为dqdv"></a>二， 转化为dqdv</h2><p>数据准备无误后，将该excel文件放入“ECplotAndDividedLMFP.m”程序所在的文件夹，双击打开该Matlab程序。<br>将filename改为导出的excel的名字。接下来只需跟着程序的注释从头到尾走一遍即可。</p>
 <img src="fig2.png" height="100%" width="100%">
 
-<p>推荐流程：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。<br>一切调整好后，按运行键，会生成一系列线图。如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
+<p><strong>推荐流程</strong>：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。</p>
+<p>一切调整好后，按运行键，会生成一系列线图。如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
 <h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
 <img src="fig1.png" height="60%" width="60%">
 
-<p>##感言<br>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
+
+<h2 id="四，感言"><a href="#四，感言" class="headerlink" title="四，感言"></a>四，感言</h2><p>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
 
       </div>
     </div>
@@ -141,7 +144,7 @@
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>No newer post</h3>
+						<h3>没有更新的文章</h3>
 					</div>
 				</div>
 			</div>
@@ -195,18 +198,18 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
     
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+      <i class="fa fa-bookmark fa-fw"></i>页面</span>
         <ul>
           <li><a href="/guestbook/">Guestbook</a></li>
         <li><a href="/about/">About</a></li>
         </ul>
     </li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>Friends</span>
+      <i class="fa fa-link fa-fw"></i>友链</span>
         <ul>
           <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
         </ul>
