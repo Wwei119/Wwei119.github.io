@@ -1,6 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>GSASII refinemnt (1)</title>
+    <url>/2024/02/26/GSAS%20refinement%20(1)/</url>
+    <content><![CDATA[<h1 id="GSAS-II-精修-（1）：单相"><a href="#GSAS-II-精修-（1）：单相" class="headerlink" title="GSAS II 精修 （1）：单相"></a>GSAS II 精修 （1）：单相</h1><img src="OIP.jfif" height="10%" width="10%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍粉末XRD单相精修的一般方法，涉及仪器参数，背底，单胞参数，原子信息等部分的拟合。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">YTT</a>，对应材料为Na<sub>x</sub>MnO<sub>2</sub>, 空间群 ‘P 63&#x2F;m m c’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/LabData/Laboratory%20X.htm">Laboratory X-ray Powder Data - Fluroapatite</a></p>
+<blockquote>
+<p>文稿：<a href="https://www.qiliugroup.com/members">YTT</a><br>校稿：<a href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>双击打开GSAS ii，导入实验室测的的XRD数据（.ras 文件）。注意，为满足精修原子坐标的需求，粉末样品最好测试到高角度（110度），且时间在30mins以上：<br>Import——Powder data——From Rigaku.ras file file——点击待拟合数据——是——选择标准仪器参数——OK<br>（注，若XRD数据在其它方式下测的，比如同步辐射XRD，请选择对应的仪器参数文件，若无，则需基于已有的修改）</p>
+<img src="image001.png" height="60%" width="60%">
+
+<p>导入待精修粉末样品的cif文件，根据软件指示关联cif结构文件和待精修样品文件：<br>Import——phase——From cif file——选择所需的cif文件——是——给cif文件命名——OK</p>
+<img src="image003.png" height="60%" width="60%">
+
+<p>将cif晶体结构和首个原位数据关联:<br>勾选对应的数据——OK</p>
+<img src="image004.png" height="60%" width="60%">
+
+<p>保存项目至指定文件夹：File–save project（经常保存是好习惯 ^_^）</p>
+<h2 id="二，结构拟合"><a href="#二，结构拟合" class="headerlink" title="二，结构拟合"></a>二，结构拟合</h2><h3 id="2-1-基础拟合设置（背景）"><a href="#2-1-基础拟合设置（背景）" class="headerlink" title="2-1 基础拟合设置（背景）"></a>2-1 基础拟合设置（背景）</h3><p>修改limits确定拟合峰位范围（适情况而定）</p>
+<img src="image008.png" height="60%" width="60%">
+
+<p>修改Max cycles为10，方便拟合收敛</p>
+<img src="image009.png" height="60%" width="60%">
+
+<p>勾选Scale的拟合框，在整个拟合过程中保留</p>
+<img src="image010.png" height="50%" width="50%">
+
+<p>开始背景的拟合，选择拟合函数及背底参数（视背景形状而定）。Calculate——Refine——拟合到理想程度后取消背底勾选（建议保留勾选至拟合程度较高时）</p>
+<img src="image011.png" height="70%" width="70%">
+
+<h3 id="2-2-峰位相关参数拟合"><a href="#2-2-峰位相关参数拟合" class="headerlink" title="2-2 峰位相关参数拟合"></a>2-2 峰位相关参数拟合</h3><p>勾选单胞参数拟合</p>
+<img src="image013.png" height="70%" width="70%">
+
+<p>加选仪器的零点拟合。Instrument parameters——Zero</p>
+<img src="image012.png" height="70%" width="70%">
+
+<p>拟合至峰位没问题后取消勾选</p>
+<h3 id="2-3-峰形相关参数拟合"><a href="#2-3-峰形相关参数拟合" class="headerlink" title="2-3 峰形相关参数拟合"></a>2-3 峰形相关参数拟合</h3><p>勾选Size并拟合。拟合后取消勾选。</p>
+<img src="image015.png" height="70%" width="70%">
+
+<p>勾选Microstrain并拟合。拟合后取消勾选。</p>
+<img src="image016.png" height="70%" width="70%">
+
+<p>仪器参数U，V，W拟合。拟合后取消上述勾选。</p>
+<img src="image014.png" height="70%" width="70%">
+
+<h2 id="三，补充结构信息（精修前准备）"><a href="#三，补充结构信息（精修前准备）" class="headerlink" title="三，补充结构信息（精修前准备）"></a>三，补充结构信息（精修前准备）</h2><p>有时候网上搜到的结构和我们想要的有些区别，可能需要在phase一栏作修改。建议好好阅读file栏最右边的”Help”，里面介绍了较多参数的意义。<br>在调整好了结构后，我们可能还会需要添加一些额外的关系。比如该项目中对cif文件中的各原子占位和温度因子构建关联，这时就要用到要用到Constrains里的指令了。<br>这里以钠原子温度因子相等关系为例，具体过程如下：<br>Constrains——Phase——Edit Constr.——add equivalence–<br>勾选中Na<sub>e</sub>的温度因子 – OK</p>
+<img src="image005.png" height="70%" width="70%">
+
+<p>勾选中Na<sub>e</sub>的温度因子 – OK</p>
+<img src="image006.png" height="70%" width="70%">
+
+<p>效果如下：</p>
+<img src="image007.png" height="70%" width="70%">
+
+<p>如需删除该关系，可勾选后点击上方的”Delete selected”</p>
+<h2 id="四，结构精修"><a href="#四，结构精修" class="headerlink" title="四，结构精修"></a>四，结构精修</h2><p>精修前确认仪器参数、背底等的拟合都已取消，仅保留scale一项。<br>开始精修，先勾选晶胞参数，同时，在 phase-atoms 中的refine列的每一个方格中选择对每个原子的精修项目，选好后进行拟合。下图对应的是选择了Na,Mn原子的占据率F和温度因子U，O原子的位置X和温度因子U。</p>
+<img src="image017.png" height="70%" width="70%">
+
+<p>具体的精修策略因人&#x2F;材料而异，常用的精修顺序：先精修全体的X，再精修全体的XU，最后精修部分原子的FXU。每一次拟合后都需确认拟合结果是否合理，不合理则需返回上一步调整<br>（精修为“refinement”，re fine指不断的调整直至完美，这个过程很考验耐心^_^)</p>
+<p>较好的精修结果&#x3D;较小的拟合结果&#x2F;实验数据误差（rwp）+ 合理的各项参数</p>
+<br/>  
+<font face="Times Newroman" font size=7> <p align="center">XRD单相结构精修finished！</font> </p>    
+
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>GSAS ii</tag>
+        <tag>XRD</tag>
+        <tag>refinement</tag>
+        <tag>study</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GSASII sequential fitting (1)</title>
     <url>/2023/06/01/GSASII%20sequential%20fitting%20(1)/</url>
     <content><![CDATA[<h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><img src="OIP.jfif" height="10%" width="10%">
@@ -75,80 +153,36 @@
   </entry>
   <entry>
     <title>GSASII refinemnt (1)</title>
-    <url>/2024/02/26/GSAS%20refinement%20(1)/</url>
-    <content><![CDATA[<h1 id="GSAS-II-精修-（1）：单相"><a href="#GSAS-II-精修-（1）：单相" class="headerlink" title="GSAS II 精修 （1）：单相"></a>GSAS II 精修 （1）：单相</h1><img src="OIP.jfif" height="10%" width="10%">
+    <url>/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="QV数据转化为dqdv数据及绘图"><a href="#QV数据转化为dqdv数据及绘图" class="headerlink" title="QV数据转化为dqdv数据及绘图"></a>QV数据转化为dqdv数据及绘图</h1><img src="Miao.jfif" height="10%" width="10%">
 
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍粉末XRD单相精修的一般方法，涉及仪器参数，背底，单胞参数，原子信息等部分的拟合。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍基于matlab的一个“QV数据转化为dqdv数据“程序和一个contour plot 绘制程序。</p>
 <span id="more"></span>
-<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">YTT</a>，对于材料为Na<sub>x</sub>MnO<sub>2</sub>, 空间群 ‘P 63&#x2F;m m c’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/LabData/Laboratory%20X.htm">Laboratory X-ray Powder Data - Fluroapatite</a></p>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">WW</a>，对应材料为LiMn<sub>x</sub>Fe<sub>1-x</sub>PO<sub>4</sub> 。</p>
 <blockquote>
-<p>文稿：<a href="https://www.qiliugroup.com/members">YTT</a><br>校稿：<a href="https://www.qiliugroup.com/members">WW</a></p>
+<p>文稿：<a href="https://www.qiliugroup.com/members">WW</a><br>程序编写：<a href="https://www.qiliugroup.com/members">WW</a></p>
 </blockquote>
-<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>双击打开GSAS ii，导入实验室测的的XRD数据（.ras 文件）。注意，为满足精修原子坐标的需求，粉末样品最好测试到高角度（110度），且时间在30mins以上：<br>Import——Powder data——From Rigaku.ras file file——点击待拟合数据——是——选择标准仪器参数——OK<br>（注，若XRD数据在其它方式下测的，比如同步辐射XRD，请选择对应的仪器参数文件，若无，则需基于已有的修改）</p>
-<img src="image001.png" height="60%" width="60%">
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。<br>注一：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量<br>注二：建议记录层中仅勾选“电压”和“比容量”</p>
+<img src="fig1.png" height="100%" width="100%">
 
-<p>导入待精修粉末样品的cif文件，根据软件指示关联cif结构文件和待精修样品文件：<br>Import——phase——From cif file——选择所需的cif文件——是——给cif文件命名——OK</p>
-<img src="image003.png" height="60%" width="60%">
+<p>最后选好路径，名字，进行保存。确认保存的文件后缀是“.xls”，否则手动修改后缀名。<br>打开保存好的文件检查，名字带”record“的”sheet“是否满足：E列为电压，F列为比容量。<br>如果不满足，请调整excel里的位置，或修改程序里“数据参数预设”部分中的V&#x2F;C赋值语句。</p>
+<h2 id="二，-转化为dqdv"><a href="#二，-转化为dqdv" class="headerlink" title="二， 转化为dqdv"></a>二， 转化为dqdv</h2><p>数据准备无误后，将该excel文件放入“ECplotAndDividedLMFP.m”程序所在的文件夹，双击打开该Matlab程序。<br>将filename改为导出的excel的名字。接下来只需跟着程序的注释从头到尾走一遍即可。</p>
+<img src="fig2.png" height="100%" width="100%">
 
-<p>将cif晶体结构和首个原位数据关联:<br>勾选对应的数据——OK</p>
-<img src="image004.png" height="60%" width="60%">
+<p>推荐流程：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。<br>一切调整好后，按运行键，会生成一系列线图。如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
+<h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
+<img src="fig1.png" height="60%" width="60%">
 
-<p>保存项目至指定文件夹：File–save project（经常保存是好习惯 ^_^）</p>
-<h2 id="二，结构拟合"><a href="#二，结构拟合" class="headerlink" title="二，结构拟合"></a>二，结构拟合</h2><h3 id="2-1-基础拟合设置（背景）"><a href="#2-1-基础拟合设置（背景）" class="headerlink" title="2-1 基础拟合设置（背景）"></a>2-1 基础拟合设置（背景）</h3><p>修改limits确定拟合峰位范围（适情况而定）</p>
-<img src="image008.png" height="60%" width="60%">
-
-<p>修改Max cycles为10，方便拟合收敛</p>
-<img src="image009.png" height="60%" width="60%">
-
-<p>勾选Scale的拟合框，在整个拟合过程中保留</p>
-<img src="image010.png" height="50%" width="50%">
-
-<p>开始背景的拟合，选择拟合函数及背底参数（视背景形状而定）。Calculate——Refine——拟合到理想程度后取消背底勾选（建议保留勾选至拟合程度较高时）</p>
-<img src="image011.png" height="70%" width="70%">
-
-<h3 id="2-2-峰位相关参数拟合"><a href="#2-2-峰位相关参数拟合" class="headerlink" title="2-2 峰位相关参数拟合"></a>2-2 峰位相关参数拟合</h3><p>勾选单胞参数拟合</p>
-<img src="image013.png" height="70%" width="70%">
-
-<p>加选仪器的零点拟合。Instrument parameters——Zero</p>
-<img src="image012.png" height="70%" width="70%">
-
-<p>拟合至峰位没问题后取消勾选</p>
-<h3 id="2-3-峰形相关参数拟合"><a href="#2-3-峰形相关参数拟合" class="headerlink" title="2-3 峰形相关参数拟合"></a>2-3 峰形相关参数拟合</h3><p>勾选Size并拟合。拟合后取消勾选。</p>
-<img src="image015.png" height="70%" width="70%">
-
-<p>勾选Microstrain并拟合。拟合后取消勾选。</p>
-<img src="image016.png" height="70%" width="70%">
-
-<p>仪器参数U，V，W拟合。拟合后取消上述勾选。</p>
-<img src="image014.png" height="70%" width="70%">
-
-<h2 id="三，补充结构信息（精修前准备）"><a href="#三，补充结构信息（精修前准备）" class="headerlink" title="三，补充结构信息（精修前准备）"></a>三，补充结构信息（精修前准备）</h2><p>有时候网上搜到的结构和我们想要的有些区别，可能需要在phase一栏作修改。建议好好阅读file栏最右边的”Help”，里面介绍了较多参数的意义。<br>在调整好了结构后，我们可能还会需要添加一些额外的关系。比如该项目中对cif文件中的各原子占位和温度因子构建关联，这时就要用到要用到Constrains里的指令了。<br>这里以钠原子温度因子相等关系为例，具体过程如下：<br>Constrains——Phase——Edit Constr.——add equivalence–<br>勾选中Na<sub>e</sub>的温度因子 – OK</p>
-<img src="image005.png" height="70%" width="70%">
-
-<p>勾选中Na<sub>e</sub>的温度因子 – OK</p>
-<img src="image006.png" height="70%" width="70%">
-
-<p>效果如下：</p>
-<img src="image007.png" height="70%" width="70%">
-
-<p>如需删除该关系，可勾选后点击上方的”Delete selected”</p>
-<h2 id="四，结构精修"><a href="#四，结构精修" class="headerlink" title="四，结构精修"></a>四，结构精修</h2><p>精修前确认仪器参数、背底等的拟合都已取消，仅保留scale一项。<br>开始精修，先勾选晶胞参数，同时，在 phase-atoms 中的refine列的每一个方格中选择对每个原子的精修项目，选好后进行拟合。下图对应的是选择了Na,Mn原子的占据率F和温度因子U，O原子的位置X和温度因子U。</p>
-<img src="image017.png" height="70%" width="70%">
-
-<p>具体的精修策略因人&#x2F;材料而异，常用的精修顺序：先精修全体的X，再精修全体的XU，最后精修部分原子的FXU。每一次拟合后都需确认拟合结果是否合理，不合理则需返回上一步调整<br>（精修为“refinement”，re fine指不断的调整直至完美，这个过程很考验耐心^_^)</p>
-<p>较好的精修结果&#x3D;较小的拟合结果&#x2F;实验数据误差（rwp）+ 合理的各项参数</p>
-<br/>  
-<font face="Times Newroman" font size=7> <p align="center">XRD单相结构精修finished！</font> </p>    
-
-<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+<p>##感言<br>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
+]]></content>
       <categories>
         <category>软件使用</category>
       </categories>
       <tags>
-        <tag>GSAS ii</tag>
-        <tag>study</tag>
-        <tag>XRD</tag>
-        <tag>refinement</tag>
+        <tag>Matlab</tag>
+        <tag>dqdv</tag>
+        <tag>plot</tag>
+        <tag>data process</tag>
       </tags>
   </entry>
   <entry>
@@ -180,7 +214,9 @@
   <entry>
     <title>PS处理图片感想</title>
     <url>/2023/02/02/ww2/</url>
-    <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>前：<br><img src="/2023/02/02/ww2/1.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/2.jpg" alt="xiba"><br>前：<br><img src="/2023/02/02/ww2/3.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/4.jpg" alt="xiba"></p>
+    <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>风景图片后期，感想</p>
+<span id="more"></span>
+<p>前：<br><img src="/2023/02/02/ww2/1.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/2.jpg" alt="xiba"><br>前：<br><img src="/2023/02/02/ww2/3.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/4.jpg" alt="xiba"></p>
 <blockquote class='blockquote-center'><p>摄影是为了记录眼前的真实，还是为了发现生活中的美好？ <br><strong>——WEI</strong> </p>
 </blockquote>
 
