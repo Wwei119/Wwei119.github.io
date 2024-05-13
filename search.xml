@@ -173,7 +173,7 @@
 <p><strong>推荐流程</strong>：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。</p>
 <p>一切调整好后，按运行键，会生成一系列线图。如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
 <h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
-<img src="fig1.png" height="60%" width="60%">
+<img src="fig3.png" height="60%" width="60%">
 
 
 <h2 id="四，感言"><a href="#四，感言" class="headerlink" title="四，感言"></a>四，感言</h2><p>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
