@@ -79,6 +79,109 @@
       </tags>
   </entry>
   <entry>
+    <title>haita kong</title>
+    <url>/2023/02/03/haita-kong/</url>
+    <content><![CDATA[<p>#Wwei是海獭控！<br><video src=' haitacuolian.mp4' type='video/mp4' controls='controls'  width='30%' height='30%'><br></video><br>开工大吉！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/06/01/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>PS处理图片感想</title>
+    <url>/2023/02/02/ww2/</url>
+    <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>风景图片后期，感想</p>
+<span id="more"></span>
+<p>前：<br><img src="/2023/02/02/ww2/1.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/2.jpg" alt="xiba"><br>前：<br><img src="/2023/02/02/ww2/3.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/4.jpg" alt="xiba"></p>
+<blockquote class='blockquote-center'><p>摄影是为了记录眼前的真实，还是为了发现生活中的美好？ <br><strong>——WEI</strong> </p>
+</blockquote>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>第一篇博客</title>
+    <url>/2023/02/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>代码测试：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>注意：这里因为我放在md文件中的，所以加上了\，不解析&#96;&#96;&#96;，实际测试时请去掉\。</p>
+<p>图片测试：</p>
+<p><img src="http://mculover666.cn/blog/20191031/R4mWMXsrRKxu.png?imageslim"></p>
+<p>引用测试：</p>
+<blockquote>
+<p>这是一条引用</p>
+</blockquote>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>无序列表测试：</p>
+<ul>
+<li>哈哈</li>
+<li>嘿嘿</li>
+<li>吼吼</li>
+</ul>
+<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4>]]></content>
+  </entry>
+  <entry>
+    <title>GSASII refinemnt (1)</title>
+    <url>/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="QV数据转化为dqdv数据及绘图"><a href="#QV数据转化为dqdv数据及绘图" class="headerlink" title="QV数据转化为dqdv数据及绘图"></a>QV数据转化为dqdv数据及绘图</h1><img src="Miao.jfif" height="20%" width="20%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍基于matlab的一个“QV数据转化为dqdv数据“程序和一个contour plot 绘制程序。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">WW</a>，对应材料为LiMn<sub>x</sub>Fe<sub>1-x</sub>PO<sub>4</sub> 。</p>
+<blockquote>
+<p>文稿：<a href="https://www.qiliugroup.com/members">WW</a><br>程序编写：<a href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。</p>
+<p><strong>注一</strong>：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量。<br><strong>注二</strong>：建议记录层中仅勾选“电压”和“比容量”。</p>
+<img src="fig1.png" height="100%" width="100%">
+
+<p>最后选好路径，名字，进行保存。确认保存的文件后缀是“.xls”，否则手动修改后缀名。<br>打开保存好的文件检查，名字带”record“的”sheet“是否满足：E列为电压，F列为比容量。<br>如果不满足，请调整excel里的位置，或修改程序里“数据参数预设”部分中的V&#x2F;C赋值语句。</p>
+<h2 id="二，-转化为dqdv"><a href="#二，-转化为dqdv" class="headerlink" title="二， 转化为dqdv"></a>二， 转化为dqdv</h2><p>数据准备无误后，将该excel文件放入“ECplotAndDividedLMFP.m”程序所在的文件夹，双击打开该Matlab程序。<br>将filename改为导出的excel的名字。接下来只需跟着程序的注释从头到尾走一遍即可。</p>
+<img src="fig2.png" height="100%" width="100%">
+
+<p><strong>推荐流程</strong>：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。</p>
+<p>一切调整好后，按运行键，会生成如下一系列线图。</p>
+<img src="fig4.png" height="60%" width="60%">
+
+<p>如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
+<h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
+<img src="fig3.png" height="60%" width="60%">
+
+<p>运行结果如下：</p>
+<img src="fig5.png" height="60%" width="60%">
+
+
+<h2 id="四，感言"><a href="#四，感言" class="headerlink" title="四，感言"></a>四，感言</h2><p>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
+]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>Matlab</tag>
+        <tag>dqdv</tag>
+        <tag>plot</tag>
+        <tag>data process</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>GSASII sequential fitting (1)</title>
     <url>/2023/06/01/GSASII%20sequential%20fitting%20(1)/</url>
     <content><![CDATA[<h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><img src="OIP.jfif" height="10%" width="10%">
@@ -98,7 +201,7 @@
 <p>将cif晶体结构和首个原位数据关联:</p>
 <img src="2.png" height="50%" width="50%">
 
-<h2 id="二，-拟合第一个XRD数据"><a href="#二，-拟合第一个XRD数据" class="headerlink" title="二， 拟合第一个XRD数据"></a>二， 拟合第一个XRD数据</h2><p>该步骤请参考之前的文章：<br><a href="https://www.bilibili.com/video/BV1uT4y1P7CX/?spm_id_from=333.337.search-card.all.click&vd_source=b885abc26580c6e8545555a88d2c2c4c">GSAS ii 单相拟合</a></p>
+<h2 id="二，-拟合第一个XRD数据"><a href="#二，-拟合第一个XRD数据" class="headerlink" title="二， 拟合第一个XRD数据"></a>二， 拟合第一个XRD数据</h2><p>该步骤请参考之前的文章：<br><a href="https://www.bilibili.com/video/BV1UT42167xb/?spm_id_from=333.337.search-card.all.click&vd_source=b885abc26580c6e8545555a88d2c2c4c">GSAS ii 单相拟合</a></p>
 <h2 id="三，-连续拟合前的准备"><a href="#三，-连续拟合前的准备" class="headerlink" title="三， 连续拟合前的准备"></a>三， 连续拟合前的准备</h2><h3 id="1-refine框设置"><a href="#1-refine框设置" class="headerlink" title="1. refine框设置"></a>1. refine框设置</h3><p>取消 ‘SP-H scale’ 以外所有refine框的勾选<br><img src="image001.png" height="50%" width="50%"></p>
 <blockquote>
 <p>zoom in.</p>
@@ -150,108 +253,5 @@
         <tag>study</tag>
         <tag>未完成</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>GSASII refinemnt (1)</title>
-    <url>/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/</url>
-    <content><![CDATA[<h1 id="QV数据转化为dqdv数据及绘图"><a href="#QV数据转化为dqdv数据及绘图" class="headerlink" title="QV数据转化为dqdv数据及绘图"></a>QV数据转化为dqdv数据及绘图</h1><img src="Miao.jfif" height="20%" width="20%">
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍基于matlab的一个“QV数据转化为dqdv数据“程序和一个contour plot 绘制程序。</p>
-<span id="more"></span>
-<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">WW</a>，对应材料为LiMn<sub>x</sub>Fe<sub>1-x</sub>PO<sub>4</sub> 。</p>
-<blockquote>
-<p>文稿：<a href="https://www.qiliugroup.com/members">WW</a><br>程序编写：<a href="https://www.qiliugroup.com/members">WW</a></p>
-</blockquote>
-<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。</p>
-<p><strong>注一</strong>：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量。<br><strong>注二</strong>：建议记录层中仅勾选“电压”和“比容量”。</p>
-<img src="fig1.png" height="100%" width="100%">
-
-<p>最后选好路径，名字，进行保存。确认保存的文件后缀是“.xls”，否则手动修改后缀名。<br>打开保存好的文件检查，名字带”record“的”sheet“是否满足：E列为电压，F列为比容量。<br>如果不满足，请调整excel里的位置，或修改程序里“数据参数预设”部分中的V&#x2F;C赋值语句。</p>
-<h2 id="二，-转化为dqdv"><a href="#二，-转化为dqdv" class="headerlink" title="二， 转化为dqdv"></a>二， 转化为dqdv</h2><p>数据准备无误后，将该excel文件放入“ECplotAndDividedLMFP.m”程序所在的文件夹，双击打开该Matlab程序。<br>将filename改为导出的excel的名字。接下来只需跟着程序的注释从头到尾走一遍即可。</p>
-<img src="fig2.png" height="100%" width="100%">
-
-<p><strong>推荐流程</strong>：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。</p>
-<p>一切调整好后，按运行键，会生成如下一系列线图。</p>
-<img src="fig4.png" height="60%" width="60%">
-
-<p>如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
-<h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
-<img src="fig3.png" height="60%" width="60%">
-
-<p>运行结果如下：</p>
-<img src="fig5.png" height="60%" width="60%">
-
-
-<h2 id="四，感言"><a href="#四，感言" class="headerlink" title="四，感言"></a>四，感言</h2><p>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
-]]></content>
-      <categories>
-        <category>软件使用</category>
-      </categories>
-      <tags>
-        <tag>Matlab</tag>
-        <tag>dqdv</tag>
-        <tag>plot</tag>
-        <tag>data process</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/01/10/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>haita kong</title>
-    <url>/2023/02/03/haita-kong/</url>
-    <content><![CDATA[<p>#Wwei是海獭控！<br><video src=' haitacuolian.mp4' type='video/mp4' controls='controls'  width='30%' height='30%'><br></video><br>开工大吉！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>PS处理图片感想</title>
-    <url>/2023/02/02/ww2/</url>
-    <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>风景图片后期，感想</p>
-<span id="more"></span>
-<p>前：<br><img src="/2023/02/02/ww2/1.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/2.jpg" alt="xiba"><br>前：<br><img src="/2023/02/02/ww2/3.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/4.jpg" alt="xiba"></p>
-<blockquote class='blockquote-center'><p>摄影是为了记录眼前的真实，还是为了发现生活中的美好？ <br><strong>——WEI</strong> </p>
-</blockquote>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>第一篇博客</title>
-    <url>/2023/02/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>代码测试：</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>注意：这里因为我放在md文件中的，所以加上了\，不解析&#96;&#96;&#96;，实际测试时请去掉\。</p>
-<p>图片测试：</p>
-<p><img src="http://mculover666.cn/blog/20191031/R4mWMXsrRKxu.png?imageslim"></p>
-<p>引用测试：</p>
-<blockquote>
-<p>这是一条引用</p>
-</blockquote>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>无序列表测试：</p>
-<ul>
-<li>哈哈</li>
-<li>嘿嘿</li>
-<li>吼吼</li>
-</ul>
-<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4>]]></content>
   </entry>
 </search>
