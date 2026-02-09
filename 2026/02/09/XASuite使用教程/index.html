@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>XASuite：一站式X射线吸收谱批量处理与分析工具 | hellowei</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ww">
+  <meta name="keywords" content="">
+  <meta name="description" content="slow down">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.4.4',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/css/main.min.css">
+  
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.jside.menu.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=1129399169@qq.com"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '1129399169@qq.com');
+</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<div class="single">
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div class="header">
+  <div id="lx-aside" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/post_cover.min.jpeg)" data-stellar-background-ratio="0.5">
+    <div class="overlay">
+      <a href="javascript:;" class="popup-trigger" title="search"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+      <div class="page-title">
+        <div class="avatar"><a href="/"><img src="/images/avatar_2.jpg" alt="ww"></a></div>
+        <span>2026-02-09</span>
+        <h2>XASuite：一站式X...</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/XAFS/" rel="tag">XAFS</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/XAS/" rel="tag">XAS</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/batch-processing/" rel="tag">batch processing</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/data-analysis/" rel="tag">data analysis</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/software/" rel="tag">software</a></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="XASuite：一站式X射线吸收谱批量处理与分析工具"><a href="#XASuite：一站式X射线吸收谱批量处理与分析工具" class="headerlink" title="XASuite：一站式X射线吸收谱批量处理与分析工具"></a>XASuite：一站式X射线吸收谱批量处理与分析工具</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍 XASuite——一款专为 X 射线吸收谱（XAS&#x2F;XAFS）数据批量处理而设计的一站式分析工具。本软件集成了从原始数据预处理到高级分析的全流程功能，支持单文件和批量数据处理，能够大幅提升研究效率。</p>
+<span id="more"></span>
+
+<p>该教程使用的数据集来自 XAFS 常见测试材料（如 LiFePO4 等），涵盖了从 XANES 到 EXAFS 的全流程分析。</p>
+<img src="icon.ico" height="15%" width="15%">
+
+<blockquote>
+<p>程序开发：<a target="_blank" rel="noopener" href="https://hellowei.cn/">Wei WANG</a><br>单位：City University of Hong Kong, Department of Physics<br>邮箱：<a href="mailto:&#119;&#x77;&#97;&#x6e;&#103;&#51;&#x34;&#53;&#45;&#99;&#64;&#x6d;&#x79;&#46;&#x63;&#105;&#116;&#x79;&#x75;&#x2e;&#101;&#100;&#117;&#x2e;&#x68;&#107;">&#119;&#x77;&#97;&#x6e;&#103;&#51;&#x34;&#53;&#45;&#99;&#64;&#x6d;&#x79;&#46;&#x63;&#105;&#116;&#x79;&#x75;&#x2e;&#101;&#100;&#117;&#x2e;&#x68;&#107;</a></p>
+</blockquote>
+<hr>
+<h2 id="一，软件简介"><a href="#一，软件简介" class="headerlink" title="一，软件简介"></a>一，软件简介</h2><p>XASuite v1.0.0 是一款基于 Python&#x2F;Tkinter 开发的跨平台 XAS 数据分析软件，具有以下核心特点：</p>
+<p><strong>主要功能：</strong></p>
+<ul>
+<li>🔬 <strong>完整的数据处理流程</strong>：7个步骤覆盖从原始数据到高级分析的全过程</li>
+<li>📊 <strong>批量数据处理</strong>：支持一次性处理大量样品数据</li>
+<li>🎯 <strong>自动化分析</strong>：边缘能量计算、演化分析、R空间量化等智能分析功能</li>
+<li>📈 <strong>可视化输出</strong>：生成高质量的图表和分析报告</li>
+</ul>
+<p><strong>支持的步骤：</strong></p>
+<ol>
+<li>单文件数据预处理（背景扣除、归一化等）</li>
+<li>批量数据处理（智能填充参数）</li>
+<li>数据可视化（多种绘图模式）</li>
+<li>边缘能量计算</li>
+<li>Edge Evolution 分析</li>
+<li>边缘能量对比分析</li>
+<li>R空间量化分析</li>
+</ol>
+<hr>
+<h2 id="二，下载与安装"><a href="#二，下载与安装" class="headerlink" title="二，下载与安装"></a>二，下载与安装</h2><h3 id="2-1-下载方式"><a href="#2-1-下载方式" class="headerlink" title="2-1 下载方式"></a>2-1 下载方式</h3><p>程序下载：<a target="_blank" rel="noopener" href="https://hellowei.cn/download/XASuite.exe">XASuite v1.0.0</a>（约 370 MB）</p>
+<h3 id="2-2-系统要求"><a href="#2-2-系统要求" class="headerlink" title="2-2 系统要求"></a>2-2 系统要求</h3><ul>
+<li>操作系统：Windows 10&#x2F;11（64位）</li>
+<li>硬盘空间：至少 500 MB 可用空间</li>
+<li>无需安装 Python 环境（已打包所有依赖）</li>
+</ul>
+<h3 id="2-3-安装步骤"><a href="#2-3-安装步骤" class="headerlink" title="2-3 安装步骤"></a>2-3 安装步骤</h3><ol>
+<li>下载 <code>XASuite.exe</code> 到任意文件夹</li>
+<li>直接双击运行即可使用</li>
+<li>首次运行时会显示启动信息和使用声明</li>
+</ol>
+<p><strong>提示</strong>：建议将程序和你的数据文件放在同一个文件夹中，方便数据管理。</p>
+<hr>
+<h2 id="三，快速上手"><a href="#三，快速上手" class="headerlink" title="三，快速上手"></a>三，快速上手</h2><h3 id="3-1-界面介绍"><a href="#3-1-界面介绍" class="headerlink" title="3-1 界面介绍"></a>3-1 界面介绍</h3><p>XASuite 界面简洁直观，主要分为三个区域：</p>
+<ul>
+<li><strong>顶部标题栏</strong>：显示软件名称和版本，右侧有帮助和关于按钮</li>
+<li><strong>中间功能区</strong>：7个处理步骤的选项卡</li>
+<li><strong>底部状态栏</strong>：显示处理进度和日志信息</li>
+</ul>
+<img src="XASuite_interface.png" height="70%" width="70%">
+
+<h3 id="3-2-数据格式要求"><a href="#3-2-数据格式要求" class="headerlink" title="3-2 数据格式要求"></a>3-2 数据格式要求</h3><p>XASuite 支持多种 XAS 数据格式：</p>
+<ul>
+<li><strong>7列格式</strong>：Energy, μ(E), I0, It, ln(It&#x2F;I0), μ(E)*ln(It&#x2F;I0), Edge Energy</li>
+<li><strong>5列格式</strong>：Energy, μ(E), I0, It, Edge Energy</li>
+<li><strong>2列格式</strong>：Energy, μ(E)</li>
+</ul>
+<p><strong>文件命名建议</strong>：使用 <code>样品名.编号</code> 格式（如 <code>Sam9_Fe.0001</code>），便于批量处理时的智能识别。</p>
+<h3 id="3-3-基本操作流程"><a href="#3-3-基本操作流程" class="headerlink" title="3-3 基本操作流程"></a>3-3 基本操作流程</h3><ol>
+<li><strong>打开软件</strong>：双击 <code>XASuite.exe</code></li>
+<li><strong>选择步骤</strong>：点击对应的步骤标签页</li>
+<li><strong>选择数据</strong>：点击”选择文件”或”选择目录”按钮</li>
+<li><strong>设置参数</strong>：根据需要调整处理参数</li>
+<li><strong>开始处理</strong>：点击”开始处理”按钮</li>
+<li><strong>查看结果</strong>：处理完成后在输出目录查看结果</li>
+</ol>
+<hr>
+<h2 id="四，核心功能详解"><a href="#四，核心功能详解" class="headerlink" title="四，核心功能详解"></a>四，核心功能详解</h2><h3 id="4-1-步骤1：单文件数据预处理"><a href="#4-1-步骤1：单文件数据预处理" class="headerlink" title="4-1 步骤1：单文件数据预处理"></a>4-1 步骤1：单文件数据预处理</h3><p>该步骤用于对单个 XAS 数据文件进行标准化处理：</p>
+<p><strong>功能特点：</strong></p>
+<ul>
+<li>背景扣除（Pre-edge 和 Post-edge）</li>
+<li>数据归一化</li>
+<li>能量校准（E0 自动检测）</li>
+<li>数据导出</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>点击”选择数据文件”</li>
+<li>选择待处理的 .txt 或 .dat 文件</li>
+<li>设置处理参数（如能量范围、归一化方法）</li>
+<li>点击”开始处理”</li>
+<li>查看处理后的数据曲线</li>
+<li>保存处理结果</li>
+</ol>
+<p><strong>输出文件：</strong></p>
+<ul>
+<li>处理后的数据文件（带 <code>_processed</code> 后缀）</li>
+<li>参数文件（带 <code>_parameters.json</code> 后缀，可复用）</li>
+</ul>
+<hr>
+<h3 id="4-2-步骤2：批量数据处理（推荐）"><a href="#4-2-步骤2：批量数据处理（推荐）" class="headerlink" title="4-2 步骤2：批量数据处理（推荐）"></a>4-2 步骤2：批量数据处理（推荐）</h3><p>这是 XASuite 的核心功能，支持一次性处理大量样品数据：</p>
+<p><strong>智能填充功能：</strong></p>
+<ul>
+<li>自动识别样品名和编号</li>
+<li>自动关联同一样品的参数文件</li>
+<li>批量应用相同的处理参数</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>点击”选择数据目录”</li>
+<li>选择包含多个数据文件的文件夹</li>
+<li>点击”智能填充参数”（推荐）</li>
+<li>检查自动填充的参数是否正确</li>
+<li>选择输出目录</li>
+<li>点击”开始批量处理”</li>
+<li>等待处理完成（会在日志中显示进度）</li>
+</ol>
+<p><strong>输出结果：</strong></p>
+<ul>
+<li>每个样品的处理结果保存在对应的子文件夹中</li>
+<li>日志文件记录处理状态和警告信息</li>
+<li>支持断点续传（处理中断后可从失败的文件继续）</li>
+</ul>
+<p><strong>使用技巧：</strong></p>
+<ul>
+<li>建议在步骤1中先处理一个代表性样品，保存参数文件</li>
+<li>步骤2会自动匹配同名参数文件，大幅提升效率</li>
+<li>处理大量数据时，建议分批处理（每批100-200个文件）</li>
+</ul>
+<hr>
+<h3 id="4-3-步骤3：数据可视化"><a href="#4-3-步骤3：数据可视化" class="headerlink" title="4-3 步骤3：数据可视化"></a>4-3 步骤3：数据可视化</h3><p>该步骤用于绘制处理后的 XAS 数据，支持多种可视化模式：</p>
+<p><strong>绘图模式：</strong></p>
+<ul>
+<li><strong>概览图</strong>：显示所有样品的完整光谱对比</li>
+<li><strong>XANES 放大图</strong>：聚焦吸收边区域的细节</li>
+<li><strong>EXAFS 放大图</strong>：显示 k²χ(k) 函数</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>点击”添加目录”（可添加多个）</li>
+<li>选择绘图模式</li>
+<li>设置 Y 轴范围（可选）</li>
+<li>点击”开始绘图”</li>
+<li>查看生成的图表</li>
+<li>点击”保存图片”导出结果</li>
+</ol>
+<p><strong>图表特点：</strong></p>
+<ul>
+<li>支持中文标签和标题</li>
+<li>自动调整图例位置</li>
+<li>高分辨率输出（适合发表）</li>
+<li>支持批量导出</li>
+</ul>
+<hr>
+<h3 id="4-4-步骤4：边缘能量计算"><a href="#4-4-步骤4：边缘能量计算" class="headerlink" title="4-4 步骤4：边缘能量计算"></a>4-4 步骤4：边缘能量计算</h3><p>该步骤用于精确计算 XAS 的吸收边能量（E0），是结构分析的基础：</p>
+<p><strong>计算方法：</strong></p>
+<ul>
+<li>自动识别吸收边</li>
+<li>一阶导数法（最大斜率点）</li>
+<li>可视化确认</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择包含处理后数据的目录</li>
+<li>设置计算参数（能量范围、拟合方式）</li>
+<li>点击”开始计算”</li>
+<li>查看计算结果（包含误差估计）</li>
+<li>导出结果为 Excel 文件</li>
+</ol>
+<p><strong>输出内容：</strong></p>
+<ul>
+<li>E0 能量值（eV）</li>
+<li>吸收边强度</li>
+<li>拟合优度（R²）</li>
+<li>吸收边位置对比图</li>
+</ul>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li>氧化态分析</li>
+<li>配位环境变化检测</li>
+<li>反应过程监控</li>
+</ul>
+<hr>
+<h3 id="4-5-步骤5：Edge-Evolution-分析"><a href="#4-5-步骤5：Edge-Evolution-分析" class="headerlink" title="4-5 步骤5：Edge Evolution 分析"></a>4-5 步骤5：Edge Evolution 分析</h3><p>该步骤用于分析吸收边随条件（如充放电、温度等）的演化趋势：</p>
+<p><strong>分析功能：</strong></p>
+<ul>
+<li>绘制 E0-循环&#x2F;时间曲线</li>
+<li>检测相变点</li>
+<li>分析演化趋势</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择包含 E0 计算结果的目录</li>
+<li>选择 X 轴参数（循环数、时间等）</li>
+<li>设置图表选项</li>
+<li>点击”开始分析”</li>
+<li>查看演化曲线和趋势图</li>
+</ol>
+<p><strong>输出结果：</strong></p>
+<ul>
+<li>E0 演化曲线图</li>
+<li>相变点标注</li>
+<li>趋势分析报告</li>
+</ul>
+<p><strong>应用示例：</strong></p>
+<ul>
+<li>电池充放电过程中的结构演化</li>
+<li>催化反应中间态检测</li>
+<li>温度变化引起的结构相变</li>
+</ul>
+<hr>
+<h3 id="4-6-步骤6：边缘能量对比"><a href="#4-6-步骤6：边缘能量对比" class="headerlink" title="4-6 步骤6：边缘能量对比"></a>4-6 步骤6：边缘能量对比</h3><p>该步骤用于对比不同条件或不同样品的吸收边特征：</p>
+<p><strong>对比功能：</strong></p>
+<ul>
+<li>多样品 E0 对比</li>
+<li>吸收边形状对比</li>
+<li>差异分析</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择多个待对比的样品数据</li>
+<li>设置对比参数</li>
+<li>点击”开始对比”</li>
+<li>查看对比图和统计结果</li>
+</ol>
+<p><strong>输出内容：</strong></p>
+<ul>
+<li>E0 对比柱状图</li>
+<li>吸收边叠加图</li>
+<li>统计分析表</li>
+<li>显著性检验结果</li>
+</ul>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li>不同掺杂浓度的比较</li>
+<li>不同合成条件的对比</li>
+<li>材料改性效果评估</li>
+</ul>
+<hr>
+<h3 id="4-7-步骤7：R空间量化分析"><a href="#4-7-步骤7：R空间量化分析" class="headerlink" title="4-7 步骤7：R空间量化分析"></a>4-7 步骤7：R空间量化分析</h3><p>该步骤对傅里叶变换后的 R 空间数据进行峰位分析：</p>
+<p><strong>分析功能：</strong></p>
+<ul>
+<li>峰位识别</li>
+<li>高斯拟合</li>
+<li>配位键长计算</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择 R 空间数据目录</li>
+<li>设置拟合范围（R 范围）</li>
+<li>点击”开始分析”</li>
+<li>查看拟合结果和图表</li>
+<li>导出分析报告</li>
+</ol>
+<p><strong>输出内容：</strong></p>
+<ul>
+<li>R 峰位置（Å）</li>
+<li>峰高度（强度）</li>
+<li>拟合优度（R²）</li>
+<li>R 空间谱对比图</li>
+<li>Excel 结果文件</li>
+</ul>
+<p><strong>应用建议：</strong></p>
+<ul>
+<li>配位键长计算</li>
+<li>配位环境变化分析</li>
+<li>不同样品的结构比较</li>
+<li>反应过程中的结构演化追踪</li>
+</ul>
+<hr>
+<h2 id="五，高级技巧"><a href="#五，高级技巧" class="headerlink" title="五，高级技巧"></a>五，高级技巧</h2><h3 id="5-1-参数复用"><a href="#5-1-参数复用" class="headerlink" title="5-1 参数复用"></a>5-1 参数复用</h3><p>在步骤1中保存的参数文件可以在步骤2中自动识别并复用，这对于处理大量同类样品非常高效。</p>
+<p><strong>最佳实践：</strong></p>
+<ol>
+<li>先用步骤1处理一个典型样品</li>
+<li>仔细调整参数到最佳状态</li>
+<li>保存参数文件</li>
+<li>在步骤2中使用智能填充功能</li>
+<li>系统会自动匹配同名参数文件</li>
+</ol>
+<h3 id="5-2-数据管理建议"><a href="#5-2-数据管理建议" class="headerlink" title="5-2 数据管理建议"></a>5-2 数据管理建议</h3><p><strong>文件夹结构建议：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Project/</span><br><span class="line">├── raw_data/           # 原始数据</span><br><span class="line">│   ├── Sample1.0001</span><br><span class="line">│   ├── Sample1.0002</span><br><span class="line">│   └── ...</span><br><span class="line">├── processed/          # 处理后数据</span><br><span class="line">├── results/            # 分析结果</span><br><span class="line">├── plots/              # 图表输出</span><br><span class="line">└── parameters/         # 参数文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据存储提示</strong>：使用智能填充方式选择的文件生成路径默认在 exe 程序同一目录下。</p>
+<h3 id="5-3-性能优化"><a href="#5-3-性能优化" class="headerlink" title="5-3 性能优化"></a>5-3 性能优化</h3><ul>
+<li>批量处理时建议每批处理 100-200 个文件</li>
+<li>处理大量数据时关闭其他程序以释放内存</li>
+<li>使用 SSD 硬盘可显著提升读写速度</li>
+</ul>
+<hr>
+<h2 id="六，常见问题"><a href="#六，常见问题" class="headerlink" title="六，常见问题"></a>六，常见问题</h2><h3 id="Q1：软件运行很慢怎么办？"><a href="#Q1：软件运行很慢怎么办？" class="headerlink" title="Q1：软件运行很慢怎么办？"></a>Q1：软件运行很慢怎么办？</h3><ul>
+<li>检查是否同时在运行其他大型程序</li>
+<li>尝试减少每批处理的文件数量</li>
+<li>使用性能更好的计算机</li>
+</ul>
+<h3 id="Q2：处理结果不满意？"><a href="#Q2：处理结果不满意？" class="headerlink" title="Q2：处理结果不满意？"></a>Q2：处理结果不满意？</h3><ul>
+<li>在步骤1中仔细调整预处理参数</li>
+<li>检查原始数据质量</li>
+<li>参考用户指南中的参数说明</li>
+</ul>
+<h3 id="Q3：如何引用软件？"><a href="#Q3：如何引用软件？" class="headerlink" title="Q3：如何引用软件？"></a>Q3：如何引用软件？</h3><p><strong>中文引用格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Wei WANG. XASuite v1.0.0. City University of Hong Kong, 2026.</span><br><span class="line">访问网址：https://hellowei.cn</span><br></pre></td></tr></table></figure>
+
+<p><strong>英文引用格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Wei WANG. XASuite v1.0.0. City University of Hong Kong, 2026.</span><br><span class="line">Website: https://hellowei.cn</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q4：数据处理结果保存在哪里？"><a href="#Q4：数据处理结果保存在哪里？" class="headerlink" title="Q4：数据处理结果保存在哪里？"></a>Q4：数据处理结果保存在哪里？</h3><p>使用智能填充方式选择的文件生成路径默认在 exe 程序同一目录下。</p>
+<hr>
+<h2 id="七，使用声明"><a href="#七，使用声明" class="headerlink" title="七，使用声明"></a>七，使用声明</h2><ul>
+<li>本软件仅供学习和研究使用，不得用于商业用途</li>
+<li>引用本软件的研究成果请明确注明出处和作者</li>
+<li>请遵守相关的学术规范和道德准则</li>
+<li>作者不对使用本软件产生的任何结果承担责任</li>
+</ul>
+<hr>
+<h2 id="八，技术支持"><a href="#八，技术支持" class="headerlink" title="八，技术支持"></a>八，技术支持</h2><ul>
+<li>邮箱：<a href="mailto:&#x77;&#119;&#97;&#x6e;&#x67;&#51;&#x34;&#53;&#45;&#x63;&#64;&#109;&#x79;&#x2e;&#99;&#x69;&#x74;&#121;&#117;&#46;&#101;&#x64;&#117;&#x2e;&#x68;&#107;">&#x77;&#119;&#97;&#x6e;&#x67;&#51;&#x34;&#53;&#45;&#x63;&#64;&#109;&#x79;&#x2e;&#99;&#x69;&#x74;&#121;&#117;&#46;&#101;&#x64;&#117;&#x2e;&#x68;&#107;</a></li>
+<li>网站：<a target="_blank" rel="noopener" href="https://hellowei.cn/">https://hellowei.cn</a></li>
+<li>用户指南：点击软件界面右上角的”📖 帮助”按钮查看完整文档</li>
+</ul>
+<hr>
+<h2 id="九，更新日志"><a href="#九，更新日志" class="headerlink" title="九，更新日志"></a>九，更新日志</h2><p><strong>v1.0.0 (2026-02-09)</strong></p>
+<ul>
+<li>首次公开发布</li>
+<li>支持 7 个完整的 XAS 分析步骤</li>
+<li>集成批量处理功能</li>
+<li>内置帮助文档</li>
+<li>优化的 GUI 界面</li>
+</ul>
+<hr>
+<h2 id="十，致谢"><a href="#十，致谢" class="headerlink" title="十，致谢"></a>十，致谢</h2><p>感谢以下开源项目的支持：</p>
+<ul>
+<li>Python &#x2F; Tkinter</li>
+<li>Larch (XAFS 分析库)</li>
+<li>NumPy &#x2F; SciPy</li>
+<li>Matplotlib</li>
+<li>XrayDB</li>
+</ul>
+<br/>
+<font face="Times Newroman" font size=7> <p align="center">XASuite 使用教程 finished！</font> </p>
+
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-l.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-r.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>GSASII ...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+<div class="comment"><div id="comments"></div></div>
+<footer>
+  <div>
+  Copyright &copy; 2026.<a href="/">hellowei</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button" title="menu">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button>
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar_2.jpg" alt="ww"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>ww</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/local.search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js"></script>
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'ENQCMWnPgtqcZj8aJlS6V1ct-gzGzoHsz',
+    appKey: '54gKJRXBeC43Ulnz07KxZPo2',
+    placeholder: '此处留言',
+    avatar: 'mp',
+    meta: guest,
+    pageSize: '10' || 10,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+</body>
+</html>
