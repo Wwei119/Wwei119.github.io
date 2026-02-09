@@ -195,66 +195,6 @@
       </tags>
   </entry>
   <entry>
-    <title>haita kong</title>
-    <url>/2023/02/03/haita-kong/</url>
-    <content><![CDATA[<p>#Wwei是海獭控！<br><video src=' haitacuolian.mp4' type='video/mp4' controls='controls'  width='30%' height='30%'><br></video><br>开工大吉！</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2023/06/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>PS处理图片感想</title>
-    <url>/2023/02/02/ww2/</url>
-    <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>风景图片后期，感想</p>
-<span id="more"></span>
-<p>前：<br><img src="/2023/02/02/ww2/1.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/2.jpg" alt="xiba"><br>前：<br><img src="/2023/02/02/ww2/3.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/4.jpg" alt="xiba"></p>
-<blockquote class='blockquote-center'><p>摄影是为了记录眼前的真实，还是为了发现生活中的美好？ <br><strong>——WEI</strong> </p>
-</blockquote>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>第一篇博客</title>
-    <url>/2023/02/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>代码测试：</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>注意：这里因为我放在md文件中的，所以加上了\，不解析&#96;&#96;&#96;，实际测试时请去掉\。</p>
-<p>图片测试：</p>
-<p><img src="http://mculover666.cn/blog/20191031/R4mWMXsrRKxu.png?imageslim"></p>
-<p>引用测试：</p>
-<blockquote>
-<p>这是一条引用</p>
-</blockquote>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>无序列表测试：</p>
-<ul>
-<li>哈哈</li>
-<li>嘿嘿</li>
-<li>吼吼</li>
-</ul>
-<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4>]]></content>
-  </entry>
-  <entry>
     <title>XASuite：一站式X射线吸收谱批量处理与分析工具</title>
     <url>/2026/02/09/XASuite%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="XASuite：一站式X射线吸收谱批量处理与分析工具"><a href="#XASuite：一站式X射线吸收谱批量处理与分析工具" class="headerlink" title="XASuite：一站式X射线吸收谱批量处理与分析工具"></a>XASuite：一站式X射线吸收谱批量处理与分析工具</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍 XASuite——一款专为 X 射线吸收谱（XAS&#x2F;XAFS）数据批量处理而设计的一站式分析工具。本软件集成了从原始数据预处理到高级分析的全流程功能，支持单文件和批量数据处理，能够大幅提升研究效率。</p>
@@ -264,7 +204,7 @@
 <img src="icon.ico" height="15%" width="15%">
 
 <blockquote>
-<p>程序开发：<a href="https://hellowei.cn/">Wei WANG</a><br>单位：City University of Hong Kong, Department of Physics<br>邮箱：<a href="mailto:&#119;&#x77;&#97;&#x6e;&#103;&#51;&#x34;&#53;&#45;&#99;&#64;&#x6d;&#x79;&#46;&#x63;&#105;&#116;&#x79;&#x75;&#x2e;&#101;&#100;&#117;&#x2e;&#x68;&#107;">&#119;&#x77;&#97;&#x6e;&#103;&#51;&#x34;&#53;&#45;&#99;&#64;&#x6d;&#x79;&#46;&#x63;&#105;&#116;&#x79;&#x75;&#x2e;&#101;&#100;&#117;&#x2e;&#x68;&#107;</a></p>
+<p>程序开发：<a href="https://hellowei.cn/">Wei WANG</a><br>单位：City University of Hong Kong, Department of Physics<br>邮箱：<a href="mailto:&#x77;&#x77;&#x61;&#x6e;&#103;&#x33;&#x34;&#x35;&#45;&#x63;&#x40;&#109;&#x79;&#x2e;&#99;&#105;&#x74;&#121;&#x75;&#46;&#101;&#x64;&#x75;&#x2e;&#104;&#x6b;">&#x77;&#x77;&#x61;&#x6e;&#103;&#x33;&#x34;&#x35;&#45;&#x63;&#x40;&#109;&#x79;&#x2e;&#99;&#105;&#x74;&#121;&#x75;&#46;&#101;&#x64;&#x75;&#x2e;&#104;&#x6b;</a></p>
 </blockquote>
 <hr>
 <h2 id="一，软件简介"><a href="#一，软件简介" class="headerlink" title="一，软件简介"></a>一，软件简介</h2><p>XASuite v1.0.0 是一款基于 Python&#x2F;Tkinter 开发的跨平台 XAS 数据分析软件，具有以下核心特点：</p>
@@ -305,7 +245,7 @@
 <li><strong>中间功能区</strong>：7个处理步骤的选项卡</li>
 <li><strong>底部状态栏</strong>：显示处理进度和日志信息</li>
 </ul>
-<img src="XASuite_interface.png" height="70%" width="70%">
+<img src="XASuite_interface.png" height="100%" width="100%">
 
 <h3 id="3-2-数据格式要求"><a href="#3-2-数据格式要求" class="headerlink" title="3-2 数据格式要求"></a>3-2 数据格式要求</h3><p>XASuite 支持多种 XAS 数据格式：</p>
 <ul>
@@ -561,7 +501,7 @@
 </ul>
 <hr>
 <h2 id="八，技术支持"><a href="#八，技术支持" class="headerlink" title="八，技术支持"></a>八，技术支持</h2><ul>
-<li>邮箱：<a href="mailto:&#x77;&#119;&#97;&#x6e;&#x67;&#51;&#x34;&#53;&#45;&#x63;&#64;&#109;&#x79;&#x2e;&#99;&#x69;&#x74;&#121;&#117;&#46;&#101;&#x64;&#117;&#x2e;&#x68;&#107;">&#x77;&#119;&#97;&#x6e;&#x67;&#51;&#x34;&#53;&#45;&#x63;&#64;&#109;&#x79;&#x2e;&#99;&#x69;&#x74;&#121;&#117;&#46;&#101;&#x64;&#117;&#x2e;&#x68;&#107;</a></li>
+<li>邮箱：<a href="mailto:&#x77;&#119;&#97;&#x6e;&#103;&#51;&#x34;&#x35;&#x2d;&#99;&#x40;&#x6d;&#121;&#46;&#x63;&#105;&#x74;&#121;&#117;&#46;&#101;&#100;&#x75;&#x2e;&#104;&#x6b;">&#x77;&#119;&#97;&#x6e;&#103;&#51;&#x34;&#x35;&#x2d;&#99;&#x40;&#x6d;&#121;&#46;&#x63;&#105;&#x74;&#121;&#117;&#46;&#101;&#100;&#x75;&#x2e;&#104;&#x6b;</a></li>
 <li>网站：<a href="https://hellowei.cn/">https://hellowei.cn</a></li>
 <li>用户指南：点击软件界面右上角的”📖 帮助”按钮查看完整文档</li>
 </ul>
@@ -597,5 +537,65 @@
         <tag>data analysis</tag>
         <tag>batch processing</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>haita kong</title>
+    <url>/2023/02/03/haita-kong/</url>
+    <content><![CDATA[<p>#Wwei是海獭控！<br><video src=' haitacuolian.mp4' type='video/mp4' controls='controls'  width='30%' height='30%'><br></video><br>开工大吉！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2023/06/01/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><span id="more"></span>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>第一篇博客</title>
+    <url>/2023/02/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>代码测试：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>注意：这里因为我放在md文件中的，所以加上了\，不解析&#96;&#96;&#96;，实际测试时请去掉\。</p>
+<p>图片测试：</p>
+<p><img src="http://mculover666.cn/blog/20191031/R4mWMXsrRKxu.png?imageslim"></p>
+<p>引用测试：</p>
+<blockquote>
+<p>这是一条引用</p>
+</blockquote>
+<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>无序列表测试：</p>
+<ul>
+<li>哈哈</li>
+<li>嘿嘿</li>
+<li>吼吼</li>
+</ul>
+<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4>]]></content>
+  </entry>
+  <entry>
+    <title>PS处理图片感想</title>
+    <url>/2023/02/02/ww2/</url>
+    <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>风景图片后期，感想</p>
+<span id="more"></span>
+<p>前：<br><img src="/2023/02/02/ww2/1.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/2.jpg" alt="xiba"><br>前：<br><img src="/2023/02/02/ww2/3.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/4.jpg" alt="xiba"></p>
+<blockquote class='blockquote-center'><p>摄影是为了记录眼前的真实，还是为了发现生活中的美好？ <br><strong>——WEI</strong> </p>
+</blockquote>
+
+]]></content>
   </entry>
 </search>
