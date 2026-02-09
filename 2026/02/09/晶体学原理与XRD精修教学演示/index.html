@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>晶体学原理与XRD精修教学演示 | hellowei</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ww">
+  <meta name="keywords" content="">
+  <meta name="description" content="slow down">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.4.4',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/css/main.min.css">
+  
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.jside.menu.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=1129399169@qq.com"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '1129399169@qq.com');
+</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<div class="single">
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div class="header">
+  <div id="lx-aside" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/post_cover.min.jpeg)" data-stellar-background-ratio="0.5">
+    <div class="overlay">
+      <a href="javascript:;" class="popup-trigger" title="search"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+      <div class="page-title">
+        <div class="avatar"><a href="/"><img src="/images/avatar_2.jpg" alt="ww"></a></div>
+        <span>2026-02-09</span>
+        <h2>晶体学原理与XRD精修教...</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/XRD/" rel="tag">XRD</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/demo/" rel="tag">demo</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/refinement/" rel="tag">refinement</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%99%B6%E4%BD%93%E5%AD%A6/" rel="tag">晶体学</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E7%B2%BE%E4%BF%AE/" rel="tag">精修</a></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="晶体学原理与XRD精修教学演示"><a href="#晶体学原理与XRD精修教学演示" class="headerlink" title="晶体学原理与XRD精修教学演示"></a>晶体学原理与XRD精修教学演示</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该演示通过交互式3D可视化和实时计算，深入浅出地展示晶体学基本原理和XRD精修的核心概念。包含两个模块：结构模拟与XRD图谱生成，以及Rietveld精修原理的交互式学习。</p>
+<span id="more"></span>
+
+<h2 id="在线演示"><a href="#在线演示" class="headerlink" title="在线演示"></a>在线演示</h2><p><a href="./crystallography_demo.html">点击此处打开演示页面</a></p>
+<h2 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h2><h3 id="模式一：结构与XRD模拟"><a href="#模式一：结构与XRD模拟" class="headerlink" title="模式一：结构与XRD模拟"></a>模式一：结构与XRD模拟</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li><strong>3D晶体结构可视化</strong>：实时展示简单立方(SC)、体心立方(BCC)、面心立方(FCC)结构</li>
+<li><strong>交互式参数调节</strong>：<ul>
+<li>晶胞参数a (2.0-8.0 Å)</li>
+<li>X射线波长λ (0.5-2.5 Å)</li>
+<li>峰宽(FWHM)</li>
+</ul>
+</li>
+<li><strong>实时XRD图谱生成</strong>：基于Bragg定律和消光规则计算衍射图谱</li>
+<li><strong>hkl指数提示</strong>：鼠标悬停在衍射峰上可查看对应的晶面指数</li>
+<li><strong>双语支持</strong>：中文&#x2F;English界面切换</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解晶体结构与衍射峰位置的对应关系</li>
+<li>掌握Bragg定律：nλ &#x3D; 2d sinθ</li>
+<li>学习消光规则：不同空间群的衍射条件</li>
+<li>观察晶胞参数变化对衍射图谱的影响</li>
+<li>理解波长选择对衍射角度的影响</li>
+</ul>
+<p><strong>物理原理</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Bragg定律：nλ = 2d sinθ</span><br><span class="line">其中：</span><br><span class="line">- n：衍射级数（整数）</span><br><span class="line">- λ：X射线波长（Å）</span><br><span class="line">- d：晶面间距（与晶胞参数有关）</span><br><span class="line">- θ：衍射角（布拉格角）</span><br><span class="line"></span><br><span class="line">晶面间距计算：d = a / √(h² + k² + l²)</span><br><span class="line">其中 (hkl) 为Miller指数</span><br></pre></td></tr></table></figure>
+
+<h3 id="模式二：XRD精修原理"><a href="#模式二：XRD精修原理" class="headerlink" title="模式二：XRD精修原理"></a>模式二：XRD精修原理</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li><strong>数据导入</strong>：从模拟模块导入含噪声的”实验数据”</li>
+<li><strong>模型选择</strong>：选择不同的晶体结构模型进行拟合</li>
+<li><strong>手动精修</strong>：通过滑块调节晶胞参数，实时观察拟合效果</li>
+<li><strong>自动拟合</strong>：三种真实优化算法演示：<ul>
+<li>变步长爬山法 (Hill Climbing)</li>
+<li>模拟退火 (Simulated Annealing)</li>
+<li>梯度下降 (Gradient Descent)</li>
+</ul>
+</li>
+<li><strong>实时统计指标</strong>：<ul>
+<li>Rwp（加权图谱残差）</li>
+<li>Rp（图谱残差）</li>
+<li>χ²（拟合优度）</li>
+</ul>
+</li>
+<li><strong>可视化输出</strong>：标准的Rietveld精修图谱（观测值、计算值、差值曲线）</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解精修的基本原理和目标</li>
+<li>掌握Rietveld精修的统计评估指标</li>
+<li>学习不同优化算法的特点和应用场景</li>
+<li>理解模型选择对拟合结果的影响</li>
+<li>掌握参数精修的策略和技巧</li>
+</ul>
+<p><strong>统计指标说明</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Rwp（加权图谱残差）：</span><br><span class="line">Rwp = √[Σw(Yobs - Ycalc)² / Σw(Yobs²)]</span><br><span class="line">权重w = 1/Yobs，考虑了计数统计误差</span><br><span class="line"></span><br><span class="line">Rp（图谱残差）：</span><br><span class="line">Rp = Σ|Yobs - Ycalc| / ΣYobs</span><br><span class="line">未加权的绝对误差指标</span><br><span class="line"></span><br><span class="line">χ²（拟合优度）：</span><br><span class="line">χ² = Σw(Yobs - Ycalc)² / (N - P)</span><br><span class="line">其中N为数据点数，P为精修参数数</span><br><span class="line">理想值接近1.0</span><br></pre></td></tr></table></figure>
+
+<p><strong>优化算法对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>爬山法</td>
+<td>快速、智能，自动调节步长</td>
+<td>参数较少、函数较平滑</td>
+</tr>
+<tr>
+<td>模拟退火</td>
+<td>能跳出局部最优，前期会”乱跳”</td>
+<td>多峰函数、全局搜索</td>
+</tr>
+<tr>
+<td>梯度下降</td>
+<td>数学严谨，带回溯机制</td>
+<td>连续可导、需要高精度</td>
+</tr>
+</tbody></table>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>点击上方链接打开演示页面</li>
+<li><strong>模式一</strong>：调节结构参数和仪器参数，观察3D结构和XRD图谱的实时变化</li>
+<li><strong>模式二</strong>：<ul>
+<li>点击”导入模拟数据”按钮</li>
+<li>选择合适的晶体模型</li>
+<li>手动调节参数或使用自动拟合功能</li>
+<li>观察Rwp、Rp、χ²等指标的变化</li>
+</ul>
+</li>
+<li>悬停在公式各符号上可查看详细说明</li>
+</ol>
+<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>该演示使用以下技术：</p>
+<ul>
+<li><strong>Vue.js 2.6</strong>：前端框架，实现响应式数据绑定</li>
+<li><strong>Three.js</strong>：3D图形渲染，晶体结构可视化</li>
+<li><strong>Plotly.js</strong>：科学图表绘制，XRD图谱展示</li>
+<li><strong>纯前端JavaScript</strong>：实现所有物理计算和优化算法</li>
+<li><strong>响应式设计</strong>：支持不同屏幕尺寸</li>
+</ul>
+<h2 id="物理计算细节"><a href="#物理计算细节" class="headerlink" title="物理计算细节"></a>物理计算细节</h2><h3 id="消光规则"><a href="#消光规则" class="headerlink" title="消光规则"></a>消光规则</h3><ul>
+<li>**简单立方(SC)**：所有(hkl)都产生衍射</li>
+<li>**体心立方(BCC)**：h + k + l &#x3D; 偶数</li>
+<li>**面心立方(FCC)**：h、k、l全奇或全偶</li>
+</ul>
+<h3 id="峰强计算"><a href="#峰强计算" class="headerlink" title="峰强计算"></a>峰强计算</h3><p>考虑以下因素：</p>
+<ul>
+<li>多重性因子（Multiplicity）</li>
+<li>洛伦兹-偏振因子（Lorentz-Polarization factor）</li>
+<li>结构因子（Structure factor）</li>
+</ul>
+<h3 id="噪声模型"><a href="#噪声模型" class="headerlink" title="噪声模型"></a>噪声模型</h3><p>模拟真实实验条件：</p>
+<ul>
+<li>基底随机振荡</li>
+<li>泊松噪声（计数统计噪声）</li>
+</ul>
+<h2 id="教学应用场景"><a href="#教学应用场景" class="headerlink" title="教学应用场景"></a>教学应用场景</h2><ul>
+<li>材料科学课程教学</li>
+<li>XRD实验培训</li>
+<li>晶体学基础教学</li>
+<li>精修方法学习</li>
+<li>优化算法可视化</li>
+</ul>
+<h2 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h2><ol>
+<li><strong>循序渐进</strong>：先从模式一开始，理解结构与图谱的关系</li>
+<li><strong>参数探索</strong>：系统性地调节各参数，观察变化规律</li>
+<li><strong>算法对比</strong>：在模式二中尝试不同优化算法，理解其特点</li>
+<li><strong>理论结合</strong>：结合教材学习，加深对公式的理解</li>
+<li><strong>反复练习</strong>：多次操作，建立直觉认识</li>
+</ol>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>Q: 为什么有些峰消失了？</strong><br>A: 这是由消光规则决定的，不同空间群有不同的衍射条件。</p>
+<p><strong>Q: Rwp和Rp有什么区别？</strong><br>A: Rwp是加权残差，考虑了计数统计误差；Rp是绝对残差，未加权。</p>
+<p><strong>Q: χ²的理想值是多少？</strong><br>A: 理想值接近1.0，表示模型与数据的拟合程度与统计误差一致。</p>
+<p><strong>Q: 如何判断拟合质量？</strong><br>A: 综合观察Rwp（越低越好）、χ²（接近1为佳）和差值曲线（应为随机噪声）。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这个交互式演示，可以直观地理解晶体学的基本原理和XRD精修的核心概念。建议配合理论学习反复实践，加深对晶体结构、衍射原理和精修方法的理解。</p>
+<p>祝你学习愉快！<br><br/><br><font face="Times Newroman" font size="7"> <p align="center">晶体学教学演示finished！</font> </p></p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-l.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2026/02/09/%E5%90%8C%E6%AD%A5%E8%BE%90%E5%B0%84XRD%202D%E8%BD%AC1D%E6%A8%A1%E6%8B%9F%E6%BC%94%E7%A4%BA/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>同步辐射XRD...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-r.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>GSASII ...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+<div class="comment"><div id="comments"></div></div>
+<footer>
+  <div>
+  Copyright &copy; 2026.<a href="/">hellowei</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button" title="menu">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button>
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar_2.jpg" alt="ww"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>ww</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/local.search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js"></script>
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'ENQCMWnPgtqcZj8aJlS6V1ct-gzGzoHsz',
+    appKey: '54gKJRXBeC43Ulnz07KxZPo2',
+    placeholder: '此处留言',
+    avatar: 'mp',
+    meta: guest,
+    pageSize: '10' || 10,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+</body>
+</html>

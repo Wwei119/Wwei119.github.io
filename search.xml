@@ -79,122 +79,6 @@
       </tags>
   </entry>
   <entry>
-    <title>GSASII sequential fitting (1)</title>
-    <url>/2023/06/01/GSASII%20sequential%20fitting%20(1)/</url>
-    <content><![CDATA[<h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><img src="OIP.jfif" height="10%" width="10%">
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程示范了用GSAS ii 做连续拟合的步骤，旨在快速地处理原位XRD的数据及减少重复操作。该方法能较快得到晶胞参数的变化，但会损失一些精度，对精度要求高者建议还是每个数据单独修。</p>
-<span id="more"></span>
-<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">YTT</a>，对于材料为LiNiO<sub>2</sub>, 空间群 ‘R -3 m’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/SeqRefine/SequentialTutorial.htm">Sequential refinement of multiple datasets – CuCr2O4 from 7K to 300K</a></p>
-<blockquote>
-<p>文稿：<a href="https://www.qiliugroup.com/members">YTT</a><br>校稿：<a href="https://www.qiliugroup.com/members">WW</a></p>
-</blockquote>
-<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>双击打开GSAS ii, 点击 ‘import-PD-你的数据类型’ 导入全部原位XRD数据：</p>
-<img src="1.png" height="70%" width="70%">
-
-<p>点击 ‘import-Phase-from CIF file’ 导入cif晶体结构:</p>
-<img src="4.png" height="70%" width="70%">
-
-<p>将cif晶体结构和首个原位数据关联:</p>
-<img src="2.png" height="50%" width="50%">
-
-<h2 id="二，-拟合第一个XRD数据"><a href="#二，-拟合第一个XRD数据" class="headerlink" title="二， 拟合第一个XRD数据"></a>二， 拟合第一个XRD数据</h2><p>该步骤请参考之前的文章：<br><a href="https://hellowei.cn/2024/02/26/GSAS%20refinement%20(1)/">GSAS II 精修 （1）：单相</a></p>
-<h2 id="三，-连续拟合前的准备"><a href="#三，-连续拟合前的准备" class="headerlink" title="三， 连续拟合前的准备"></a>三， 连续拟合前的准备</h2><h3 id="1-refine框设置"><a href="#1-refine框设置" class="headerlink" title="1. refine框设置"></a>1. refine框设置</h3><p>取消 ‘SP-H scale’ 以外所有refine框的勾选<br><img src="image001.png" height="50%" width="50%"></p>
-<blockquote>
-<p>zoom in.</p>
-</blockquote>
-<img src="image002.png" height="40%" width="40%">
-
-<p>新增勾选 ‘Phase-Data-Hydrostatic&#x2F;elastic strain-D11&amp; D33’ </p>
-<img src="image003.png" height="40%" width="40%">
-
-<h3 id="2-扩大应用相的XRD数据范围"><a href="#2-扩大应用相的XRD数据范围" class="headerlink" title="2. 扩大应用相的XRD数据范围"></a>2. 扩大应用相的XRD数据范围</h3><p>Phase1——Edit phases——Add powder histograms——set all——OK</p>
-<img src="image004.png" height="40%" width="40%">
-
-<h3 id="3-参数复制"><a href="#3-参数复制" class="headerlink" title="3. 参数复制"></a>3. 参数复制</h3><p>将首个数据拟合的参数赋予全部数据：进入首个数据——Commands——Copy params——OK——set all——OK<br><img src="image005.png" height="50%" width="50%"></p>
-<p><img src="image006.png" height="30%" width="30%"> <img src="image007.png" height="40%" width="40%"></p>
-<p>将待拟合相赋予全部数据：进入Phase1——Edit phase——Copy data——set all——OK<br><img src="image008.png" height="30%" width="30%"><br><img src="image009.png" height="40%" width="40%"></p>
-<h3 id="4-连续拟合的条件设置"><a href="#4-连续拟合的条件设置" class="headerlink" title="4. 连续拟合的条件设置"></a>4. 连续拟合的条件设置</h3><p>选择应用的XRD数据范围：Controls——Select datasets——set all——OK</p>
-<img src="image010.png" height="50%" width="50%">
-
-<img src="image011.png" height="50%" width="50%">
-
-<p>勾选 ‘Copy results to next histogram?’ 这样在修新的一个XRD数据的时候会沿用上一个的结果</p>
-<img src="image012.png" height="50%" width="50%">
-
-<h2 id="四，开始连续拟合及结果分析"><a href="#四，开始连续拟合及结果分析" class="headerlink" title="四，开始连续拟合及结果分析"></a>四，开始连续拟合及结果分析</h2><p>点击：Calculate——Sequential Refine</p>
-<img src="image015.png" height="30%" width="30%">
-
-<p>自动连续拟合开始：</p>
-<img src="3.png" height="50%" width="50%">
-
-<p>结果在左侧列表最下面的‘Sequential results’ </p>
-<img src="image016.png" height="20%" width="20%">
-
-<p>点击可见：</p>
-<img src="image017.png" height="50%" width="50%">
-
-<p>点击数据的任意列，会有对应的参数变化曲线生成（带有误差棒）：</p>
-<img src="image018.png" height="50%" width="50%">
-
-<p>导出结果为excel：</p>
-<img src="image019.png" height="50%" width="50%">
-
-<p>之后可在其他软件进行绘图。<br><br/><br><font face="Times Newroman" font size=7> <p align="center">单相连续拟合finished！</font> </p>    </p>
-<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
-      <categories>
-        <category>软件使用</category>
-      </categories>
-      <tags>
-        <tag>GSAS ii</tag>
-        <tag>study</tag>
-        <tag>未完成</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GSASII refinemnt (1)</title>
-    <url>/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/</url>
-    <content><![CDATA[<h1 id="QV数据转化为dqdv数据及绘图"><a href="#QV数据转化为dqdv数据及绘图" class="headerlink" title="QV数据转化为dqdv数据及绘图"></a>QV数据转化为dqdv数据及绘图</h1><img src="Miao.jfif" height="20%" width="20%">
-
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍基于matlab的一个“QV数据转化为dqdv数据“程序和一个contour plot 绘制程序。</p>
-<span id="more"></span>
-<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">WW</a>，对应材料为LiMn<sub>x</sub>Fe<sub>1-x</sub>PO<sub>4</sub> 。</p>
-<blockquote>
-<p>文稿：<a href="https://www.qiliugroup.com/members">WW</a><br>程序编写：<a href="https://www.qiliugroup.com/members">WW</a></p>
-</blockquote>
-<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。</p>
-<p><strong>注一</strong>：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量。<br><strong>注二</strong>：建议记录层中仅勾选“电压”和“比容量”。</p>
-<img src="fig1.png" height="100%" width="100%">
-
-<p>最后选好路径，名字，进行保存。确认保存的文件后缀是“.xls”，否则手动修改后缀名。<br>打开保存好的文件检查，名字带”record“的”sheet“是否满足：E列为电压，F列为比容量。<br>如果不满足，请调整excel里的位置，或修改程序里“数据参数预设”部分中的V&#x2F;C赋值语句。</p>
-<h2 id="二，-转化为dqdv"><a href="#二，-转化为dqdv" class="headerlink" title="二， 转化为dqdv"></a>二， 转化为dqdv</h2><p>数据准备无误后，将该excel文件放入“ECplotAndDividedLMFP.m”程序所在的文件夹，双击打开该Matlab程序。<br>将filename改为导出的excel的名字。接下来只需跟着程序的注释从头到尾走一遍即可。</p>
-<img src="fig2.png" height="100%" width="100%">
-
-<p><strong>推荐流程</strong>：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。</p>
-<p>一切调整好后，按运行键，会生成如下一系列线图。</p>
-<img src="fig4.png" height="60%" width="60%">
-
-<p>如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
-<h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
-<img src="fig3.png" height="60%" width="60%">
-
-<p>运行结果如下：</p>
-<img src="fig5.png" height="60%" width="60%">
-
-
-<h2 id="四，感言"><a href="#四，感言" class="headerlink" title="四，感言"></a>四，感言</h2><p>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
-]]></content>
-      <categories>
-        <category>软件使用</category>
-      </categories>
-      <tags>
-        <tag>Matlab</tag>
-        <tag>dqdv</tag>
-        <tag>plot</tag>
-        <tag>data process</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>XASuite：一站式X射线吸收谱批量处理与分析工具</title>
     <url>/2026/02/09/XASuite%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="XASuite：一站式X射线吸收谱批量处理与分析工具"><a href="#XASuite：一站式X射线吸收谱批量处理与分析工具" class="headerlink" title="XASuite：一站式X射线吸收谱批量处理与分析工具"></a>XASuite：一站式X射线吸收谱批量处理与分析工具</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍 XASuite——一款专为 X 射线吸收谱（XAS&#x2F;XAFS）数据批量处理而设计的一站式分析工具。本软件集成了从原始数据预处理到高级分析的全流程功能，支持单文件和批量数据处理，能够大幅提升研究效率。</p>
@@ -204,7 +88,7 @@
 <img src="icon.ico" height="15%" width="15%">
 
 <blockquote>
-<p>程序开发：<a href="https://hellowei.cn/">Wei WANG</a><br>单位：City University of Hong Kong, Department of Physics<br>邮箱：<a href="mailto:&#x77;&#x77;&#x61;&#x6e;&#103;&#x33;&#x34;&#x35;&#45;&#x63;&#x40;&#109;&#x79;&#x2e;&#99;&#105;&#x74;&#121;&#x75;&#46;&#101;&#x64;&#x75;&#x2e;&#104;&#x6b;">&#x77;&#x77;&#x61;&#x6e;&#103;&#x33;&#x34;&#x35;&#45;&#x63;&#x40;&#109;&#x79;&#x2e;&#99;&#105;&#x74;&#121;&#x75;&#46;&#101;&#x64;&#x75;&#x2e;&#104;&#x6b;</a></p>
+<p>程序开发：<a href="https://hellowei.cn/">Wei WANG</a><br>单位：City University of Hong Kong, Department of Physics<br>邮箱：<a href="mailto:&#119;&#x77;&#97;&#x6e;&#x67;&#51;&#52;&#x35;&#x2d;&#x63;&#64;&#109;&#121;&#46;&#x63;&#x69;&#116;&#x79;&#117;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x68;&#107;">&#119;&#x77;&#97;&#x6e;&#x67;&#51;&#52;&#x35;&#x2d;&#x63;&#64;&#109;&#121;&#46;&#x63;&#x69;&#116;&#x79;&#117;&#x2e;&#x65;&#100;&#x75;&#x2e;&#x68;&#107;</a></p>
 </blockquote>
 <hr>
 <h2 id="一，软件简介"><a href="#一，软件简介" class="headerlink" title="一，软件简介"></a>一，软件简介</h2><p>XASuite v1.0.0 是一款基于 Python&#x2F;Tkinter 开发的跨平台 XAS 数据分析软件，具有以下核心特点：</p>
@@ -501,7 +385,7 @@
 </ul>
 <hr>
 <h2 id="八，技术支持"><a href="#八，技术支持" class="headerlink" title="八，技术支持"></a>八，技术支持</h2><ul>
-<li>邮箱：<a href="mailto:&#x77;&#119;&#97;&#x6e;&#103;&#51;&#x34;&#x35;&#x2d;&#99;&#x40;&#x6d;&#121;&#46;&#x63;&#105;&#x74;&#121;&#117;&#46;&#101;&#100;&#x75;&#x2e;&#104;&#x6b;">&#x77;&#119;&#97;&#x6e;&#103;&#51;&#x34;&#x35;&#x2d;&#99;&#x40;&#x6d;&#121;&#46;&#x63;&#105;&#x74;&#121;&#117;&#46;&#101;&#100;&#x75;&#x2e;&#104;&#x6b;</a></li>
+<li>邮箱：<a href="mailto:&#119;&#119;&#97;&#110;&#103;&#51;&#52;&#53;&#x2d;&#x63;&#64;&#x6d;&#121;&#x2e;&#x63;&#x69;&#x74;&#x79;&#117;&#46;&#101;&#100;&#x75;&#x2e;&#104;&#x6b;">&#119;&#119;&#97;&#110;&#103;&#51;&#52;&#53;&#x2d;&#x63;&#64;&#x6d;&#121;&#x2e;&#x63;&#x69;&#x74;&#x79;&#117;&#46;&#101;&#100;&#x75;&#x2e;&#104;&#x6b;</a></li>
 <li>网站：<a href="https://hellowei.cn/">https://hellowei.cn</a></li>
 <li>用户指南：点击软件界面右上角的”📖 帮助”按钮查看完整文档</li>
 </ul>
@@ -545,49 +429,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/06/01/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><span id="more"></span>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第一篇博客</title>
-    <url>/2023/02/02/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><p>代码测试：</p>
-<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<span id="more"></span>
-
-<p>注意：这里因为我放在md文件中的，所以加上了\，不解析&#96;&#96;&#96;，实际测试时请去掉\。</p>
-<p>图片测试：</p>
-<p><img src="http://mculover666.cn/blog/20191031/R4mWMXsrRKxu.png?imageslim"></p>
-<p>引用测试：</p>
-<blockquote>
-<p>这是一条引用</p>
-</blockquote>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><p>无序列表测试：</p>
-<ul>
-<li>哈哈</li>
-<li>嘿嘿</li>
-<li>吼吼</li>
-</ul>
-<h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4>]]></content>
-  </entry>
-  <entry>
     <title>PS处理图片感想</title>
     <url>/2023/02/02/ww2/</url>
     <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>风景图片后期，感想</p>
@@ -597,5 +438,354 @@
 </blockquote>
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>GSASII sequential fitting (1)</title>
+    <url>/2023/06/01/GSASII%20sequential%20fitting%20(1)/</url>
+    <content><![CDATA[<h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><img src="OIP.jfif" height="10%" width="10%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程示范了用GSAS ii 做连续拟合的步骤，旨在快速地处理原位XRD的数据及减少重复操作。该方法能较快得到晶胞参数的变化，但会损失一些精度，对精度要求高者建议还是每个数据单独修。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">YTT</a>，对于材料为LiNiO<sub>2</sub>, 空间群 ‘R -3 m’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/SeqRefine/SequentialTutorial.htm">Sequential refinement of multiple datasets – CuCr2O4 from 7K to 300K</a></p>
+<blockquote>
+<p>文稿：<a href="https://www.qiliugroup.com/members">YTT</a><br>校稿：<a href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>双击打开GSAS ii, 点击 ‘import-PD-你的数据类型’ 导入全部原位XRD数据：</p>
+<img src="1.png" height="70%" width="70%">
+
+<p>点击 ‘import-Phase-from CIF file’ 导入cif晶体结构:</p>
+<img src="4.png" height="70%" width="70%">
+
+<p>将cif晶体结构和首个原位数据关联:</p>
+<img src="2.png" height="50%" width="50%">
+
+<h2 id="二，-拟合第一个XRD数据"><a href="#二，-拟合第一个XRD数据" class="headerlink" title="二， 拟合第一个XRD数据"></a>二， 拟合第一个XRD数据</h2><p>该步骤请参考之前的文章：<br><a href="https://hellowei.cn/2024/02/26/GSAS%20refinement%20(1)/">GSAS II 精修 （1）：单相</a></p>
+<h2 id="三，-连续拟合前的准备"><a href="#三，-连续拟合前的准备" class="headerlink" title="三， 连续拟合前的准备"></a>三， 连续拟合前的准备</h2><h3 id="1-refine框设置"><a href="#1-refine框设置" class="headerlink" title="1. refine框设置"></a>1. refine框设置</h3><p>取消 ‘SP-H scale’ 以外所有refine框的勾选<br><img src="image001.png" height="50%" width="50%"></p>
+<blockquote>
+<p>zoom in.</p>
+</blockquote>
+<img src="image002.png" height="40%" width="40%">
+
+<p>新增勾选 ‘Phase-Data-Hydrostatic&#x2F;elastic strain-D11&amp; D33’ </p>
+<img src="image003.png" height="40%" width="40%">
+
+<h3 id="2-扩大应用相的XRD数据范围"><a href="#2-扩大应用相的XRD数据范围" class="headerlink" title="2. 扩大应用相的XRD数据范围"></a>2. 扩大应用相的XRD数据范围</h3><p>Phase1——Edit phases——Add powder histograms——set all——OK</p>
+<img src="image004.png" height="40%" width="40%">
+
+<h3 id="3-参数复制"><a href="#3-参数复制" class="headerlink" title="3. 参数复制"></a>3. 参数复制</h3><p>将首个数据拟合的参数赋予全部数据：进入首个数据——Commands——Copy params——OK——set all——OK<br><img src="image005.png" height="50%" width="50%"></p>
+<p><img src="image006.png" height="30%" width="30%"> <img src="image007.png" height="40%" width="40%"></p>
+<p>将待拟合相赋予全部数据：进入Phase1——Edit phase——Copy data——set all——OK<br><img src="image008.png" height="30%" width="30%"><br><img src="image009.png" height="40%" width="40%"></p>
+<h3 id="4-连续拟合的条件设置"><a href="#4-连续拟合的条件设置" class="headerlink" title="4. 连续拟合的条件设置"></a>4. 连续拟合的条件设置</h3><p>选择应用的XRD数据范围：Controls——Select datasets——set all——OK</p>
+<img src="image010.png" height="50%" width="50%">
+
+<img src="image011.png" height="50%" width="50%">
+
+<p>勾选 ‘Copy results to next histogram?’ 这样在修新的一个XRD数据的时候会沿用上一个的结果</p>
+<img src="image012.png" height="50%" width="50%">
+
+<h2 id="四，开始连续拟合及结果分析"><a href="#四，开始连续拟合及结果分析" class="headerlink" title="四，开始连续拟合及结果分析"></a>四，开始连续拟合及结果分析</h2><p>点击：Calculate——Sequential Refine</p>
+<img src="image015.png" height="30%" width="30%">
+
+<p>自动连续拟合开始：</p>
+<img src="3.png" height="50%" width="50%">
+
+<p>结果在左侧列表最下面的‘Sequential results’ </p>
+<img src="image016.png" height="20%" width="20%">
+
+<p>点击可见：</p>
+<img src="image017.png" height="50%" width="50%">
+
+<p>点击数据的任意列，会有对应的参数变化曲线生成（带有误差棒）：</p>
+<img src="image018.png" height="50%" width="50%">
+
+<p>导出结果为excel：</p>
+<img src="image019.png" height="50%" width="50%">
+
+<p>之后可在其他软件进行绘图。<br><br/><br><font face="Times Newroman" font size=7> <p align="center">单相连续拟合finished！</font> </p>    </p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>GSAS ii</tag>
+        <tag>study</tag>
+        <tag>未完成</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>同步辐射XRD 2D转1D模拟演示</title>
+    <url>/2026/02/09/%E5%90%8C%E6%AD%A5%E8%BE%90%E5%B0%84XRD%202D%E8%BD%AC1D%E6%A8%A1%E6%8B%9F%E6%BC%94%E7%A4%BA/</url>
+    <content><![CDATA[<h1 id="同步辐射XRD-2D转1D模拟演示"><a href="#同步辐射XRD-2D转1D模拟演示" class="headerlink" title="同步辐射XRD 2D转1D模拟演示"></a>同步辐射XRD 2D转1D模拟演示</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该演示展示了同步辐射XRD数据从二维面探测器图像到一维衍射图谱的转换过程，以及多环标定的交互式学习体验。通过这个交互式演示，可以直观理解仪器参数对衍射结果的影响，并掌握标定方法。</p>
+<span id="more"></span>
+
+<h2 id="在线演示"><a href="#在线演示" class="headerlink" title="在线演示"></a>在线演示</h2><p><a href="./diffraction_demo_cal.html">点击此处打开演示页面</a></p>
+<h2 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h2><h3 id="模式一：衍射实验模拟"><a href="#模式一：衍射实验模拟" class="headerlink" title="模式一：衍射实验模拟"></a>模式一：衍射实验模拟</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li>可调节光源参数：支持不同波长（Cu Kα、Mo Kα、高能同步辐射）</li>
+<li>多种样品选择：LaB6标准样品、金纳米颗粒、二氧化硅玻璃</li>
+<li>探测器设置：分辨率、像素尺寸、样品距离（SDD）</li>
+<li>光束中心模拟：拖动十字标模拟光束中心偏移</li>
+<li>实时积分：2D图像自动转换为1D衍射图谱</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解波长对衍射角度的影响</li>
+<li>观察不同样品的衍射特征（晶体vs非晶体）</li>
+<li>掌握光束中心对积分结果的影响</li>
+<li>熟悉仪器参数的调节方法</li>
+</ul>
+<h3 id="模式二：多环标定（5环拟合）"><a href="#模式二：多环标定（5环拟合）" class="headerlink" title="模式二：多环标定（5环拟合）"></a>模式二：多环标定（5环拟合）</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li>随机生成未知探测器距离</li>
+<li>基于LaB6标准样品的前5个衍射环进行拟合</li>
+<li>实时计算RMSE（均方根误差）</li>
+<li>交互式精修参数</li>
+<li>双语支持（中文&#x2F;English）</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解标定的基本原理</li>
+<li>掌握多环拟合方法</li>
+<li>学会评估拟合质量</li>
+<li>理解仪器参数对衍射结果的影响</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>点击上方链接打开演示页面</li>
+<li>切换标签页选择不同模式</li>
+<li>根据需要调节参数</li>
+<li>观察实时变化和结果反馈</li>
+</ol>
+<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>该演示使用以下技术：</p>
+<ul>
+<li>HTML5 Canvas进行2D图像渲染</li>
+<li>Plotly.js进行数据可视化</li>
+<li>纯前端JavaScript实现物理计算</li>
+<li>响应式设计，支持不同屏幕尺寸</li>
+</ul>
+<h2 id="物理原理"><a href="#物理原理" class="headerlink" title="物理原理"></a>物理原理</h2><h3 id="衍射环计算"><a href="#衍射环计算" class="headerlink" title="衍射环计算"></a>衍射环计算</h3><p>对于给定的晶面间距d、波长λ和样品距离SDD，衍射环半径计算公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r = SDD × tan(2θ)</span><br><span class="line">其中 θ = arcsin(λ / 2d)</span><br></pre></td></tr></table></figure>
+
+<h3 id="标定原理"><a href="#标定原理" class="headerlink" title="标定原理"></a>标定原理</h3><p>通过拟合已知标准样品（如LaB6）的衍射环位置，反向计算仪器参数（主要是探测器距离），确保后续实验数据的准确性。</p>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ul>
+<li>XRD数据处理教学</li>
+<li>同步辐射实验培训</li>
+<li>仪器标定方法学习</li>
+<li>衍射原理可视化演示</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>本演示为简化模型，实际实验可能更复杂</li>
+<li>建议结合理论学习和实际操作</li>
+<li>多环拟合时优先使用内圈数据（信噪比更高）</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这个交互式演示，可以加深对同步辐射XRD数据处理流程的理解，特别是从2D到1D的转换过程和仪器标定方法。建议配合理论学习反复练习，掌握关键参数的调节技巧。</p>
+<p>祝你学习愉快！<br><br/><br><font face="Times Newroman" font size="7"> <p align="center">演示页面finished！</font> </p></p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>演示</category>
+      </categories>
+      <tags>
+        <tag>XRD</tag>
+        <tag>同步辐射</tag>
+        <tag>模拟</tag>
+        <tag>calibration</tag>
+        <tag>demo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GSASII refinemnt (1)</title>
+    <url>/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="QV数据转化为dqdv数据及绘图"><a href="#QV数据转化为dqdv数据及绘图" class="headerlink" title="QV数据转化为dqdv数据及绘图"></a>QV数据转化为dqdv数据及绘图</h1><img src="Miao.jfif" height="20%" width="20%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍基于matlab的一个“QV数据转化为dqdv数据“程序和一个contour plot 绘制程序。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">WW</a>，对应材料为LiMn<sub>x</sub>Fe<sub>1-x</sub>PO<sub>4</sub> 。</p>
+<blockquote>
+<p>文稿：<a href="https://www.qiliugroup.com/members">WW</a><br>程序编写：<a href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。</p>
+<p><strong>注一</strong>：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量。<br><strong>注二</strong>：建议记录层中仅勾选“电压”和“比容量”。</p>
+<img src="fig1.png" height="100%" width="100%">
+
+<p>最后选好路径，名字，进行保存。确认保存的文件后缀是“.xls”，否则手动修改后缀名。<br>打开保存好的文件检查，名字带”record“的”sheet“是否满足：E列为电压，F列为比容量。<br>如果不满足，请调整excel里的位置，或修改程序里“数据参数预设”部分中的V&#x2F;C赋值语句。</p>
+<h2 id="二，-转化为dqdv"><a href="#二，-转化为dqdv" class="headerlink" title="二， 转化为dqdv"></a>二， 转化为dqdv</h2><p>数据准备无误后，将该excel文件放入“ECplotAndDividedLMFP.m”程序所在的文件夹，双击打开该Matlab程序。<br>将filename改为导出的excel的名字。接下来只需跟着程序的注释从头到尾走一遍即可。</p>
+<img src="fig2.png" height="100%" width="100%">
+
+<p><strong>推荐流程</strong>：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。</p>
+<p>一切调整好后，按运行键，会生成如下一系列线图。</p>
+<img src="fig4.png" height="60%" width="60%">
+
+<p>如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
+<h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
+<img src="fig3.png" height="60%" width="60%">
+
+<p>运行结果如下：</p>
+<img src="fig5.png" height="60%" width="60%">
+
+
+<h2 id="四，感言"><a href="#四，感言" class="headerlink" title="四，感言"></a>四，感言</h2><p>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
+]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>Matlab</tag>
+        <tag>dqdv</tag>
+        <tag>plot</tag>
+        <tag>data process</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>晶体学原理与XRD精修教学演示</title>
+    <url>/2026/02/09/%E6%99%B6%E4%BD%93%E5%AD%A6%E5%8E%9F%E7%90%86%E4%B8%8EXRD%E7%B2%BE%E4%BF%AE%E6%95%99%E5%AD%A6%E6%BC%94%E7%A4%BA/</url>
+    <content><![CDATA[<h1 id="晶体学原理与XRD精修教学演示"><a href="#晶体学原理与XRD精修教学演示" class="headerlink" title="晶体学原理与XRD精修教学演示"></a>晶体学原理与XRD精修教学演示</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该演示通过交互式3D可视化和实时计算，深入浅出地展示晶体学基本原理和XRD精修的核心概念。包含两个模块：结构模拟与XRD图谱生成，以及Rietveld精修原理的交互式学习。</p>
+<span id="more"></span>
+
+<h2 id="在线演示"><a href="#在线演示" class="headerlink" title="在线演示"></a>在线演示</h2><p><a href="./crystallography_demo.html">点击此处打开演示页面</a></p>
+<h2 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h2><h3 id="模式一：结构与XRD模拟"><a href="#模式一：结构与XRD模拟" class="headerlink" title="模式一：结构与XRD模拟"></a>模式一：结构与XRD模拟</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li><strong>3D晶体结构可视化</strong>：实时展示简单立方(SC)、体心立方(BCC)、面心立方(FCC)结构</li>
+<li><strong>交互式参数调节</strong>：<ul>
+<li>晶胞参数a (2.0-8.0 Å)</li>
+<li>X射线波长λ (0.5-2.5 Å)</li>
+<li>峰宽(FWHM)</li>
+</ul>
+</li>
+<li><strong>实时XRD图谱生成</strong>：基于Bragg定律和消光规则计算衍射图谱</li>
+<li><strong>hkl指数提示</strong>：鼠标悬停在衍射峰上可查看对应的晶面指数</li>
+<li><strong>双语支持</strong>：中文&#x2F;English界面切换</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解晶体结构与衍射峰位置的对应关系</li>
+<li>掌握Bragg定律：nλ &#x3D; 2d sinθ</li>
+<li>学习消光规则：不同空间群的衍射条件</li>
+<li>观察晶胞参数变化对衍射图谱的影响</li>
+<li>理解波长选择对衍射角度的影响</li>
+</ul>
+<p><strong>物理原理</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Bragg定律：nλ = 2d sinθ</span><br><span class="line">其中：</span><br><span class="line">- n：衍射级数（整数）</span><br><span class="line">- λ：X射线波长（Å）</span><br><span class="line">- d：晶面间距（与晶胞参数有关）</span><br><span class="line">- θ：衍射角（布拉格角）</span><br><span class="line"></span><br><span class="line">晶面间距计算：d = a / √(h² + k² + l²)</span><br><span class="line">其中 (hkl) 为Miller指数</span><br></pre></td></tr></table></figure>
+
+<h3 id="模式二：XRD精修原理"><a href="#模式二：XRD精修原理" class="headerlink" title="模式二：XRD精修原理"></a>模式二：XRD精修原理</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li><strong>数据导入</strong>：从模拟模块导入含噪声的”实验数据”</li>
+<li><strong>模型选择</strong>：选择不同的晶体结构模型进行拟合</li>
+<li><strong>手动精修</strong>：通过滑块调节晶胞参数，实时观察拟合效果</li>
+<li><strong>自动拟合</strong>：三种真实优化算法演示：<ul>
+<li>变步长爬山法 (Hill Climbing)</li>
+<li>模拟退火 (Simulated Annealing)</li>
+<li>梯度下降 (Gradient Descent)</li>
+</ul>
+</li>
+<li><strong>实时统计指标</strong>：<ul>
+<li>Rwp（加权图谱残差）</li>
+<li>Rp（图谱残差）</li>
+<li>χ²（拟合优度）</li>
+</ul>
+</li>
+<li><strong>可视化输出</strong>：标准的Rietveld精修图谱（观测值、计算值、差值曲线）</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解精修的基本原理和目标</li>
+<li>掌握Rietveld精修的统计评估指标</li>
+<li>学习不同优化算法的特点和应用场景</li>
+<li>理解模型选择对拟合结果的影响</li>
+<li>掌握参数精修的策略和技巧</li>
+</ul>
+<p><strong>统计指标说明</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Rwp（加权图谱残差）：</span><br><span class="line">Rwp = √[Σw(Yobs - Ycalc)² / Σw(Yobs²)]</span><br><span class="line">权重w = 1/Yobs，考虑了计数统计误差</span><br><span class="line"></span><br><span class="line">Rp（图谱残差）：</span><br><span class="line">Rp = Σ|Yobs - Ycalc| / ΣYobs</span><br><span class="line">未加权的绝对误差指标</span><br><span class="line"></span><br><span class="line">χ²（拟合优度）：</span><br><span class="line">χ² = Σw(Yobs - Ycalc)² / (N - P)</span><br><span class="line">其中N为数据点数，P为精修参数数</span><br><span class="line">理想值接近1.0</span><br></pre></td></tr></table></figure>
+
+<p><strong>优化算法对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>爬山法</td>
+<td>快速、智能，自动调节步长</td>
+<td>参数较少、函数较平滑</td>
+</tr>
+<tr>
+<td>模拟退火</td>
+<td>能跳出局部最优，前期会”乱跳”</td>
+<td>多峰函数、全局搜索</td>
+</tr>
+<tr>
+<td>梯度下降</td>
+<td>数学严谨，带回溯机制</td>
+<td>连续可导、需要高精度</td>
+</tr>
+</tbody></table>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>点击上方链接打开演示页面</li>
+<li><strong>模式一</strong>：调节结构参数和仪器参数，观察3D结构和XRD图谱的实时变化</li>
+<li><strong>模式二</strong>：<ul>
+<li>点击”导入模拟数据”按钮</li>
+<li>选择合适的晶体模型</li>
+<li>手动调节参数或使用自动拟合功能</li>
+<li>观察Rwp、Rp、χ²等指标的变化</li>
+</ul>
+</li>
+<li>悬停在公式各符号上可查看详细说明</li>
+</ol>
+<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>该演示使用以下技术：</p>
+<ul>
+<li><strong>Vue.js 2.6</strong>：前端框架，实现响应式数据绑定</li>
+<li><strong>Three.js</strong>：3D图形渲染，晶体结构可视化</li>
+<li><strong>Plotly.js</strong>：科学图表绘制，XRD图谱展示</li>
+<li><strong>纯前端JavaScript</strong>：实现所有物理计算和优化算法</li>
+<li><strong>响应式设计</strong>：支持不同屏幕尺寸</li>
+</ul>
+<h2 id="物理计算细节"><a href="#物理计算细节" class="headerlink" title="物理计算细节"></a>物理计算细节</h2><h3 id="消光规则"><a href="#消光规则" class="headerlink" title="消光规则"></a>消光规则</h3><ul>
+<li>**简单立方(SC)**：所有(hkl)都产生衍射</li>
+<li>**体心立方(BCC)**：h + k + l &#x3D; 偶数</li>
+<li>**面心立方(FCC)**：h、k、l全奇或全偶</li>
+</ul>
+<h3 id="峰强计算"><a href="#峰强计算" class="headerlink" title="峰强计算"></a>峰强计算</h3><p>考虑以下因素：</p>
+<ul>
+<li>多重性因子（Multiplicity）</li>
+<li>洛伦兹-偏振因子（Lorentz-Polarization factor）</li>
+<li>结构因子（Structure factor）</li>
+</ul>
+<h3 id="噪声模型"><a href="#噪声模型" class="headerlink" title="噪声模型"></a>噪声模型</h3><p>模拟真实实验条件：</p>
+<ul>
+<li>基底随机振荡</li>
+<li>泊松噪声（计数统计噪声）</li>
+</ul>
+<h2 id="教学应用场景"><a href="#教学应用场景" class="headerlink" title="教学应用场景"></a>教学应用场景</h2><ul>
+<li>材料科学课程教学</li>
+<li>XRD实验培训</li>
+<li>晶体学基础教学</li>
+<li>精修方法学习</li>
+<li>优化算法可视化</li>
+</ul>
+<h2 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h2><ol>
+<li><strong>循序渐进</strong>：先从模式一开始，理解结构与图谱的关系</li>
+<li><strong>参数探索</strong>：系统性地调节各参数，观察变化规律</li>
+<li><strong>算法对比</strong>：在模式二中尝试不同优化算法，理解其特点</li>
+<li><strong>理论结合</strong>：结合教材学习，加深对公式的理解</li>
+<li><strong>反复练习</strong>：多次操作，建立直觉认识</li>
+</ol>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>Q: 为什么有些峰消失了？</strong><br>A: 这是由消光规则决定的，不同空间群有不同的衍射条件。</p>
+<p><strong>Q: Rwp和Rp有什么区别？</strong><br>A: Rwp是加权残差，考虑了计数统计误差；Rp是绝对残差，未加权。</p>
+<p><strong>Q: χ²的理想值是多少？</strong><br>A: 理想值接近1.0，表示模型与数据的拟合程度与统计误差一致。</p>
+<p><strong>Q: 如何判断拟合质量？</strong><br>A: 综合观察Rwp（越低越好）、χ²（接近1为佳）和差值曲线（应为随机噪声）。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这个交互式演示，可以直观地理解晶体学的基本原理和XRD精修的核心概念。建议配合理论学习反复实践，加深对晶体结构、衍射原理和精修方法的理解。</p>
+<p>祝你学习愉快！<br><br/><br><font face="Times Newroman" font size="7"> <p align="center">晶体学教学演示finished！</font> </p></p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>演示</category>
+      </categories>
+      <tags>
+        <tag>XRD</tag>
+        <tag>refinement</tag>
+        <tag>demo</tag>
+        <tag>晶体学</tag>
+        <tag>精修</tag>
+      </tags>
   </entry>
 </search>
