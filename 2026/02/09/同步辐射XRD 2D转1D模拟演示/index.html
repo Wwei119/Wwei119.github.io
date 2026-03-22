@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>同步辐射XRD 2D转1D模拟演示 | hellowei</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ww">
+  <meta name="keywords" content="">
+  <meta name="description" content="slow down">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.4.4',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/css/main.min.css">
+  
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.jside.menu.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=1129399169@qq.com"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '1129399169@qq.com');
+</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<div class="single">
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div class="header">
+  <div id="lx-aside" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/post_cover.min.jpeg)" data-stellar-background-ratio="0.5">
+    <div class="overlay">
+      <a href="javascript:;" class="popup-trigger" title="search"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+      <div class="page-title">
+        <div class="avatar"><a href="/"><img src="/images/avatar_2.jpg" alt="ww"></a></div>
+        <span>2026-02-09</span>
+        <h2>同步辐射XRD 2D转1...</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/XRD/" rel="tag">XRD</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/calibration/" rel="tag">calibration</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/demo/" rel="tag">demo</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E5%90%8C%E6%AD%A5%E8%BE%90%E5%B0%84/" rel="tag">同步辐射</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag">模拟</a></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="同步辐射XRD-2D转1D模拟演示"><a href="#同步辐射XRD-2D转1D模拟演示" class="headerlink" title="同步辐射XRD 2D转1D模拟演示"></a>同步辐射XRD 2D转1D模拟演示</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该演示展示了同步辐射XRD数据从二维面探测器图像到一维衍射图谱的转换过程，以及多环标定的交互式学习体验。通过这个交互式演示，可以直观理解仪器参数对衍射结果的影响，并掌握标定方法。</p>
+<span id="more"></span>
+
+<h2 id="在线演示"><a href="#在线演示" class="headerlink" title="在线演示"></a>在线演示</h2><p><a href="./diffraction_demo.html">点击此处打开演示页面</a></p>
+<h2 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h2><h3 id="模式一：衍射实验模拟"><a href="#模式一：衍射实验模拟" class="headerlink" title="模式一：衍射实验模拟"></a>模式一：衍射实验模拟</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li>可调节光源参数：支持不同波长（Cu Kα、Mo Kα、高能同步辐射）</li>
+<li>多种样品选择：LaB6标准样品、金纳米颗粒、二氧化硅玻璃</li>
+<li>探测器设置：分辨率、像素尺寸、样品距离（SDD）</li>
+<li>光束中心模拟：拖动十字标模拟光束中心偏移</li>
+<li>实时积分：2D图像自动转换为1D衍射图谱</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解波长对衍射角度的影响</li>
+<li>观察不同样品的衍射特征（晶体vs非晶体）</li>
+<li>掌握光束中心对积分结果的影响</li>
+<li>熟悉仪器参数的调节方法</li>
+</ul>
+<h3 id="模式二：多环标定（5环拟合）"><a href="#模式二：多环标定（5环拟合）" class="headerlink" title="模式二：多环标定（5环拟合）"></a>模式二：多环标定（5环拟合）</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li>随机生成未知探测器距离</li>
+<li>基于LaB6标准样品的前5个衍射环进行拟合</li>
+<li>实时计算RMSE（均方根误差）</li>
+<li>交互式精修参数</li>
+<li>双语支持（中文&#x2F;English）</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解标定的基本原理</li>
+<li>掌握多环拟合方法</li>
+<li>学会评估拟合质量</li>
+<li>理解仪器参数对衍射结果的影响</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>点击上方链接打开演示页面</li>
+<li>切换标签页选择不同模式</li>
+<li>根据需要调节参数</li>
+<li>观察实时变化和结果反馈</li>
+</ol>
+<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>该演示使用以下技术：</p>
+<ul>
+<li>HTML5 Canvas进行2D图像渲染</li>
+<li>Plotly.js进行数据可视化</li>
+<li>纯前端JavaScript实现物理计算</li>
+<li>响应式设计，支持不同屏幕尺寸</li>
+</ul>
+<h2 id="物理原理"><a href="#物理原理" class="headerlink" title="物理原理"></a>物理原理</h2><h3 id="衍射环计算"><a href="#衍射环计算" class="headerlink" title="衍射环计算"></a>衍射环计算</h3><p>对于给定的晶面间距d、波长λ和样品距离SDD，衍射环半径计算公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">r = SDD × tan(2θ)</span><br><span class="line">其中 θ = arcsin(λ / 2d)</span><br></pre></td></tr></table></figure>
+
+<h3 id="标定原理"><a href="#标定原理" class="headerlink" title="标定原理"></a>标定原理</h3><p>通过拟合已知标准样品（如LaB6）的衍射环位置，反向计算仪器参数（主要是探测器距离），确保后续实验数据的准确性。</p>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ul>
+<li>XRD数据处理教学</li>
+<li>同步辐射实验培训</li>
+<li>仪器标定方法学习</li>
+<li>衍射原理可视化演示</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>本演示为简化模型，实际实验可能更复杂</li>
+<li>建议结合理论学习和实际操作</li>
+<li>多环拟合时优先使用内圈数据（信噪比更高）</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这个交互式演示，可以加深对同步辐射XRD数据处理流程的理解，特别是从2D到1D的转换过程和仪器标定方法。建议配合理论学习反复练习，掌握关键参数的调节技巧。</p>
+<p>祝你学习愉快！<br><br/><br><font face="Times Newroman" font size="7"> <p align="center">演示页面finished！</font> </p></p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-l.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2026/03/21/%E9%94%82%E5%90%AB%E9%87%8F%E5%88%86%E5%B8%83%E7%9A%84%E9%87%8F%E5%8C%96%E6%8C%87%E6%A0%87%E8%AF%A6%E8%A7%A3/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>锂含量分布的量...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-r.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2026/02/09/XASuite%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>XASuite...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+<div class="comment"><div id="comments"></div></div>
+<footer>
+  <div>
+  Copyright &copy; 2026.<a href="/">hellowei</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button" title="menu">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button>
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar_2.jpg" alt="ww"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>ww</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/local.search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js"></script>
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'ENQCMWnPgtqcZj8aJlS6V1ct-gzGzoHsz',
+    appKey: '54gKJRXBeC43Ulnz07KxZPo2',
+    placeholder: '此处留言',
+    avatar: 'mp',
+    meta: guest,
+    pageSize: '10' || 10,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
+  <title>锂含量分布的量化指标详解 | hellowei</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="ww">
+  <meta name="keywords" content="">
+  <meta name="description" content="slow down">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.4.4',
+    localsearch:{
+      "enable": true,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'search.xml'
+  };
+</script>
+
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/css/main.min.css">
+  
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.jside.menu.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "",
+	     });
+	}); 
+	</script>
+  <!--Google_Analytics-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=1129399169@qq.com"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '1129399169@qq.com');
+</script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+<div class="single">
+<div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Search..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+<div id="page">
+<div class="header">
+  <div id="lx-aside" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/post_cover.min.jpeg)" data-stellar-background-ratio="0.5">
+    <div class="overlay">
+      <a href="javascript:;" class="popup-trigger" title="search"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
+      <div class="page-title">
+        <div class="avatar"><a href="/"><img src="/images/avatar_2.jpg" alt="ww"></a></div>
+        <span>2026-03-21</span>
+        <h2>锂含量分布的量化指标详解</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/inhomogeneity/" rel="tag">inhomogeneity</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/lithium-content/" rel="tag">lithium content</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/neutron-imaging/" rel="tag">neutron imaging</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/quantification/" rel="tag">quantification</a></div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
+        <h1 id="锂含量分布的量化指标详解"><a href="#锂含量分布的量化指标详解" class="headerlink" title="锂含量分布的量化指标详解"></a>锂含量分布的量化指标详解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本教程详细介绍锂含量分布分析中的关键量化指标，包括Mean（均值）、Std（标准差）、CV（变异系数）、Gini系数、归一化梯度、归一化局部标准差等。</p>
+<p>本教程以示例数据为例，展示各指标的含义、计算方法和可视化表示。这些指标可用于评估材料内部锂含量分布的均匀性和空间变化特征。</p>
+<p><strong>注意</strong>：本教程使用的是示例数据，仅用于演示目的，不代表实际实验数据。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="一、指标概述"><a href="#一、指标概述" class="headerlink" title="一、指标概述"></a>一、指标概述</h2><p>在原位中子衍射研究中，通过布拉格边成像技术可以获得二维锂含量分布图。为了定量描述锂含量的分布特征，我们需要计算一系列统计指标。</p>
+<p>这些指标可以分为两类：</p>
+<ul>
+<li><strong>基础统计指标</strong>：Mean、Std - 描述数据的绝对特征</li>
+<li><strong>不均匀性指标</strong>：CV、Gini、归一化梯度、归一化局部标准差 - 描述分布的不均匀程度（归一化）</li>
+</ul>
+<hr>
+<h2 id="二、基础统计指标"><a href="#二、基础统计指标" class="headerlink" title="二、基础统计指标"></a>二、基础统计指标</h2><h3 id="2-1-Mean（均值）"><a href="#2-1-Mean（均值）" class="headerlink" title="2.1 Mean（均值）"></a>2.1 Mean（均值）</h3><p><strong>定义</strong>：所有数据点的算术平均值，表示样品的平均锂含量。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">μ = (1/n) Σxᵢ</span><br></pre></td></tr></table></figure>
+<p>其中，xᵢ为第i个像素点的锂含量，n为像素点总数。</p>
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>代表样品整体的锂含量水平</li>
+<li>反映充放电状态</li>
+<li>可用于评估充电&#x2F;放电程度</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>demo data均值：μ &#x3D; 0.6518</li>
+<li>demo data标准差：σ &#x3D; 0.0154</li>
+</ul>
+<img src="images/demo_li_content_map.png" height="70%" width="70%">
+
+<center>图1：demo data锂含量分布图（μ = 0.6518）</center>
+
+<hr>
+<h3 id="2-2-Std（标准差）"><a href="#2-2-Std（标准差）" class="headerlink" title="2.2 Std（标准差）"></a>2.2 Std（标准差）</h3><p><strong>定义</strong>：数据偏离均值的程度，表示锂含量的绝对波动程度。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">σ = √[(1/n) Σ(xᵢ - μ)²]</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>描述锂含量分布的离散程度</li>
+<li>绝对不均匀性度量</li>
+<li>值越大，分布越不均匀</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Std &#x3D; 0.0154</li>
+<li>说明锂含量在均值附近的标准波动为0.0154</li>
+</ul>
+<p><strong>局限性</strong>：</p>
+<ul>
+<li>受均值大小影响</li>
+<li>不能直接比较不同均值状态的均匀性</li>
+<li>需要归一化（见CV指标）</li>
+</ul>
+<p><strong>可视化</strong>：</p>
+<img src="images/demo_histogram.png" height="70%" width="70%">
+
+<center>图2：demo data锂含量分布直方图（σ = 0.0154）</center>
+
+<hr>
+<h2 id="三、不均匀性指标"><a href="#三、不均匀性指标" class="headerlink" title="三、不均匀性指标"></a>三、不均匀性指标</h2><h3 id="3-1-CV（变异系数）"><a href="#3-1-CV（变异系数）" class="headerlink" title="3.1 CV（变异系数）"></a>3.1 CV（变异系数）</h3><p><strong>定义</strong>：标准差与均值的比值，相对不均匀性度量（去量纲化）。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CV = σ / μ</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>相对不均匀性（归一化）</li>
+<li>可比较不同均值状态的均匀性</li>
+<li>值越小，分布越均匀</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>CV &#x3D; 0.0236</li>
+<li>说明锂含量的相对波动很小（2.36%）</li>
+<li>分布非常均匀</li>
+</ul>
+<p><strong>应用</strong>：</p>
+<ul>
+<li>适用于比较不同充放电状态的不均匀性</li>
+<li>CV &lt; 0.05：分布非常均匀</li>
+<li>0.05 &lt; CV &lt; 0.1：分布较均匀</li>
+<li>CV &gt; 0.1：分布较不均匀</li>
+</ul>
+<hr>
+<h3 id="3-2-Gini系数"><a href="#3-2-Gini系数" class="headerlink" title="3.2 Gini系数"></a>3.2 Gini系数</h3><p><strong>定义</strong>：基于洛伦兹曲线的不平等度量，源自经济学，用于描述分布的不均匀程度。</p>
+<p><strong>计算方法</strong>：</p>
+<ol>
+<li>将所有数据排序</li>
+<li>计算累积分布</li>
+<li>绘制洛伦兹曲线</li>
+<li>Gini &#x3D; |A| &#x2F; (A+B)，其中A为洛伦兹曲线与对角线之间的面积，A+B为对角线下方总面积</li>
+</ol>
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>空间分布的不均匀程度</li>
+<li>考虑了数据的空间顺序</li>
+<li>值越接近0，分布越均匀</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Gini &#x3D; 0.0132</li>
+<li>说明锂含量的空间分布非常均匀</li>
+</ul>
+<p><strong>与CV的区别</strong>：</p>
+<ul>
+<li>CV：只考虑数值的离散程度</li>
+<li>Gini：考虑数值的空间分布特征</li>
+<li>Gini对极端值更敏感</li>
+</ul>
+<hr>
+<h3 id="3-3-归一化梯度"><a href="#3-3-归一化梯度" class="headerlink" title="3.3 归一化梯度"></a>3.3 归一化梯度</h3><p><strong>定义</strong>：平均梯度幅值与均值的比值，表示局部变化率。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">∇f = (∂f/∂x, ∂f/∂y)</span><br><span class="line">|∇f| = √[(∂f/∂x)² + (∂f/∂y)²]</span><br><span class="line">NG = mean(|∇f|) / μ</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>锂含量的空间变化剧烈程度</li>
+<li>局部不均匀性</li>
+<li>反映材料内部的锂浓度梯度</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Mean Gradient &#x3D; 0.0427</li>
+<li>Normalized Gradient &#x3D; 0.0427 &#x2F; 0.6518 &#x3D; 0.0655</li>
+<li>说明锂含量的局部变化很小</li>
+</ul>
+<p><strong>可视化</strong>：</p>
+<img src="images/demo_gradient_map.png" height="70%" width="70%">
+
+<center>图3：demo data梯度幅值图</center>
+
+<p><strong>应用</strong>：</p>
+<ul>
+<li>评估锂离子传输路径</li>
+<li>检测相界面的位置</li>
+<li>分析锂嵌入&#x2F;脱嵌的动力学过程</li>
+</ul>
+<hr>
+<h3 id="3-4-归一化局部标准差"><a href="#3-4-归一化局部标准差" class="headerlink" title="3.4 归一化局部标准差"></a>3.4 归一化局部标准差</h3><p><strong>定义</strong>：局部标准差的平均值与均值的比值，反映微观不均匀性。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">μ_local(x,y) = mean[f in neighborhood of (x,y)]</span><br><span class="line">σ_local(x,y) = std[f in neighborhood of (x,y)]</span><br><span class="line">NLS = mean(σ_local) / μ</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>局部波动程度（归一化）</li>
+<li>微观尺度的不均匀性</li>
+<li>比Gini更关注局部特征</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Normalized Local Std &#x3D; 0.0075</li>
+<li>说明微观波动非常小</li>
+</ul>
+<p><strong>应用</strong>：</p>
+<ul>
+<li>检测局部富集&#x2F;贫化区域</li>
+<li>评估材料缺陷的影响</li>
+<li>分析晶粒边界的不均匀性</li>
+</ul>
+<hr>
+<h2 id="四、指标对比与选择"><a href="#四、指标对比与选择" class="headerlink" title="四、指标对比与选择"></a>四、指标对比与选择</h2><h3 id="4-1-指标总结"><a href="#4-1-指标总结" class="headerlink" title="4.1 指标总结"></a>4.1 指标总结</h3><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>类型</th>
+<th>范围</th>
+<th>demo data示例</th>
+<th>物理意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Mean</strong></td>
+<td>基础</td>
+<td>0-∞</td>
+<td>0.6518</td>
+<td>平均锂含量</td>
+</tr>
+<tr>
+<td><strong>Std</strong></td>
+<td>基础</td>
+<td>0-∞</td>
+<td>0.0154</td>
+<td>绝对波动程度</td>
+</tr>
+<tr>
+<td><strong>CV</strong></td>
+<td>不均匀性</td>
+<td>0-∞</td>
+<td>0.0236</td>
+<td>相对波动程度</td>
+</tr>
+<tr>
+<td><strong>Gini</strong></td>
+<td>不均匀性</td>
+<td>0-1</td>
+<td>0.0132</td>
+<td>空间分布不均匀性</td>
+</tr>
+<tr>
+<td><strong>归一化梯度</strong></td>
+<td>不均匀性</td>
+<td>0-∞</td>
+<td>0.0427</td>
+<td>局部变化率</td>
+</tr>
+<tr>
+<td><strong>归一化局部标准差</strong></td>
+<td>不均匀性</td>
+<td>0-∞</td>
+<td>0.0075</td>
+<td>微观波动程度</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-指标选择建议"><a href="#4-2-指标选择建议" class="headerlink" title="4.2 指标选择建议"></a>4.2 指标选择建议</h3><p><strong>用于描述整体状态</strong>：</p>
+<ul>
+<li>Mean：报告充放电状态</li>
+<li>Std：报告绝对波动</li>
+</ul>
+<p><strong>用于比较不均匀性</strong>：</p>
+<ul>
+<li>CV：最常用的归一化指标</li>
+<li>Gini：考虑空间分布</li>
+<li>归一化梯度：关注局部变化</li>
+<li>归一化局部标准差：关注微观波动</li>
+</ul>
+<p><strong>用于学术发表</strong>：</p>
+<ul>
+<li>建议同时报告CV和Gini</li>
+<li>补充归一化梯度提供动力学信息</li>
+</ul>
+<hr>
+<h2 id="五、应用场景"><a href="#五、应用场景" class="headerlink" title="五、应用场景"></a>五、应用场景</h2><h3 id="5-1-充放电过程对比"><a href="#5-1-充放电过程对比" class="headerlink" title="5.1 充放电过程对比"></a>5.1 充放电过程对比</h3><p>通过计算不同充放电状态的量化指标，可以分析：</p>
+<ul>
+<li><strong>充电过程</strong>：Li含量增加，不均匀性如何变化？</li>
+<li><strong>放电过程</strong>：Li含量减少，不均匀性如何变化？</li>
+<li><strong>速率影响</strong>：快速充放电vs慢速充放电，不均匀性差异？</li>
+</ul>
+<h3 id="5-2-材料设计优化"><a href="#5-2-材料设计优化" class="headerlink" title="5.2 材料设计优化"></a>5.2 材料设计优化</h3><p>量化指标可用于：</p>
+<ul>
+<li>评估不同合成条件对均匀性的影响</li>
+<li>优化电极结构和制备工艺</li>
+<li>指导材料改性研究</li>
+</ul>
+<h3 id="5-3-性能关联分析"><a href="#5-3-性能关联分析" class="headerlink" title="5.3 性能关联分析"></a>5.3 性能关联分析</h3><p>将量化指标与电池性能关联：</p>
+<ul>
+<li>CV与循环寿命的关系</li>
+<li>归一化梯度与倍率性能的关系</li>
+<li>不均匀性与安全性的关系</li>
+</ul>
+<hr>
+<h2 id="六、计算代码示例"><a href="#六、计算代码示例" class="headerlink" title="六、计算代码示例"></a>六、计算代码示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.ndimage <span class="keyword">import</span> uniform_filter, sobel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据</span></span><br><span class="line">data = np.load(<span class="string">&#x27;li_content.npy&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基础统计指标</span></span><br><span class="line">mean_val = np.mean(data)</span><br><span class="line">std_val = np.std(data)</span><br><span class="line">cv = std_val / mean_val</span><br><span class="line"></span><br><span class="line"><span class="comment"># Gini系数</span></span><br><span class="line">sorted_data = np.sort(data.flatten())</span><br><span class="line">cumsum = np.cumsum(sorted_data)</span><br><span class="line">cumsum = cumsum / cumsum[-<span class="number">1</span>]</span><br><span class="line">lorenz = np.concatenate(([<span class="number">0</span>], cumsum))</span><br><span class="line">gini = np.<span class="built_in">abs</span>(np.trapezoid(lorenz, np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">len</span>(lorenz))) - <span class="number">0.5</span>) / <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化梯度</span></span><br><span class="line">grad_x = sobel(data, axis=<span class="number">1</span>)</span><br><span class="line">grad_y = sobel(data, axis=<span class="number">0</span>)</span><br><span class="line">gradient_magnitude = np.sqrt(grad_x**<span class="number">2</span> + grad_y**<span class="number">2</span>)</span><br><span class="line">mean_gradient = np.mean(gradient_magnitude)</span><br><span class="line">normalized_gradient = mean_gradient / mean_val</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化局部标准差</span></span><br><span class="line">local_mean = uniform_filter(data, size=<span class="number">5</span>, mode=<span class="string">&#x27;reflect&#x27;</span>)</span><br><span class="line">local_sq_mean = uniform_filter(data**<span class="number">2</span>, size=<span class="number">5</span>, mode=<span class="string">&#x27;reflect&#x27;</span>)</span><br><span class="line">local_var = local_sq_mean - local_mean**<span class="number">2</span></span><br><span class="line">local_std = np.mean(np.sqrt(np.maximum(local_var, <span class="number">0</span>)))</span><br><span class="line">normalized_local_std = local_std / mean_val</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>本教程详细介绍了锂含量分布分析中的6个关键量化指标：</p>
+<ol>
+<li><strong>Mean</strong>：描述整体锂含量水平</li>
+<li><strong>Std</strong>：描述绝对波动程度</li>
+<li><strong>CV</strong>：描述相对不均匀性（最常用）</li>
+<li><strong>Gini</strong>：描述空间分布不均匀性</li>
+<li><strong>归一化梯度</strong>：描述局部变化率</li>
+<li><strong>归一化局部标准差</strong>：描述微观波动</li>
+</ol>
+<p>这些指标从不同角度量化了锂含量的分布特征，为材料性能评估和优化提供了重要依据。</p>
+<p>在实际应用中，建议：</p>
+<ul>
+<li>根据研究目的选择合适的指标</li>
+<li>综合使用多个指标进行全面分析</li>
+<li>结合可视化结果进行解释</li>
+<li>与电池性能数据进行关联分析</li>
+</ul>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>NCM523材料中子衍射数据</li>
+<li>布拉格边成像技术</li>
+<li>统计学基础理论</li>
+</ul>
+<br/>
+<font face="Times Newroman" font size=7> <p align="center">锂含量分布的量化指标详解 finished！</font> </p>
+
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-l.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-r.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2026/02/09/%E5%90%8C%E6%AD%A5%E8%BE%90%E5%B0%84XRD%202D%E8%BD%AC1D%E6%A8%A1%E6%8B%9F%E6%BC%94%E7%A4%BA/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>同步辐射XRD...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+<div class="comment"><div id="comments"></div></div>
+<footer>
+  <div>
+  Copyright &copy; 2026.<a href="/">hellowei</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
+  </div>
+</footer>
+
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button" title="menu">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
+</button>
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar_2.jpg" alt="ww"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>ww</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
+  </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+<script src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/js/local.search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.18/dist/Valine.min.js"></script>
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'ENQCMWnPgtqcZj8aJlS6V1ct-gzGzoHsz',
+    appKey: '54gKJRXBeC43Ulnz07KxZPo2',
+    placeholder: '此处留言',
+    avatar: 'mp',
+    meta: guest,
+    pageSize: '10' || 10,
+    lang: 'zh-cn' || 'zh-cn'
+  });
+</script>
+
+</body>
+</html>

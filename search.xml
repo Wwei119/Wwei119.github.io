@@ -1,0 +1,1084 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>GSASII refinemnt (1)</title>
+    <url>/2024/02/26/GSAS%20refinement%20(1)/</url>
+    <content><![CDATA[<h1 id="GSAS-II-精修-（1）：单相"><a href="#GSAS-II-精修-（1）：单相" class="headerlink" title="GSAS II 精修 （1）：单相"></a>GSAS II 精修 （1）：单相</h1><img src="OIP.jfif" height="10%" width="10%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍粉末XRD单相精修的一般方法，涉及仪器参数，背底，单胞参数，原子信息等部分的拟合。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">YTT</a>，对应材料为Na<sub>x</sub>MnO<sub>2</sub>, 空间群 ‘P 63&#x2F;m m c’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/LabData/Laboratory%20X.htm">Laboratory X-ray Powder Data - Fluroapatite</a></p>
+<blockquote>
+<p>文稿：<a href="https://www.qiliugroup.com/members">YTT</a><br>校稿：<a href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>双击打开GSAS ii，导入实验室测的的XRD数据（.ras 文件）。注意，为满足精修原子坐标的需求，粉末样品最好测试到高角度（110度），且时间在30mins以上：<br>Import——Powder data——From Rigaku.ras file file——点击待拟合数据——是——选择标准仪器参数——OK<br>（注，若XRD数据在其它方式下测的，比如同步辐射XRD，请选择对应的仪器参数文件，若无，则需基于已有的修改）</p>
+<img src="image001.png" height="60%" width="60%">
+
+<p>导入待精修粉末样品的cif文件，根据软件指示关联cif结构文件和待精修样品文件：<br>Import——phase——From cif file——选择所需的cif文件——是——给cif文件命名——OK</p>
+<img src="image003.png" height="60%" width="60%">
+
+<p>将cif晶体结构和首个原位数据关联:<br>勾选对应的数据——OK</p>
+<img src="image004.png" height="60%" width="60%">
+
+<p>保存项目至指定文件夹：File–save project（经常保存是好习惯 ^_^）</p>
+<h2 id="二，结构拟合"><a href="#二，结构拟合" class="headerlink" title="二，结构拟合"></a>二，结构拟合</h2><h3 id="2-1-基础拟合设置（背景）"><a href="#2-1-基础拟合设置（背景）" class="headerlink" title="2-1 基础拟合设置（背景）"></a>2-1 基础拟合设置（背景）</h3><p>修改limits确定拟合峰位范围（适情况而定）</p>
+<img src="image008.png" height="60%" width="60%">
+
+<p>修改Max cycles为10，方便拟合收敛</p>
+<img src="image009.png" height="60%" width="60%">
+
+<p>勾选Scale的拟合框，在整个拟合过程中保留</p>
+<img src="image010.png" height="50%" width="50%">
+
+<p>开始背景的拟合，选择拟合函数及背底参数（视背景形状而定）。Calculate——Refine——拟合到理想程度后取消背底勾选（建议保留勾选至拟合程度较高时）</p>
+<img src="image011.png" height="70%" width="70%">
+
+<h3 id="2-2-峰位相关参数拟合"><a href="#2-2-峰位相关参数拟合" class="headerlink" title="2-2 峰位相关参数拟合"></a>2-2 峰位相关参数拟合</h3><p>勾选单胞参数拟合</p>
+<img src="image013.png" height="70%" width="70%">
+
+<p>加选仪器的零点拟合。Instrument parameters——Zero</p>
+<img src="image012.png" height="70%" width="70%">
+
+<p>拟合至峰位没问题后取消勾选</p>
+<h3 id="2-3-峰形相关参数拟合"><a href="#2-3-峰形相关参数拟合" class="headerlink" title="2-3 峰形相关参数拟合"></a>2-3 峰形相关参数拟合</h3><p>勾选Size并拟合。拟合后取消勾选。</p>
+<img src="image015.png" height="70%" width="70%">
+
+<p>勾选Microstrain并拟合。拟合后取消勾选。</p>
+<img src="image016.png" height="70%" width="70%">
+
+<p>仪器参数U，V，W拟合。拟合后取消上述勾选。</p>
+<img src="image014.png" height="70%" width="70%">
+
+<h2 id="三，补充结构信息（精修前准备）"><a href="#三，补充结构信息（精修前准备）" class="headerlink" title="三，补充结构信息（精修前准备）"></a>三，补充结构信息（精修前准备）</h2><p>有时候网上搜到的结构和我们想要的有些区别，可能需要在phase一栏作修改。建议好好阅读file栏最右边的”Help”，里面介绍了较多参数的意义。<br>在调整好了结构后，我们可能还会需要添加一些额外的关系。比如该项目中对cif文件中的各原子占位和温度因子构建关联，这时就要用到要用到Constrains里的指令了。<br>这里以钠原子温度因子相等关系为例，具体过程如下：<br>Constrains——Phase——Edit Constr.——add equivalence–<br>勾选中Na<sub>e</sub>的温度因子 – OK</p>
+<img src="image005.png" height="70%" width="70%">
+
+<p>勾选中Na<sub>e</sub>的温度因子 – OK</p>
+<img src="image006.png" height="70%" width="70%">
+
+<p>效果如下：</p>
+<img src="image007.png" height="70%" width="70%">
+
+<p>如需删除该关系，可勾选后点击上方的”Delete selected”</p>
+<h2 id="四，结构精修"><a href="#四，结构精修" class="headerlink" title="四，结构精修"></a>四，结构精修</h2><p>精修前确认仪器参数、背底等的拟合都已取消，仅保留scale一项。<br>开始精修，先勾选晶胞参数，同时，在 phase-atoms 中的refine列的每一个方格中选择对每个原子的精修项目，选好后进行拟合。下图对应的是选择了Na,Mn原子的占据率F和温度因子U，O原子的位置X和温度因子U。</p>
+<img src="image017.png" height="70%" width="70%">
+
+<p>具体的精修策略因人&#x2F;材料而异，常用的精修顺序：先精修全体的X，再精修全体的XU，最后精修部分原子的FXU。每一次拟合后都需确认拟合结果是否合理，不合理则需返回上一步调整<br>（精修为“refinement”，re fine指不断的调整直至完美，这个过程很考验耐心^_^)</p>
+<p>较好的精修结果&#x3D;较小的拟合结果&#x2F;实验数据误差（rwp）+ 合理的各项参数</p>
+<br/>  
+<font face="Times Newroman" font size=7> <p align="center">XRD单相结构精修finished！</font> </p>    
+
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>GSAS ii</tag>
+        <tag>XRD</tag>
+        <tag>refinement</tag>
+        <tag>study</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GSASII sequential fitting (1)</title>
+    <url>/2023/06/01/GSASII%20sequential%20fitting%20(1)/</url>
+    <content><![CDATA[<h1 id="GSASII拟合原位XRD数据（1）：单相连续拟合"><a href="#GSASII拟合原位XRD数据（1）：单相连续拟合" class="headerlink" title="GSASII拟合原位XRD数据（1）：单相连续拟合"></a>GSASII拟合原位XRD数据（1）：单相连续拟合</h1><img src="OIP.jfif" height="10%" width="10%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程示范了用GSAS ii 做连续拟合的步骤，旨在快速地处理原位XRD的数据及减少重复操作。该方法能较快得到晶胞参数的变化，但会损失一些精度，对精度要求高者建议还是每个数据单独修。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">YTT</a>，对于材料为LiNiO<sub>2</sub>, 空间群 ‘R -3 m’ 。<br>推荐阅读GSAS ii 官方教程（英文）：<a href="https://subversion.xray.aps.anl.gov/pyGSAS/Tutorials/SeqRefine/SequentialTutorial.htm">Sequential refinement of multiple datasets – CuCr2O4 from 7K to 300K</a></p>
+<blockquote>
+<p>文稿：<a href="https://www.qiliugroup.com/members">YTT</a><br>校稿：<a href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>双击打开GSAS ii, 点击 ‘import-PD-你的数据类型’ 导入全部原位XRD数据：</p>
+<img src="1.png" height="70%" width="70%">
+
+<p>点击 ‘import-Phase-from CIF file’ 导入cif晶体结构:</p>
+<img src="4.png" height="70%" width="70%">
+
+<p>将cif晶体结构和首个原位数据关联:</p>
+<img src="2.png" height="50%" width="50%">
+
+<h2 id="二，-拟合第一个XRD数据"><a href="#二，-拟合第一个XRD数据" class="headerlink" title="二， 拟合第一个XRD数据"></a>二， 拟合第一个XRD数据</h2><p>该步骤请参考之前的文章：<br><a href="https://hellowei.cn/2024/02/26/GSAS%20refinement%20(1)/">GSAS II 精修 （1）：单相</a></p>
+<h2 id="三，-连续拟合前的准备"><a href="#三，-连续拟合前的准备" class="headerlink" title="三， 连续拟合前的准备"></a>三， 连续拟合前的准备</h2><h3 id="1-refine框设置"><a href="#1-refine框设置" class="headerlink" title="1. refine框设置"></a>1. refine框设置</h3><p>取消 ‘SP-H scale’ 以外所有refine框的勾选<br><img src="image001.png" height="50%" width="50%"></p>
+<blockquote>
+<p>zoom in.</p>
+</blockquote>
+<img src="image002.png" height="40%" width="40%">
+
+<p>新增勾选 ‘Phase-Data-Hydrostatic&#x2F;elastic strain-D11&amp; D33’ </p>
+<img src="image003.png" height="40%" width="40%">
+
+<h3 id="2-扩大应用相的XRD数据范围"><a href="#2-扩大应用相的XRD数据范围" class="headerlink" title="2. 扩大应用相的XRD数据范围"></a>2. 扩大应用相的XRD数据范围</h3><p>Phase1——Edit phases——Add powder histograms——set all——OK</p>
+<img src="image004.png" height="40%" width="40%">
+
+<h3 id="3-参数复制"><a href="#3-参数复制" class="headerlink" title="3. 参数复制"></a>3. 参数复制</h3><p>将首个数据拟合的参数赋予全部数据：进入首个数据——Commands——Copy params——OK——set all——OK<br><img src="image005.png" height="50%" width="50%"></p>
+<p><img src="image006.png" height="30%" width="30%"> <img src="image007.png" height="40%" width="40%"></p>
+<p>将待拟合相赋予全部数据：进入Phase1——Edit phase——Copy data——set all——OK<br><img src="image008.png" height="30%" width="30%"><br><img src="image009.png" height="40%" width="40%"></p>
+<h3 id="4-连续拟合的条件设置"><a href="#4-连续拟合的条件设置" class="headerlink" title="4. 连续拟合的条件设置"></a>4. 连续拟合的条件设置</h3><p>选择应用的XRD数据范围：Controls——Select datasets——set all——OK</p>
+<img src="image010.png" height="50%" width="50%">
+
+<img src="image011.png" height="50%" width="50%">
+
+<p>勾选 ‘Copy results to next histogram?’ 这样在修新的一个XRD数据的时候会沿用上一个的结果</p>
+<img src="image012.png" height="50%" width="50%">
+
+<h2 id="四，开始连续拟合及结果分析"><a href="#四，开始连续拟合及结果分析" class="headerlink" title="四，开始连续拟合及结果分析"></a>四，开始连续拟合及结果分析</h2><p>点击：Calculate——Sequential Refine</p>
+<img src="image015.png" height="30%" width="30%">
+
+<p>自动连续拟合开始：</p>
+<img src="3.png" height="50%" width="50%">
+
+<p>结果在左侧列表最下面的‘Sequential results’ </p>
+<img src="image016.png" height="20%" width="20%">
+
+<p>点击可见：</p>
+<img src="image017.png" height="50%" width="50%">
+
+<p>点击数据的任意列，会有对应的参数变化曲线生成（带有误差棒）：</p>
+<img src="image018.png" height="50%" width="50%">
+
+<p>导出结果为excel：</p>
+<img src="image019.png" height="50%" width="50%">
+
+<p>之后可在其他软件进行绘图。<br><br/><br><font face="Times Newroman" font size=7> <p align="center">单相连续拟合finished！</font> </p>    </p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>GSAS ii</tag>
+        <tag>study</tag>
+        <tag>未完成</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>haita kong</title>
+    <url>/2023/02/03/haita-kong/</url>
+    <content><![CDATA[<p>#Wwei是海獭控！<br><video src=' haitacuolian.mp4' type='video/mp4' controls='controls'  width='30%' height='30%'><br></video><br>开工大吉！</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>PS处理图片感想</title>
+    <url>/2023/02/02/ww2/</url>
+    <content><![CDATA[<h1 id="PS处理"><a href="#PS处理" class="headerlink" title="PS处理"></a>PS处理</h1><p>风景图片后期，感想</p>
+<span id="more"></span>
+<p>前：<br><img src="/2023/02/02/ww2/1.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/2.jpg" alt="xiba"><br>前：<br><img src="/2023/02/02/ww2/3.JPG" alt="xiba"><br>后：<br><img src="/2023/02/02/ww2/4.jpg" alt="xiba"></p>
+<blockquote class='blockquote-center'><p>摄影是为了记录眼前的真实，还是为了发现生活中的美好？ <br><strong>——WEI</strong> </p>
+</blockquote>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>GSASII refinemnt (1)</title>
+    <url>/2024/05/13/dqdv%E8%BD%AC%E5%8C%96%E5%8F%8Acontourplot%E5%9B%BE/</url>
+    <content><![CDATA[<h1 id="QV数据转化为dqdv数据及绘图"><a href="#QV数据转化为dqdv数据及绘图" class="headerlink" title="QV数据转化为dqdv数据及绘图"></a>QV数据转化为dqdv数据及绘图</h1><img src="Miao.jfif" height="20%" width="20%">
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍基于matlab的一个“QV数据转化为dqdv数据“程序和一个contour plot 绘制程序。</p>
+<span id="more"></span>
+<p>该教程使用的数据集来自<a href="https://www.qiliugroup.com/members">WW</a>，对应材料为LiMn<sub>x</sub>Fe<sub>1-x</sub>PO<sub>4</sub> 。</p>
+<blockquote>
+<p>文稿：<a href="https://www.qiliugroup.com/members">WW</a><br>程序编写：<a href="https://www.qiliugroup.com/members">WW</a></p>
+</blockquote>
+<h2 id="一，-数据准备"><a href="#一，-数据准备" class="headerlink" title="一， 数据准备"></a>一， 数据准备</h2><p>使用新威电化学测试软件自带的”excel“导出功能。该方法能快速导出电化学测试过程的大部分信息，方便后续读取和处理。如下图所示，先点击”excel“标志，再选择自定义报表，修改记录层中所需的保存的信息。</p>
+<p><strong>注一</strong>：可以修改下面的excel设置，仅勾选记录层，这样能减少要导出的数据量。<br><strong>注二</strong>：建议记录层中仅勾选“电压”和“比容量”。</p>
+<img src="fig1.png" height="100%" width="100%">
+
+<p>最后选好路径，名字，进行保存。确认保存的文件后缀是“.xls”，否则手动修改后缀名。<br>打开保存好的文件检查，名字带”record“的”sheet“是否满足：E列为电压，F列为比容量。<br>如果不满足，请调整excel里的位置，或修改程序里“数据参数预设”部分中的V&#x2F;C赋值语句。</p>
+<h2 id="二，-转化为dqdv"><a href="#二，-转化为dqdv" class="headerlink" title="二， 转化为dqdv"></a>二， 转化为dqdv</h2><p>数据准备无误后，将该excel文件放入“ECplotAndDividedLMFP.m”程序所在的文件夹，双击打开该Matlab程序。<br>将filename改为导出的excel的名字。接下来只需跟着程序的注释从头到尾走一遍即可。</p>
+<img src="fig2.png" height="100%" width="100%">
+
+<p><strong>推荐流程</strong>：1，系统参数中的“工步号规律”，“是否加恒压”，“是否保存数据”，“绘制范围”；<br>2，平滑参数；3，画图参数。<br>更多可调细节详看注释。</p>
+<p>一切调整好后，按运行键，会生成如下一系列线图。</p>
+<img src="fig4.png" height="60%" width="60%">
+
+<p>如果选择了保存数据的话，查看程序所在目录，有一个和输入数据同名的文件夹，里面保存了提取出来的VQ数据和转化出的dqdv数据。</p>
+<h2 id="三，-dqdv绘图"><a href="#三，-dqdv绘图" class="headerlink" title="三， dqdv绘图"></a>三， dqdv绘图</h2><p>上一步得到的数据可以提取出来在origin里绘图，亦可采用matlab脚本进行快速绘图。<br>将想要绘制的excel文件复制进“contourplotdqdv.m”所在的文件夹，关闭matlab，双击“contourplotdqdv.m”打开脚本。按照程序的注释进行修改即可。（最后有一段被注释的文本，是绘制三维图用的，可探索）</p>
+<img src="fig3.png" height="60%" width="60%">
+
+<p>运行结果如下：</p>
+<img src="fig5.png" height="60%" width="60%">
+
+
+<h2 id="四，感言"><a href="#四，感言" class="headerlink" title="四，感言"></a>四，感言</h2><p>用软件协助批量数据处理，学习过程小累但之后省事不少，而且绘图水平的上限提升。有机会可以探索下用matlab代码调整绘图的细节（文字格式，线条格式啥的），学习使人进步hh。<br>程序下载：<a href="https://pan.baidu.com/s/1QAmG19cr5nosUrv9Y7ZnCg?pwd=hlq5">百度网盘链接</a></p>
+]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>Matlab</tag>
+        <tag>dqdv</tag>
+        <tag>plot</tag>
+        <tag>data process</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>同步辐射XRD 2D转1D模拟演示</title>
+    <url>/2026/02/09/%E5%90%8C%E6%AD%A5%E8%BE%90%E5%B0%84XRD%202D%E8%BD%AC1D%E6%A8%A1%E6%8B%9F%E6%BC%94%E7%A4%BA/</url>
+    <content><![CDATA[<h1 id="同步辐射XRD-2D转1D模拟演示"><a href="#同步辐射XRD-2D转1D模拟演示" class="headerlink" title="同步辐射XRD 2D转1D模拟演示"></a>同步辐射XRD 2D转1D模拟演示</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该演示展示了同步辐射XRD数据从二维面探测器图像到一维衍射图谱的转换过程，以及多环标定的交互式学习体验。通过这个交互式演示，可以直观理解仪器参数对衍射结果的影响，并掌握标定方法。</p>
+<span id="more"></span>
+
+<h2 id="在线演示"><a href="#在线演示" class="headerlink" title="在线演示"></a>在线演示</h2><p><a href="./diffraction_demo.html">点击此处打开演示页面</a></p>
+<h2 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h2><h3 id="模式一：衍射实验模拟"><a href="#模式一：衍射实验模拟" class="headerlink" title="模式一：衍射实验模拟"></a>模式一：衍射实验模拟</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li>可调节光源参数：支持不同波长（Cu Kα、Mo Kα、高能同步辐射）</li>
+<li>多种样品选择：LaB6标准样品、金纳米颗粒、二氧化硅玻璃</li>
+<li>探测器设置：分辨率、像素尺寸、样品距离（SDD）</li>
+<li>光束中心模拟：拖动十字标模拟光束中心偏移</li>
+<li>实时积分：2D图像自动转换为1D衍射图谱</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解波长对衍射角度的影响</li>
+<li>观察不同样品的衍射特征（晶体vs非晶体）</li>
+<li>掌握光束中心对积分结果的影响</li>
+<li>熟悉仪器参数的调节方法</li>
+</ul>
+<h3 id="模式二：多环标定（5环拟合）"><a href="#模式二：多环标定（5环拟合）" class="headerlink" title="模式二：多环标定（5环拟合）"></a>模式二：多环标定（5环拟合）</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li>随机生成未知探测器距离</li>
+<li>基于LaB6标准样品的前5个衍射环进行拟合</li>
+<li>实时计算RMSE（均方根误差）</li>
+<li>交互式精修参数</li>
+<li>双语支持（中文&#x2F;English）</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解标定的基本原理</li>
+<li>掌握多环拟合方法</li>
+<li>学会评估拟合质量</li>
+<li>理解仪器参数对衍射结果的影响</li>
+</ul>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>点击上方链接打开演示页面</li>
+<li>切换标签页选择不同模式</li>
+<li>根据需要调节参数</li>
+<li>观察实时变化和结果反馈</li>
+</ol>
+<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>该演示使用以下技术：</p>
+<ul>
+<li>HTML5 Canvas进行2D图像渲染</li>
+<li>Plotly.js进行数据可视化</li>
+<li>纯前端JavaScript实现物理计算</li>
+<li>响应式设计，支持不同屏幕尺寸</li>
+</ul>
+<h2 id="物理原理"><a href="#物理原理" class="headerlink" title="物理原理"></a>物理原理</h2><h3 id="衍射环计算"><a href="#衍射环计算" class="headerlink" title="衍射环计算"></a>衍射环计算</h3><p>对于给定的晶面间距d、波长λ和样品距离SDD，衍射环半径计算公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">r = SDD × tan(2θ)</span><br><span class="line">其中 θ = arcsin(λ / 2d)</span><br></pre></td></tr></table></figure>
+
+<h3 id="标定原理"><a href="#标定原理" class="headerlink" title="标定原理"></a>标定原理</h3><p>通过拟合已知标准样品（如LaB6）的衍射环位置，反向计算仪器参数（主要是探测器距离），确保后续实验数据的准确性。</p>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ul>
+<li>XRD数据处理教学</li>
+<li>同步辐射实验培训</li>
+<li>仪器标定方法学习</li>
+<li>衍射原理可视化演示</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
+<li>本演示为简化模型，实际实验可能更复杂</li>
+<li>建议结合理论学习和实际操作</li>
+<li>多环拟合时优先使用内圈数据（信噪比更高）</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这个交互式演示，可以加深对同步辐射XRD数据处理流程的理解，特别是从2D到1D的转换过程和仪器标定方法。建议配合理论学习反复练习，掌握关键参数的调节技巧。</p>
+<p>祝你学习愉快！<br><br/><br><font face="Times Newroman" font size="7"> <p align="center">演示页面finished！</font> </p></p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>演示</category>
+      </categories>
+      <tags>
+        <tag>XRD</tag>
+        <tag>同步辐射</tag>
+        <tag>模拟</tag>
+        <tag>calibration</tag>
+        <tag>demo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>XASuite：一站式X射线吸收谱批量处理与分析工具</title>
+    <url>/2026/02/09/XASuite%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h1 id="XASuite：一站式X射线吸收谱批量处理与分析工具"><a href="#XASuite：一站式X射线吸收谱批量处理与分析工具" class="headerlink" title="XASuite：一站式X射线吸收谱批量处理与分析工具"></a>XASuite：一站式X射线吸收谱批量处理与分析工具</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该教程将介绍 XASuite——一款专为 X 射线吸收谱（XAS&#x2F;XAFS）数据批量处理而设计的一站式分析工具。本软件集成了从原始数据预处理到高级分析的全流程功能，支持单文件和批量数据处理，能够大幅提升研究效率。</p>
+<span id="more"></span>
+
+<p>该教程使用的数据集来自 XAFS 常见测试材料（如 LiFePO4 等），涵盖了从 XANES 到 EXAFS 的全流程分析。</p>
+<img src="icon.ico" height="15%" width="15%">
+
+<blockquote>
+<p>程序开发：<a href="https://hellowei.cn/">Wei WANG</a><br>单位：City University of Hong Kong, Department of Physics<br>邮箱：<a href="mailto:&#119;&#119;&#97;&#x6e;&#103;&#x33;&#x34;&#x35;&#x2d;&#x63;&#x40;&#109;&#x79;&#46;&#99;&#x69;&#x74;&#121;&#x75;&#46;&#x65;&#x64;&#117;&#46;&#x68;&#107;">&#119;&#119;&#97;&#x6e;&#103;&#x33;&#x34;&#x35;&#x2d;&#x63;&#x40;&#109;&#x79;&#46;&#99;&#x69;&#x74;&#121;&#x75;&#46;&#x65;&#x64;&#117;&#46;&#x68;&#107;</a></p>
+</blockquote>
+<hr>
+<h2 id="一，软件简介"><a href="#一，软件简介" class="headerlink" title="一，软件简介"></a>一，软件简介</h2><p>XASuite v1.0.0 是一款基于 Python&#x2F;Tkinter 开发的跨平台 XAS 数据分析软件，具有以下核心特点：</p>
+<p><strong>主要功能：</strong></p>
+<ul>
+<li>🔬 <strong>完整的数据处理流程</strong>：7个步骤覆盖从原始数据到高级分析的全过程</li>
+<li>📊 <strong>批量数据处理</strong>：支持一次性处理大量样品数据</li>
+<li>🎯 <strong>自动化分析</strong>：边缘能量计算、演化分析、R空间量化等智能分析功能</li>
+<li>📈 <strong>可视化输出</strong>：生成高质量的图表和分析报告</li>
+</ul>
+<p><strong>支持的步骤：</strong></p>
+<ol>
+<li>单文件数据预处理（背景扣除、归一化等）</li>
+<li>批量数据处理（智能填充参数）</li>
+<li>数据可视化（多种绘图模式）</li>
+<li>边缘能量计算</li>
+<li>Edge Evolution 分析</li>
+<li>边缘能量对比分析</li>
+<li>R空间量化分析</li>
+</ol>
+<hr>
+<h2 id="二，下载与安装"><a href="#二，下载与安装" class="headerlink" title="二，下载与安装"></a>二，下载与安装</h2><h3 id="2-1-下载方式"><a href="#2-1-下载方式" class="headerlink" title="2-1 下载方式"></a>2-1 下载方式</h3><p>程序下载：<a href="https://hellowei.cn/download/XASuite.exe">XASuite v1.0.0</a>（约 370 MB）</p>
+<h3 id="2-2-系统要求"><a href="#2-2-系统要求" class="headerlink" title="2-2 系统要求"></a>2-2 系统要求</h3><ul>
+<li>操作系统：Windows 10&#x2F;11（64位）</li>
+<li>硬盘空间：至少 500 MB 可用空间</li>
+<li>无需安装 Python 环境（已打包所有依赖）</li>
+</ul>
+<h3 id="2-3-安装步骤"><a href="#2-3-安装步骤" class="headerlink" title="2-3 安装步骤"></a>2-3 安装步骤</h3><ol>
+<li>下载 <code>XASuite.exe</code> 到任意文件夹</li>
+<li>直接双击运行即可使用</li>
+<li>首次运行时会显示启动信息和使用声明</li>
+</ol>
+<p><strong>提示</strong>：建议将程序和你的数据文件放在同一个文件夹中，方便数据管理。</p>
+<hr>
+<h2 id="三，快速上手"><a href="#三，快速上手" class="headerlink" title="三，快速上手"></a>三，快速上手</h2><h3 id="3-1-界面介绍"><a href="#3-1-界面介绍" class="headerlink" title="3-1 界面介绍"></a>3-1 界面介绍</h3><p>XASuite 界面简洁直观，主要分为三个区域：</p>
+<ul>
+<li><strong>顶部标题栏</strong>：显示软件名称和版本，右侧有帮助和关于按钮</li>
+<li><strong>中间功能区</strong>：7个处理步骤的选项卡</li>
+<li><strong>底部状态栏</strong>：显示处理进度和日志信息</li>
+</ul>
+<img src="XASuite_interface.png" height="100%" width="100%">
+
+<h3 id="3-2-数据格式要求"><a href="#3-2-数据格式要求" class="headerlink" title="3-2 数据格式要求"></a>3-2 数据格式要求</h3><p>XASuite 支持多种 XAS 数据格式：</p>
+<ul>
+<li><strong>7列格式</strong>：Energy, μ(E), I0, It, ln(It&#x2F;I0), μ(E)*ln(It&#x2F;I0), Edge Energy</li>
+<li><strong>5列格式</strong>：Energy, μ(E), I0, It, Edge Energy</li>
+<li><strong>2列格式</strong>：Energy, μ(E)</li>
+</ul>
+<p><strong>文件命名建议</strong>：使用 <code>样品名.编号</code> 格式（如 <code>Sam9_Fe.0001</code>），便于批量处理时的智能识别。</p>
+<h3 id="3-3-基本操作流程"><a href="#3-3-基本操作流程" class="headerlink" title="3-3 基本操作流程"></a>3-3 基本操作流程</h3><ol>
+<li><strong>打开软件</strong>：双击 <code>XASuite.exe</code></li>
+<li><strong>选择步骤</strong>：点击对应的步骤标签页</li>
+<li><strong>选择数据</strong>：点击”选择文件”或”选择目录”按钮</li>
+<li><strong>设置参数</strong>：根据需要调整处理参数</li>
+<li><strong>开始处理</strong>：点击”开始处理”按钮</li>
+<li><strong>查看结果</strong>：处理完成后在输出目录查看结果</li>
+</ol>
+<hr>
+<h2 id="四，核心功能详解"><a href="#四，核心功能详解" class="headerlink" title="四，核心功能详解"></a>四，核心功能详解</h2><h3 id="4-1-步骤1：单文件数据预处理"><a href="#4-1-步骤1：单文件数据预处理" class="headerlink" title="4-1 步骤1：单文件数据预处理"></a>4-1 步骤1：单文件数据预处理</h3><p>该步骤用于对单个 XAS 数据文件进行标准化处理：</p>
+<p><strong>功能特点：</strong></p>
+<ul>
+<li>背景扣除（Pre-edge 和 Post-edge）</li>
+<li>数据归一化</li>
+<li>能量校准（E0 自动检测）</li>
+<li>数据导出</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>点击”选择数据文件”</li>
+<li>选择待处理的 .txt 或 .dat 文件</li>
+<li>设置处理参数（如能量范围、归一化方法）</li>
+<li>点击”开始处理”</li>
+<li>查看处理后的数据曲线</li>
+<li>保存处理结果</li>
+</ol>
+<p><strong>输出文件：</strong></p>
+<ul>
+<li>处理后的数据文件（带 <code>_processed</code> 后缀）</li>
+<li>参数文件（带 <code>_parameters.json</code> 后缀，可复用）</li>
+</ul>
+<hr>
+<h3 id="4-2-步骤2：批量数据处理（推荐）"><a href="#4-2-步骤2：批量数据处理（推荐）" class="headerlink" title="4-2 步骤2：批量数据处理（推荐）"></a>4-2 步骤2：批量数据处理（推荐）</h3><p>这是 XASuite 的核心功能，支持一次性处理大量样品数据：</p>
+<p><strong>智能填充功能：</strong></p>
+<ul>
+<li>自动识别样品名和编号</li>
+<li>自动关联同一样品的参数文件</li>
+<li>批量应用相同的处理参数</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>点击”选择数据目录”</li>
+<li>选择包含多个数据文件的文件夹</li>
+<li>点击”智能填充参数”（推荐）</li>
+<li>检查自动填充的参数是否正确</li>
+<li>选择输出目录</li>
+<li>点击”开始批量处理”</li>
+<li>等待处理完成（会在日志中显示进度）</li>
+</ol>
+<p><strong>输出结果：</strong></p>
+<ul>
+<li>每个样品的处理结果保存在对应的子文件夹中</li>
+<li>日志文件记录处理状态和警告信息</li>
+<li>支持断点续传（处理中断后可从失败的文件继续）</li>
+</ul>
+<p><strong>使用技巧：</strong></p>
+<ul>
+<li>建议在步骤1中先处理一个代表性样品，保存参数文件</li>
+<li>步骤2会自动匹配同名参数文件，大幅提升效率</li>
+<li>处理大量数据时，建议分批处理（每批100-200个文件）</li>
+</ul>
+<hr>
+<h3 id="4-3-步骤3：数据可视化"><a href="#4-3-步骤3：数据可视化" class="headerlink" title="4-3 步骤3：数据可视化"></a>4-3 步骤3：数据可视化</h3><p>该步骤用于绘制处理后的 XAS 数据，支持多种可视化模式：</p>
+<p><strong>绘图模式：</strong></p>
+<ul>
+<li><strong>概览图</strong>：显示所有样品的完整光谱对比</li>
+<li><strong>XANES 放大图</strong>：聚焦吸收边区域的细节</li>
+<li><strong>EXAFS 放大图</strong>：显示 k²χ(k) 函数</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>点击”添加目录”（可添加多个）</li>
+<li>选择绘图模式</li>
+<li>设置 Y 轴范围（可选）</li>
+<li>点击”开始绘图”</li>
+<li>查看生成的图表</li>
+<li>点击”保存图片”导出结果</li>
+</ol>
+<p><strong>图表特点：</strong></p>
+<ul>
+<li>支持中文标签和标题</li>
+<li>自动调整图例位置</li>
+<li>高分辨率输出（适合发表）</li>
+<li>支持批量导出</li>
+</ul>
+<hr>
+<h3 id="4-4-步骤4：边缘能量计算"><a href="#4-4-步骤4：边缘能量计算" class="headerlink" title="4-4 步骤4：边缘能量计算"></a>4-4 步骤4：边缘能量计算</h3><p>该步骤用于精确计算 XAS 的吸收边能量（E0），是结构分析的基础：</p>
+<p><strong>计算方法：</strong></p>
+<ul>
+<li>自动识别吸收边</li>
+<li>一阶导数法（最大斜率点）</li>
+<li>可视化确认</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择包含处理后数据的目录</li>
+<li>设置计算参数（能量范围、拟合方式）</li>
+<li>点击”开始计算”</li>
+<li>查看计算结果（包含误差估计）</li>
+<li>导出结果为 Excel 文件</li>
+</ol>
+<p><strong>输出内容：</strong></p>
+<ul>
+<li>E0 能量值（eV）</li>
+<li>吸收边强度</li>
+<li>拟合优度（R²）</li>
+<li>吸收边位置对比图</li>
+</ul>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li>氧化态分析</li>
+<li>配位环境变化检测</li>
+<li>反应过程监控</li>
+</ul>
+<hr>
+<h3 id="4-5-步骤5：Edge-Evolution-分析"><a href="#4-5-步骤5：Edge-Evolution-分析" class="headerlink" title="4-5 步骤5：Edge Evolution 分析"></a>4-5 步骤5：Edge Evolution 分析</h3><p>该步骤用于分析吸收边随条件（如充放电、温度等）的演化趋势：</p>
+<p><strong>分析功能：</strong></p>
+<ul>
+<li>绘制 E0-循环&#x2F;时间曲线</li>
+<li>检测相变点</li>
+<li>分析演化趋势</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择包含 E0 计算结果的目录</li>
+<li>选择 X 轴参数（循环数、时间等）</li>
+<li>设置图表选项</li>
+<li>点击”开始分析”</li>
+<li>查看演化曲线和趋势图</li>
+</ol>
+<p><strong>输出结果：</strong></p>
+<ul>
+<li>E0 演化曲线图</li>
+<li>相变点标注</li>
+<li>趋势分析报告</li>
+</ul>
+<p><strong>应用示例：</strong></p>
+<ul>
+<li>电池充放电过程中的结构演化</li>
+<li>催化反应中间态检测</li>
+<li>温度变化引起的结构相变</li>
+</ul>
+<hr>
+<h3 id="4-6-步骤6：边缘能量对比"><a href="#4-6-步骤6：边缘能量对比" class="headerlink" title="4-6 步骤6：边缘能量对比"></a>4-6 步骤6：边缘能量对比</h3><p>该步骤用于对比不同条件或不同样品的吸收边特征：</p>
+<p><strong>对比功能：</strong></p>
+<ul>
+<li>多样品 E0 对比</li>
+<li>吸收边形状对比</li>
+<li>差异分析</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择多个待对比的样品数据</li>
+<li>设置对比参数</li>
+<li>点击”开始对比”</li>
+<li>查看对比图和统计结果</li>
+</ol>
+<p><strong>输出内容：</strong></p>
+<ul>
+<li>E0 对比柱状图</li>
+<li>吸收边叠加图</li>
+<li>统计分析表</li>
+<li>显著性检验结果</li>
+</ul>
+<p><strong>应用场景：</strong></p>
+<ul>
+<li>不同掺杂浓度的比较</li>
+<li>不同合成条件的对比</li>
+<li>材料改性效果评估</li>
+</ul>
+<hr>
+<h3 id="4-7-步骤7：R空间量化分析"><a href="#4-7-步骤7：R空间量化分析" class="headerlink" title="4-7 步骤7：R空间量化分析"></a>4-7 步骤7：R空间量化分析</h3><p>该步骤对傅里叶变换后的 R 空间数据进行峰位分析：</p>
+<p><strong>分析功能：</strong></p>
+<ul>
+<li>峰位识别</li>
+<li>高斯拟合</li>
+<li>配位键长计算</li>
+</ul>
+<p><strong>操作步骤：</strong></p>
+<ol>
+<li>选择 R 空间数据目录</li>
+<li>设置拟合范围（R 范围）</li>
+<li>点击”开始分析”</li>
+<li>查看拟合结果和图表</li>
+<li>导出分析报告</li>
+</ol>
+<p><strong>输出内容：</strong></p>
+<ul>
+<li>R 峰位置（Å）</li>
+<li>峰高度（强度）</li>
+<li>拟合优度（R²）</li>
+<li>R 空间谱对比图</li>
+<li>Excel 结果文件</li>
+</ul>
+<p><strong>应用建议：</strong></p>
+<ul>
+<li>配位键长计算</li>
+<li>配位环境变化分析</li>
+<li>不同样品的结构比较</li>
+<li>反应过程中的结构演化追踪</li>
+</ul>
+<hr>
+<h2 id="五，高级技巧"><a href="#五，高级技巧" class="headerlink" title="五，高级技巧"></a>五，高级技巧</h2><h3 id="5-1-参数复用"><a href="#5-1-参数复用" class="headerlink" title="5-1 参数复用"></a>5-1 参数复用</h3><p>在步骤1中保存的参数文件可以在步骤2中自动识别并复用，这对于处理大量同类样品非常高效。</p>
+<p><strong>最佳实践：</strong></p>
+<ol>
+<li>先用步骤1处理一个典型样品</li>
+<li>仔细调整参数到最佳状态</li>
+<li>保存参数文件</li>
+<li>在步骤2中使用智能填充功能</li>
+<li>系统会自动匹配同名参数文件</li>
+</ol>
+<h3 id="5-2-数据管理建议"><a href="#5-2-数据管理建议" class="headerlink" title="5-2 数据管理建议"></a>5-2 数据管理建议</h3><p><strong>文件夹结构建议：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Project/</span><br><span class="line">├── raw_data/           # 原始数据</span><br><span class="line">│   ├── Sample1.0001</span><br><span class="line">│   ├── Sample1.0002</span><br><span class="line">│   └── ...</span><br><span class="line">├── processed/          # 处理后数据</span><br><span class="line">├── results/            # 分析结果</span><br><span class="line">├── plots/              # 图表输出</span><br><span class="line">└── parameters/         # 参数文件</span><br></pre></td></tr></table></figure>
+
+<p><strong>数据存储提示</strong>：使用智能填充方式选择的文件生成路径默认在 exe 程序同一目录下。</p>
+<h3 id="5-3-性能优化"><a href="#5-3-性能优化" class="headerlink" title="5-3 性能优化"></a>5-3 性能优化</h3><ul>
+<li>批量处理时建议每批处理 100-200 个文件</li>
+<li>处理大量数据时关闭其他程序以释放内存</li>
+<li>使用 SSD 硬盘可显著提升读写速度</li>
+</ul>
+<hr>
+<h2 id="六，常见问题"><a href="#六，常见问题" class="headerlink" title="六，常见问题"></a>六，常见问题</h2><h3 id="Q1：软件运行很慢怎么办？"><a href="#Q1：软件运行很慢怎么办？" class="headerlink" title="Q1：软件运行很慢怎么办？"></a>Q1：软件运行很慢怎么办？</h3><ul>
+<li>检查是否同时在运行其他大型程序</li>
+<li>尝试减少每批处理的文件数量</li>
+<li>使用性能更好的计算机</li>
+</ul>
+<h3 id="Q2：处理结果不满意？"><a href="#Q2：处理结果不满意？" class="headerlink" title="Q2：处理结果不满意？"></a>Q2：处理结果不满意？</h3><ul>
+<li>在步骤1中仔细调整预处理参数</li>
+<li>检查原始数据质量</li>
+<li>参考用户指南中的参数说明</li>
+</ul>
+<h3 id="Q3：如何引用软件？"><a href="#Q3：如何引用软件？" class="headerlink" title="Q3：如何引用软件？"></a>Q3：如何引用软件？</h3><p><strong>中文引用格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Wei WANG. XASuite v1.0.0. City University of Hong Kong, 2026.</span><br><span class="line">访问网址：https://hellowei.cn</span><br></pre></td></tr></table></figure>
+
+<p><strong>英文引用格式：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Wei WANG. XASuite v1.0.0. City University of Hong Kong, 2026.</span><br><span class="line">Website: https://hellowei.cn</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q4：数据处理结果保存在哪里？"><a href="#Q4：数据处理结果保存在哪里？" class="headerlink" title="Q4：数据处理结果保存在哪里？"></a>Q4：数据处理结果保存在哪里？</h3><p>使用智能填充方式选择的文件生成路径默认在 exe 程序同一目录下。</p>
+<hr>
+<h2 id="七，使用声明"><a href="#七，使用声明" class="headerlink" title="七，使用声明"></a>七，使用声明</h2><ul>
+<li>本软件仅供学习和研究使用，不得用于商业用途</li>
+<li>引用本软件的研究成果请明确注明出处和作者</li>
+<li>请遵守相关的学术规范和道德准则</li>
+<li>作者不对使用本软件产生的任何结果承担责任</li>
+</ul>
+<hr>
+<h2 id="八，技术支持"><a href="#八，技术支持" class="headerlink" title="八，技术支持"></a>八，技术支持</h2><ul>
+<li>邮箱：<a href="mailto:&#x77;&#119;&#x61;&#x6e;&#103;&#51;&#x34;&#x35;&#x2d;&#x63;&#64;&#x6d;&#121;&#46;&#x63;&#x69;&#116;&#x79;&#117;&#46;&#101;&#100;&#117;&#x2e;&#104;&#107;">&#x77;&#119;&#x61;&#x6e;&#103;&#51;&#x34;&#x35;&#x2d;&#x63;&#64;&#x6d;&#121;&#46;&#x63;&#x69;&#116;&#x79;&#117;&#46;&#101;&#100;&#117;&#x2e;&#104;&#107;</a></li>
+<li>网站：<a href="https://hellowei.cn/">https://hellowei.cn</a></li>
+<li>用户指南：点击软件界面右上角的”📖 帮助”按钮查看完整文档</li>
+</ul>
+<hr>
+<h2 id="九，更新日志"><a href="#九，更新日志" class="headerlink" title="九，更新日志"></a>九，更新日志</h2><p><strong>v1.0.0 (2026-02-09)</strong></p>
+<ul>
+<li>首次公开发布</li>
+<li>支持 7 个完整的 XAS 分析步骤</li>
+<li>集成批量处理功能</li>
+<li>内置帮助文档</li>
+<li>优化的 GUI 界面</li>
+</ul>
+<hr>
+<h2 id="十，致谢"><a href="#十，致谢" class="headerlink" title="十，致谢"></a>十，致谢</h2><p>感谢以下开源项目的支持：</p>
+<ul>
+<li>Python &#x2F; Tkinter</li>
+<li>Larch (XAFS 分析库)</li>
+<li>NumPy &#x2F; SciPy</li>
+<li>Matplotlib</li>
+<li>XrayDB</li>
+</ul>
+<br/>
+<font face="Times Newroman" font size=7> <p align="center">XASuite 使用教程 finished！</font> </p>
+
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>软件使用</category>
+      </categories>
+      <tags>
+        <tag>XAS</tag>
+        <tag>XAFS</tag>
+        <tag>software</tag>
+        <tag>data analysis</tag>
+        <tag>batch processing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>晶体学原理与XRD精修教学演示</title>
+    <url>/2026/02/09/%E6%99%B6%E4%BD%93%E5%AD%A6%E5%8E%9F%E7%90%86%E4%B8%8EXRD%E7%B2%BE%E4%BF%AE%E6%95%99%E5%AD%A6%E6%BC%94%E7%A4%BA/</url>
+    <content><![CDATA[<h1 id="晶体学原理与XRD精修教学演示"><a href="#晶体学原理与XRD精修教学演示" class="headerlink" title="晶体学原理与XRD精修教学演示"></a>晶体学原理与XRD精修教学演示</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该演示通过交互式3D可视化和实时计算，深入浅出地展示晶体学基本原理和XRD精修的核心概念。包含两个模块：结构模拟与XRD图谱生成，以及Rietveld精修原理的交互式学习。</p>
+<span id="more"></span>
+
+<h2 id="在线演示"><a href="#在线演示" class="headerlink" title="在线演示"></a>在线演示</h2><p><a href="./crystallography_demo.html">点击此处打开演示页面</a></p>
+<h2 id="演示功能"><a href="#演示功能" class="headerlink" title="演示功能"></a>演示功能</h2><h3 id="模式一：结构与XRD模拟"><a href="#模式一：结构与XRD模拟" class="headerlink" title="模式一：结构与XRD模拟"></a>模式一：结构与XRD模拟</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li><strong>3D晶体结构可视化</strong>：实时展示简单立方(SC)、体心立方(BCC)、面心立方(FCC)结构</li>
+<li><strong>交互式参数调节</strong>：<ul>
+<li>晶胞参数a (2.0-8.0 Å)</li>
+<li>X射线波长λ (0.5-2.5 Å)</li>
+<li>峰宽(FWHM)</li>
+</ul>
+</li>
+<li><strong>实时XRD图谱生成</strong>：基于Bragg定律和消光规则计算衍射图谱</li>
+<li><strong>hkl指数提示</strong>：鼠标悬停在衍射峰上可查看对应的晶面指数</li>
+<li><strong>双语支持</strong>：中文&#x2F;English界面切换</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解晶体结构与衍射峰位置的对应关系</li>
+<li>掌握Bragg定律：nλ &#x3D; 2d sinθ</li>
+<li>学习消光规则：不同空间群的衍射条件</li>
+<li>观察晶胞参数变化对衍射图谱的影响</li>
+<li>理解波长选择对衍射角度的影响</li>
+</ul>
+<p><strong>物理原理</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Bragg定律：nλ = 2d sinθ</span><br><span class="line">其中：</span><br><span class="line">- n：衍射级数（整数）</span><br><span class="line">- λ：X射线波长（Å）</span><br><span class="line">- d：晶面间距（与晶胞参数有关）</span><br><span class="line">- θ：衍射角（布拉格角）</span><br><span class="line"></span><br><span class="line">晶面间距计算：d = a / √(h² + k² + l²)</span><br><span class="line">其中 (hkl) 为Miller指数</span><br></pre></td></tr></table></figure>
+
+<h3 id="模式二：XRD精修原理"><a href="#模式二：XRD精修原理" class="headerlink" title="模式二：XRD精修原理"></a>模式二：XRD精修原理</h3><p><strong>功能特点</strong>：</p>
+<ul>
+<li><strong>数据导入</strong>：从模拟模块导入含噪声的”实验数据”</li>
+<li><strong>模型选择</strong>：选择不同的晶体结构模型进行拟合</li>
+<li><strong>手动精修</strong>：通过滑块调节晶胞参数，实时观察拟合效果</li>
+<li><strong>自动拟合</strong>：三种真实优化算法演示：<ul>
+<li>变步长爬山法 (Hill Climbing)</li>
+<li>模拟退火 (Simulated Annealing)</li>
+<li>梯度下降 (Gradient Descent)</li>
+</ul>
+</li>
+<li><strong>实时统计指标</strong>：<ul>
+<li>Rwp（加权图谱残差）</li>
+<li>Rp（图谱残差）</li>
+<li>χ²（拟合优度）</li>
+</ul>
+</li>
+<li><strong>可视化输出</strong>：标准的Rietveld精修图谱（观测值、计算值、差值曲线）</li>
+</ul>
+<p><strong>学习要点</strong>：</p>
+<ul>
+<li>理解精修的基本原理和目标</li>
+<li>掌握Rietveld精修的统计评估指标</li>
+<li>学习不同优化算法的特点和应用场景</li>
+<li>理解模型选择对拟合结果的影响</li>
+<li>掌握参数精修的策略和技巧</li>
+</ul>
+<p><strong>统计指标说明</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Rwp（加权图谱残差）：</span><br><span class="line">Rwp = √[Σw(Yobs - Ycalc)² / Σw(Yobs²)]</span><br><span class="line">权重w = 1/Yobs，考虑了计数统计误差</span><br><span class="line"></span><br><span class="line">Rp（图谱残差）：</span><br><span class="line">Rp = Σ|Yobs - Ycalc| / ΣYobs</span><br><span class="line">未加权的绝对误差指标</span><br><span class="line"></span><br><span class="line">χ²（拟合优度）：</span><br><span class="line">χ² = Σw(Yobs - Ycalc)² / (N - P)</span><br><span class="line">其中N为数据点数，P为精修参数数</span><br><span class="line">理想值接近1.0</span><br></pre></td></tr></table></figure>
+
+<p><strong>优化算法对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>算法</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>爬山法</td>
+<td>快速、智能，自动调节步长</td>
+<td>参数较少、函数较平滑</td>
+</tr>
+<tr>
+<td>模拟退火</td>
+<td>能跳出局部最优，前期会”乱跳”</td>
+<td>多峰函数、全局搜索</td>
+</tr>
+<tr>
+<td>梯度下降</td>
+<td>数学严谨，带回溯机制</td>
+<td>连续可导、需要高精度</td>
+</tr>
+</tbody></table>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li>点击上方链接打开演示页面</li>
+<li><strong>模式一</strong>：调节结构参数和仪器参数，观察3D结构和XRD图谱的实时变化</li>
+<li><strong>模式二</strong>：<ul>
+<li>点击”导入模拟数据”按钮</li>
+<li>选择合适的晶体模型</li>
+<li>手动调节参数或使用自动拟合功能</li>
+<li>观察Rwp、Rp、χ²等指标的变化</li>
+</ul>
+</li>
+<li>悬停在公式各符号上可查看详细说明</li>
+</ol>
+<h2 id="技术实现"><a href="#技术实现" class="headerlink" title="技术实现"></a>技术实现</h2><p>该演示使用以下技术：</p>
+<ul>
+<li><strong>Vue.js 2.6</strong>：前端框架，实现响应式数据绑定</li>
+<li><strong>Three.js</strong>：3D图形渲染，晶体结构可视化</li>
+<li><strong>Plotly.js</strong>：科学图表绘制，XRD图谱展示</li>
+<li><strong>纯前端JavaScript</strong>：实现所有物理计算和优化算法</li>
+<li><strong>响应式设计</strong>：支持不同屏幕尺寸</li>
+</ul>
+<h2 id="物理计算细节"><a href="#物理计算细节" class="headerlink" title="物理计算细节"></a>物理计算细节</h2><h3 id="消光规则"><a href="#消光规则" class="headerlink" title="消光规则"></a>消光规则</h3><ul>
+<li>**简单立方(SC)**：所有(hkl)都产生衍射</li>
+<li>**体心立方(BCC)**：h + k + l &#x3D; 偶数</li>
+<li>**面心立方(FCC)**：h、k、l全奇或全偶</li>
+</ul>
+<h3 id="峰强计算"><a href="#峰强计算" class="headerlink" title="峰强计算"></a>峰强计算</h3><p>考虑以下因素：</p>
+<ul>
+<li>多重性因子（Multiplicity）</li>
+<li>洛伦兹-偏振因子（Lorentz-Polarization factor）</li>
+<li>结构因子（Structure factor）</li>
+</ul>
+<h3 id="噪声模型"><a href="#噪声模型" class="headerlink" title="噪声模型"></a>噪声模型</h3><p>模拟真实实验条件：</p>
+<ul>
+<li>基底随机振荡</li>
+<li>泊松噪声（计数统计噪声）</li>
+</ul>
+<h2 id="教学应用场景"><a href="#教学应用场景" class="headerlink" title="教学应用场景"></a>教学应用场景</h2><ul>
+<li>材料科学课程教学</li>
+<li>XRD实验培训</li>
+<li>晶体学基础教学</li>
+<li>精修方法学习</li>
+<li>优化算法可视化</li>
+</ul>
+<h2 id="学习建议"><a href="#学习建议" class="headerlink" title="学习建议"></a>学习建议</h2><ol>
+<li><strong>循序渐进</strong>：先从模式一开始，理解结构与图谱的关系</li>
+<li><strong>参数探索</strong>：系统性地调节各参数，观察变化规律</li>
+<li><strong>算法对比</strong>：在模式二中尝试不同优化算法，理解其特点</li>
+<li><strong>理论结合</strong>：结合教材学习，加深对公式的理解</li>
+<li><strong>反复练习</strong>：多次操作，建立直觉认识</li>
+</ol>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><p><strong>Q: 为什么有些峰消失了？</strong><br>A: 这是由消光规则决定的，不同空间群有不同的衍射条件。</p>
+<p><strong>Q: Rwp和Rp有什么区别？</strong><br>A: Rwp是加权残差，考虑了计数统计误差；Rp是绝对残差，未加权。</p>
+<p><strong>Q: χ²的理想值是多少？</strong><br>A: 理想值接近1.0，表示模型与数据的拟合程度与统计误差一致。</p>
+<p><strong>Q: 如何判断拟合质量？</strong><br>A: 综合观察Rwp（越低越好）、χ²（接近1为佳）和差值曲线（应为随机噪声）。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过这个交互式演示，可以直观地理解晶体学的基本原理和XRD精修的核心概念。建议配合理论学习反复实践，加深对晶体结构、衍射原理和精修方法的理解。</p>
+<p>祝你学习愉快！<br><br/><br><font face="Times Newroman" font size="7"> <p align="center">晶体学教学演示finished！</font> </p></p>
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>演示</category>
+      </categories>
+      <tags>
+        <tag>XRD</tag>
+        <tag>refinement</tag>
+        <tag>demo</tag>
+        <tag>晶体学</tag>
+        <tag>精修</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>锂含量分布的量化指标详解</title>
+    <url>/2026/03/21/%E9%94%82%E5%90%AB%E9%87%8F%E5%88%86%E5%B8%83%E7%9A%84%E9%87%8F%E5%8C%96%E6%8C%87%E6%A0%87%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="锂含量分布的量化指标详解"><a href="#锂含量分布的量化指标详解" class="headerlink" title="锂含量分布的量化指标详解"></a>锂含量分布的量化指标详解</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本教程详细介绍锂含量分布分析中的关键量化指标，包括Mean（均值）、Std（标准差）、CV（变异系数）、Gini系数、归一化梯度、归一化局部标准差等。</p>
+<p>本教程以示例数据为例，展示各指标的含义、计算方法和可视化表示。这些指标可用于评估材料内部锂含量分布的均匀性和空间变化特征。</p>
+<p><strong>注意</strong>：本教程使用的是示例数据，仅用于演示目的，不代表实际实验数据。</p>
+<span id="more"></span>
+
+<hr>
+<h2 id="一、指标概述"><a href="#一、指标概述" class="headerlink" title="一、指标概述"></a>一、指标概述</h2><p>在原位中子衍射研究中，通过布拉格边成像技术可以获得二维锂含量分布图。为了定量描述锂含量的分布特征，我们需要计算一系列统计指标。</p>
+<p>这些指标可以分为两类：</p>
+<ul>
+<li><strong>基础统计指标</strong>：Mean、Std - 描述数据的绝对特征</li>
+<li><strong>不均匀性指标</strong>：CV、Gini、归一化梯度、归一化局部标准差 - 描述分布的不均匀程度（归一化）</li>
+</ul>
+<hr>
+<h2 id="二、基础统计指标"><a href="#二、基础统计指标" class="headerlink" title="二、基础统计指标"></a>二、基础统计指标</h2><h3 id="2-1-Mean（均值）"><a href="#2-1-Mean（均值）" class="headerlink" title="2.1 Mean（均值）"></a>2.1 Mean（均值）</h3><p><strong>定义</strong>：所有数据点的算术平均值，表示样品的平均锂含量。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">μ = (1/n) Σxᵢ</span><br></pre></td></tr></table></figure>
+<p>其中，xᵢ为第i个像素点的锂含量，n为像素点总数。</p>
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>代表样品整体的锂含量水平</li>
+<li>反映充放电状态</li>
+<li>可用于评估充电&#x2F;放电程度</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>demo data均值：μ &#x3D; 0.6518</li>
+<li>demo data标准差：σ &#x3D; 0.0154</li>
+</ul>
+<img src="images/demo_li_content_map.png" height="70%" width="70%">
+
+<center>图1：demo data锂含量分布图（μ = 0.6518）</center>
+
+<hr>
+<h3 id="2-2-Std（标准差）"><a href="#2-2-Std（标准差）" class="headerlink" title="2.2 Std（标准差）"></a>2.2 Std（标准差）</h3><p><strong>定义</strong>：数据偏离均值的程度，表示锂含量的绝对波动程度。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">σ = √[(1/n) Σ(xᵢ - μ)²]</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>描述锂含量分布的离散程度</li>
+<li>绝对不均匀性度量</li>
+<li>值越大，分布越不均匀</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Std &#x3D; 0.0154</li>
+<li>说明锂含量在均值附近的标准波动为0.0154</li>
+</ul>
+<p><strong>局限性</strong>：</p>
+<ul>
+<li>受均值大小影响</li>
+<li>不能直接比较不同均值状态的均匀性</li>
+<li>需要归一化（见CV指标）</li>
+</ul>
+<p><strong>可视化</strong>：</p>
+<img src="images/demo_histogram.png" height="70%" width="70%">
+
+<center>图2：demo data锂含量分布直方图（σ = 0.0154）</center>
+
+<hr>
+<h2 id="三、不均匀性指标"><a href="#三、不均匀性指标" class="headerlink" title="三、不均匀性指标"></a>三、不均匀性指标</h2><h3 id="3-1-CV（变异系数）"><a href="#3-1-CV（变异系数）" class="headerlink" title="3.1 CV（变异系数）"></a>3.1 CV（变异系数）</h3><p><strong>定义</strong>：标准差与均值的比值，相对不均匀性度量（去量纲化）。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CV = σ / μ</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>相对不均匀性（归一化）</li>
+<li>可比较不同均值状态的均匀性</li>
+<li>值越小，分布越均匀</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>CV &#x3D; 0.0236</li>
+<li>说明锂含量的相对波动很小（2.36%）</li>
+<li>分布非常均匀</li>
+</ul>
+<p><strong>应用</strong>：</p>
+<ul>
+<li>适用于比较不同充放电状态的不均匀性</li>
+<li>CV &lt; 0.05：分布非常均匀</li>
+<li>0.05 &lt; CV &lt; 0.1：分布较均匀</li>
+<li>CV &gt; 0.1：分布较不均匀</li>
+</ul>
+<hr>
+<h3 id="3-2-Gini系数"><a href="#3-2-Gini系数" class="headerlink" title="3.2 Gini系数"></a>3.2 Gini系数</h3><p><strong>定义</strong>：基于洛伦兹曲线的不平等度量，源自经济学，用于描述分布的不均匀程度。</p>
+<p><strong>计算方法</strong>：</p>
+<ol>
+<li>将所有数据排序</li>
+<li>计算累积分布</li>
+<li>绘制洛伦兹曲线</li>
+<li>Gini &#x3D; |A| &#x2F; (A+B)，其中A为洛伦兹曲线与对角线之间的面积，A+B为对角线下方总面积</li>
+</ol>
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>空间分布的不均匀程度</li>
+<li>考虑了数据的空间顺序</li>
+<li>值越接近0，分布越均匀</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Gini &#x3D; 0.0132</li>
+<li>说明锂含量的空间分布非常均匀</li>
+</ul>
+<p><strong>与CV的区别</strong>：</p>
+<ul>
+<li>CV：只考虑数值的离散程度</li>
+<li>Gini：考虑数值的空间分布特征</li>
+<li>Gini对极端值更敏感</li>
+</ul>
+<hr>
+<h3 id="3-3-归一化梯度"><a href="#3-3-归一化梯度" class="headerlink" title="3.3 归一化梯度"></a>3.3 归一化梯度</h3><p><strong>定义</strong>：平均梯度幅值与均值的比值，表示局部变化率。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">∇f = (∂f/∂x, ∂f/∂y)</span><br><span class="line">|∇f| = √[(∂f/∂x)² + (∂f/∂y)²]</span><br><span class="line">NG = mean(|∇f|) / μ</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>锂含量的空间变化剧烈程度</li>
+<li>局部不均匀性</li>
+<li>反映材料内部的锂浓度梯度</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Mean Gradient &#x3D; 0.0427</li>
+<li>Normalized Gradient &#x3D; 0.0427 &#x2F; 0.6518 &#x3D; 0.0655</li>
+<li>说明锂含量的局部变化很小</li>
+</ul>
+<p><strong>可视化</strong>：</p>
+<img src="images/demo_gradient_map.png" height="70%" width="70%">
+
+<center>图3：demo data梯度幅值图</center>
+
+<p><strong>应用</strong>：</p>
+<ul>
+<li>评估锂离子传输路径</li>
+<li>检测相界面的位置</li>
+<li>分析锂嵌入&#x2F;脱嵌的动力学过程</li>
+</ul>
+<hr>
+<h3 id="3-4-归一化局部标准差"><a href="#3-4-归一化局部标准差" class="headerlink" title="3.4 归一化局部标准差"></a>3.4 归一化局部标准差</h3><p><strong>定义</strong>：局部标准差的平均值与均值的比值，反映微观不均匀性。</p>
+<p><strong>计算公式</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">μ_local(x,y) = mean[f in neighborhood of (x,y)]</span><br><span class="line">σ_local(x,y) = std[f in neighborhood of (x,y)]</span><br><span class="line">NLS = mean(σ_local) / μ</span><br></pre></td></tr></table></figure>
+
+<p><strong>物理意义</strong>：</p>
+<ul>
+<li>局部波动程度（归一化）</li>
+<li>微观尺度的不均匀性</li>
+<li>比Gini更关注局部特征</li>
+</ul>
+<p><strong>示例（demo data）</strong>：</p>
+<ul>
+<li>Normalized Local Std &#x3D; 0.0075</li>
+<li>说明微观波动非常小</li>
+</ul>
+<p><strong>应用</strong>：</p>
+<ul>
+<li>检测局部富集&#x2F;贫化区域</li>
+<li>评估材料缺陷的影响</li>
+<li>分析晶粒边界的不均匀性</li>
+</ul>
+<hr>
+<h2 id="四、指标对比与选择"><a href="#四、指标对比与选择" class="headerlink" title="四、指标对比与选择"></a>四、指标对比与选择</h2><h3 id="4-1-指标总结"><a href="#4-1-指标总结" class="headerlink" title="4.1 指标总结"></a>4.1 指标总结</h3><table>
+<thead>
+<tr>
+<th>指标</th>
+<th>类型</th>
+<th>范围</th>
+<th>demo data示例</th>
+<th>物理意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Mean</strong></td>
+<td>基础</td>
+<td>0-∞</td>
+<td>0.6518</td>
+<td>平均锂含量</td>
+</tr>
+<tr>
+<td><strong>Std</strong></td>
+<td>基础</td>
+<td>0-∞</td>
+<td>0.0154</td>
+<td>绝对波动程度</td>
+</tr>
+<tr>
+<td><strong>CV</strong></td>
+<td>不均匀性</td>
+<td>0-∞</td>
+<td>0.0236</td>
+<td>相对波动程度</td>
+</tr>
+<tr>
+<td><strong>Gini</strong></td>
+<td>不均匀性</td>
+<td>0-1</td>
+<td>0.0132</td>
+<td>空间分布不均匀性</td>
+</tr>
+<tr>
+<td><strong>归一化梯度</strong></td>
+<td>不均匀性</td>
+<td>0-∞</td>
+<td>0.0427</td>
+<td>局部变化率</td>
+</tr>
+<tr>
+<td><strong>归一化局部标准差</strong></td>
+<td>不均匀性</td>
+<td>0-∞</td>
+<td>0.0075</td>
+<td>微观波动程度</td>
+</tr>
+</tbody></table>
+<h3 id="4-2-指标选择建议"><a href="#4-2-指标选择建议" class="headerlink" title="4.2 指标选择建议"></a>4.2 指标选择建议</h3><p><strong>用于描述整体状态</strong>：</p>
+<ul>
+<li>Mean：报告充放电状态</li>
+<li>Std：报告绝对波动</li>
+</ul>
+<p><strong>用于比较不均匀性</strong>：</p>
+<ul>
+<li>CV：最常用的归一化指标</li>
+<li>Gini：考虑空间分布</li>
+<li>归一化梯度：关注局部变化</li>
+<li>归一化局部标准差：关注微观波动</li>
+</ul>
+<p><strong>用于学术发表</strong>：</p>
+<ul>
+<li>建议同时报告CV和Gini</li>
+<li>补充归一化梯度提供动力学信息</li>
+</ul>
+<hr>
+<h2 id="五、应用场景"><a href="#五、应用场景" class="headerlink" title="五、应用场景"></a>五、应用场景</h2><h3 id="5-1-充放电过程对比"><a href="#5-1-充放电过程对比" class="headerlink" title="5.1 充放电过程对比"></a>5.1 充放电过程对比</h3><p>通过计算不同充放电状态的量化指标，可以分析：</p>
+<ul>
+<li><strong>充电过程</strong>：Li含量增加，不均匀性如何变化？</li>
+<li><strong>放电过程</strong>：Li含量减少，不均匀性如何变化？</li>
+<li><strong>速率影响</strong>：快速充放电vs慢速充放电，不均匀性差异？</li>
+</ul>
+<h3 id="5-2-材料设计优化"><a href="#5-2-材料设计优化" class="headerlink" title="5.2 材料设计优化"></a>5.2 材料设计优化</h3><p>量化指标可用于：</p>
+<ul>
+<li>评估不同合成条件对均匀性的影响</li>
+<li>优化电极结构和制备工艺</li>
+<li>指导材料改性研究</li>
+</ul>
+<h3 id="5-3-性能关联分析"><a href="#5-3-性能关联分析" class="headerlink" title="5.3 性能关联分析"></a>5.3 性能关联分析</h3><p>将量化指标与电池性能关联：</p>
+<ul>
+<li>CV与循环寿命的关系</li>
+<li>归一化梯度与倍率性能的关系</li>
+<li>不均匀性与安全性的关系</li>
+</ul>
+<hr>
+<h2 id="六、计算代码示例"><a href="#六、计算代码示例" class="headerlink" title="六、计算代码示例"></a>六、计算代码示例</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.ndimage <span class="keyword">import</span> uniform_filter, sobel</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载数据</span></span><br><span class="line">data = np.load(<span class="string">&#x27;li_content.npy&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基础统计指标</span></span><br><span class="line">mean_val = np.mean(data)</span><br><span class="line">std_val = np.std(data)</span><br><span class="line">cv = std_val / mean_val</span><br><span class="line"></span><br><span class="line"><span class="comment"># Gini系数</span></span><br><span class="line">sorted_data = np.sort(data.flatten())</span><br><span class="line">cumsum = np.cumsum(sorted_data)</span><br><span class="line">cumsum = cumsum / cumsum[-<span class="number">1</span>]</span><br><span class="line">lorenz = np.concatenate(([<span class="number">0</span>], cumsum))</span><br><span class="line">gini = np.<span class="built_in">abs</span>(np.trapezoid(lorenz, np.linspace(<span class="number">0</span>, <span class="number">1</span>, <span class="built_in">len</span>(lorenz))) - <span class="number">0.5</span>) / <span class="number">0.5</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化梯度</span></span><br><span class="line">grad_x = sobel(data, axis=<span class="number">1</span>)</span><br><span class="line">grad_y = sobel(data, axis=<span class="number">0</span>)</span><br><span class="line">gradient_magnitude = np.sqrt(grad_x**<span class="number">2</span> + grad_y**<span class="number">2</span>)</span><br><span class="line">mean_gradient = np.mean(gradient_magnitude)</span><br><span class="line">normalized_gradient = mean_gradient / mean_val</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化局部标准差</span></span><br><span class="line">local_mean = uniform_filter(data, size=<span class="number">5</span>, mode=<span class="string">&#x27;reflect&#x27;</span>)</span><br><span class="line">local_sq_mean = uniform_filter(data**<span class="number">2</span>, size=<span class="number">5</span>, mode=<span class="string">&#x27;reflect&#x27;</span>)</span><br><span class="line">local_var = local_sq_mean - local_mean**<span class="number">2</span></span><br><span class="line">local_std = np.mean(np.sqrt(np.maximum(local_var, <span class="number">0</span>)))</span><br><span class="line">normalized_local_std = local_std / mean_val</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><p>本教程详细介绍了锂含量分布分析中的6个关键量化指标：</p>
+<ol>
+<li><strong>Mean</strong>：描述整体锂含量水平</li>
+<li><strong>Std</strong>：描述绝对波动程度</li>
+<li><strong>CV</strong>：描述相对不均匀性（最常用）</li>
+<li><strong>Gini</strong>：描述空间分布不均匀性</li>
+<li><strong>归一化梯度</strong>：描述局部变化率</li>
+<li><strong>归一化局部标准差</strong>：描述微观波动</li>
+</ol>
+<p>这些指标从不同角度量化了锂含量的分布特征，为材料性能评估和优化提供了重要依据。</p>
+<p>在实际应用中，建议：</p>
+<ul>
+<li>根据研究目的选择合适的指标</li>
+<li>综合使用多个指标进行全面分析</li>
+<li>结合可视化结果进行解释</li>
+<li>与电池性能数据进行关联分析</li>
+</ul>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>NCM523材料中子衍射数据</li>
+<li>布拉格边成像技术</li>
+<li>统计学基础理论</li>
+</ul>
+<br/>
+<font face="Times Newroman" font size=7> <p align="center">锂含量分布的量化指标详解 finished！</font> </p>
+
+<h3 id="End"><a href="#End" class="headerlink" title="End"></a>End</h3>]]></content>
+      <categories>
+        <category>数据分析</category>
+      </categories>
+      <tags>
+        <tag>neutron imaging</tag>
+        <tag>lithium content</tag>
+        <tag>quantification</tag>
+        <tag>inhomogeneity</tag>
+      </tags>
+  </entry>
+</search>
